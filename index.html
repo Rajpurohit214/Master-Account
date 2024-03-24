@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tailor Hisab</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Tailor Hisab</h1>
+        </header>
+        <div class="Main-Container">
+            <div class="Container-Fabric" >
+                <input style="width: 50px;"value ="SN" type="text" readonly>
+                <input value="Dc No" type="text"readonly>
+                <input value="Bill NO" type="text"readonly>
+                <input value="Total Pcs" type="text"readonly>
+                <input value="Rate" type="text"readonly>
+                <input value="CNSPTN" type="text"readonly>
+                <input value="Total MTR" type="text"readonly>
+                <input value="Waste MTR" type="text"readonly>
+                <input value="Tax 5%" type="text"readonly>
+                <input value="Cash AMT" type="text"readonly>
+                <input value="RTGS AMT" type="text"readonly>
+                <input value="Total AMT" type="text"readonly>
+                <Button>+</Button>
+                <button>X</button>
+            </div>
+            <div class="AddLine-Iteam" ></div>
+            <div class="AddLine-Fabric">
+                <input type="number" value="0" style="width: 50px;" readonly>
+                <input type="number" id="DcNo">
+                <input type="number" id="BillNO">
+                <input type="number" id="TotalPcs">
+                <input type="number" id="Rate">
+                <input type="number" id="CNSPTN">
+                <input type="number" id="TotalMTR">
+                <input type="number" id="WasteMTR">
+                <input type="number" id="Tax5%">
+                <input type="number" id="CashAMT">
+                <input type="number" id="RTGSAMT">
+                <input type="number" id="TotalAMT">
+                <Button id="Add">+</Button>
+                <button>X</button>
+            </div>
+            <!-- <div class="Container-Material">
+                <div class="Material-Line">
+                    <input>SN</input>
+                    <input>Slip.No <br> Rate:-</input>
+                    <input>Slip.Date</input>
+                    <input>FLat Cover <input type="number" name="rate" id="FlatCoverRate"></input>
+                    <input>Roll Cover <input type="number" name="rate" id="RollCoverRate"></input>
+                    <input>Patti Cover <input type="number" name="rate" id="PattiCoverRate"></input>
+                    <input>Button Gross <input type="number" name="rate" id="ButtonGrossRate"></input>
+                    <input>Metal Id <input type="number" name="rate" id="MetalIDRate"></input>
+                </div> -->
+                <div class="Material-Rate">
+
+                </div>
+
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
