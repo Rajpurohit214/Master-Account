@@ -27,23 +27,17 @@ AddBtn.addEventListener("click",()=>{
 
 function AddLine(){
     AddLineIteam.insertAdjacentHTML("beforeend",
-    `<div class="AddLine-Fabric InputLine">
-    <input type="number"  style="width: 50px;" class="SN" readonly>
-    <input type="number" id="DcNo" value="${DcNo.value}">
-    <input type="number" id="BillNO" value="${BillNO.value}">
-    <input type="number" id="TotalPcs" value="${TotalPcs.value}">
-    <input type="number" id="Rate" value="${Rate.value}">
-    <input type="number" id="CNSPTN" value="${CNSPTN.value}">
-    <input type="number" id="TotalMTR" value="${TotalMTR.value}">
-    <input type="number" id="cgst" value="${cgst.value}">
-    <input type="number" id="sgst" value="${sgst.value}">
-    <span></span>
-    <input type="number" id="CashAMT" value="${CashAMT.value}">
-    <input type="number" id="RTGSAMT" value="${RTGSAMT.value}">
-    <input type="number" id="TotalAMT" value="${TotalAMT.value}">
-    <input type="number" id="WasteMTR" value="${WasteMTR.value}">
-    <Button id="Add" >+</Button>
-    <button class="DeleteBtn" id="DeleteBtn">X</button>
+    `<div class="AddLine-Fabric">
+    <input type="number" value="0" style="width: 50px;" readonly="readonly">
+    <input type="number" id="DcNo">
+    <input type="number" id="TotalPcs">
+    <input type="number" id="Rate">
+    <input type="number" id="CNSPTN">
+    <input type="number" id="TotalMTR">
+    <input type="number" id="WasteMTR">
+    <input type="number" id="FabRate">
+    <button id="Add">+</button>
+    <button class="DeleteBtn">X</button>
 </div>`
 );
 TotalLine.push(AddLineIteam.lastChild);
