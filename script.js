@@ -4,7 +4,9 @@ document.body.addEventListener("click", (click) => {
     // Check if the clicked element is an button
     if (target.classList.contains("Add")) {
         const container = target.closest(".Main-Container");
-        AddLine(container);
+        const AddLineIteam = container.querySelector(".AddLine-Iteam");
+        
+        AddLine(container,AddLineIteam);
     }
     if (target.classList.contains("DELETE")) {
         target.closest(".Main-Container").remove();
@@ -123,15 +125,15 @@ function AddLine(container){
     </div>`);
 
 
-    const TotalPcs = container.querySelector("#TotalPcs");
-    const CNSPTN = container.querySelector("#CNSPTN");
-    const Rate = container.querySelector("#Rate");
-    const UsedMTR = container.querySelector("#UsedMtr");
-    const TotalMTR = container.querySelector("#TotalMTR");
-    const RestMTR = container.querySelector("#WasteMTRv");
-    const Debit = container.querySelector("#Debit");
-    const Total = container.querySelector("#Total");
-    const FabRate = container.querySelector("#FabRatev");
+    const TotalPcs = AddLineIteam.lastElementChild.querySelector("#TotalPcs");
+    const CNSPTN = AddLineIteam.lastElementChild.querySelector("#CNSPTN");
+    const Rate = AddLineIteam.lastElementChild.querySelector("#Rate");
+    const UsedMTR = AddLineIteam.lastElementChild.querySelector("#UsedMtr");
+    const TotalMTR = AddLineIteam.lastElementChild.querySelector("#TotalMTR");
+    const RestMTR = AddLineIteam.lastElementChild.querySelector("#WasteMTRv");
+    const Debit = AddLineIteam.lastElementChild.querySelector("#Debit");
+    const Total = AddLineIteam.lastElementChild.querySelector("#Total");
+    const FabRate = AddLineIteam.lastElementChild.querySelector("#FabRatev");
 
     TotalPcs.addEventListener("input",()=>{
         UsedMTR.value = CNSPTN.value * TotalPcs.value;
@@ -159,6 +161,12 @@ function AddLine(container){
     });
 
     FabRate.addEventListener("input",()=>{
+        Debit.value = RestMTR.value*FabRate.value;
+        TotalCalculator(container);
+    });
+    UsedMTR.addEventListener("input",()=>{
+        CNSPTN.value = UsedMTR.value/TotalPcs.value;
+        RestMTR.value = TotalMTR.value - UsedMTR.value;
         Debit.value = RestMTR.value*FabRate.value;
         TotalCalculator(container);
     });
