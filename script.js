@@ -56,9 +56,9 @@ function AddDCs (){
          <div class="AddLine-Iteam"></div>
          <div class="AddLine-Fabric">
              <input type="number" value="0" style="width: 50px;" readonly="readonly">
-             <input type="number" id="DcNoI" placeholder="No">
-             <input type="number" id="TotalPcsI" placeholder="total PCS">
-             <input type="number" id="CNSPTNI" placeholder="Consumption">
+             <input type="number" id="DcNoI" placeholder="No" oninput="validateInput(this)">
+             <input type="number" id="TotalPcsI" placeholder="total PCS" oninput="validateInput(this)" >
+             <input type="number" id="CNSPTNI" placeholder="Consumption" >
              <input type="number" id="RateI" placeholder="Stitching Rate">
              <input type="number" id="TotalMTRI" placeholder="Total Meter">
              <input type="number" id="FabRateI" placeholder="Fabric Rate">
@@ -77,7 +77,7 @@ function AddDCs (){
              <input value="Total AMT" type="text" readonly="readonly">
              </div>
              <div class="Total-Value">
-             <input type="number" id="DebitFab">
+             <input type="number" id="DebitFab" readonly>
              <input type="number" id="cgst" value="0">
              <input type="number" id="sgst" value="0">
              <input type="number" id="CashAMT" value="0" readonly>
@@ -97,6 +97,8 @@ function AddLine(container){
 
   
 
+    
+    
     const AddLineIteam = container.querySelector(".AddLine-Iteam");
     const DcNoInput = container.querySelector("#DcNoI");
     const TotalPcsInput = container.querySelector("#TotalPcsI");
@@ -113,18 +115,18 @@ function AddLine(container){
     <input type="number" value="0" style="width: 50px;" readonly="readonly">
     <input type="number" id="DcNo" value="${DcNoInput.value}">
     <input type="number" id="TotalPcs" value="${TotalPcsInput.value}">
-    <input type="number" id="CNSPTN" value="${CNSPTNInput.value}">
+    <input type="number" id="CNSPTN" value="${CNSPTNInput.value}" step="any">
     <input type="number" id="Rate" value="${RateInput.value}">
-    <input type="number" id="UsedMtr" value="${CNSPTNInput.value*TotalPcsInput.value}">
+    <input type="number" id="UsedMtr" value="${CNSPTNInput.value*TotalPcsInput.value}" step="any">
     <input type="number" id="TotalMTR" value="${TotalMTRInput.value}">
-    <input type="number" id="WasteMTRv" readonly value="${TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value)}">
+    <input type="number" id="WasteMTRv" readonly value="${TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value)}" step="any">
     <input type="number" id="FabRatev" value="${FabRateInput.value}">
     <input type="number" id="Debit" readonly value="${(TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value))*FabRateInput.value}">
     <input type="number" id="Total" readonly value="${(TotalPcsInput.value*RateInput.value)}">
     <button class="DeleteBtn">X</button>
     </div>`);
 
-
+     
     const TotalPcs = AddLineIteam.lastElementChild.querySelector("#TotalPcs");
     const CNSPTN = AddLineIteam.lastElementChild.querySelector("#CNSPTN");
     const Rate = AddLineIteam.lastElementChild.querySelector("#Rate");
@@ -141,6 +143,8 @@ function AddLine(container){
         Debit.value = RestMTR.value*FabRate.value;
         Total.value = TotalPcs.value*Rate.value;
         TotalCalculator(container);
+        validateInput(TotalPcs);
+        
     });
     CNSPTN.addEventListener("input",()=>{
       UsedMTR.value = CNSPTN.value * TotalPcs.value;
@@ -175,6 +179,7 @@ function AddLine(container){
 
   TotalCalculator(container);
 
+
 }
 
 function RemoveDc(Dc , container){
@@ -198,6 +203,8 @@ function TotalCalculator (container){
     //Final Ammount
     SumTotal (container);
     CashTotal (container)
+    container.querySelector("#TotalAMT").value = parseInt(container.querySelector("#RTGSAMT").value) + parseInt(container.querySelector("#CashAMT").value);
+    
 }
 function CashTotal (container){
         // total amount cash
@@ -205,6 +212,7 @@ function CashTotal (container){
         let  CashNum = 0;
         container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
         container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value);
+        
 }
 function SumTotal (container){
          // cheque total
@@ -212,27 +220,34 @@ function SumTotal (container){
          const SGST = container.querySelector("#sgst");
          const RTGSAMT = container.querySelector("#RTGSAMT");
          const CashAmt = container.querySelector("#CashAMT");
+         const debit = container.querySelector("#DebitFab");
      
          CGST.addEventListener("input",()=>{
             SGST.value = CGST.value;
             RTGSAMT.value = (CGST.value * 2) / 0.05;
             container.querySelector("#TotalAMT").value= parseInt(RTGSAMT.value) + parseInt(CashAmt.value);
-            CashTotal (container);
+  
             
          })
          SGST.addEventListener("input",()=>{
             CGST.value = SGST.value;
             RTGSAMT.value = (SGST.value * 2) / 0.05;
             container.querySelector("#TotalAMT").value= parseInt(RTGSAMT.value) + parseInt(CashAmt.value);
-            CashTotal (container);
+
+
          })
          RTGSAMT.addEventListener("input",()=>{
             CGST.value = ((RTGSAMT.value /100) *5)/2;
             SGST.value = ((RTGSAMT.value /100) *5)/2;
             RTGSAMT.value = (SGST.value * 2) / 0.05;
             container.querySelector("#TotalAMT").value= parseInt(RTGSAMT.value) + parseInt(CashAmt.value);
-            CashTotal (container);
+
          })
 
+
+}
+
+function validateInput(inputElement) {
+    inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
 }
 
