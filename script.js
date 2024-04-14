@@ -1,4 +1,3 @@
-
 document.body.addEventListener("click", (click) => {
     const target = click.target;
     // Check if the clicked element is an button
@@ -13,6 +12,7 @@ document.body.addEventListener("click", (click) => {
         
     }
     if(target.id === "AddDcBtn"){
+        
         AddDCs();
     }
     if(target.classList.contains("DeleteBtn")){
@@ -30,6 +30,8 @@ document.body.addEventListener("click", (click) => {
 
 
 function AddDCs (){
+
+    const MainBox = document.querySelector("#MainBox")
    
     MainBox.insertAdjacentHTML("beforeend", `
          <div class="Main-Container">
@@ -56,12 +58,12 @@ function AddDCs (){
          <div class="AddLine-Iteam"></div>
          <div class="AddLine-Fabric">
              <input type="number" value="0" style="width: 50px;" readonly="readonly">
-             <input type="number" id="DcNoI" placeholder="No" oninput="validateInput(this)">
-             <input type="number" id="TotalPcsI" placeholder="total PCS" oninput="validateInput(this)" >
-             <input type="number" id="CNSPTNI" placeholder="Consumption" >
-             <input type="number" id="RateI" placeholder="Stitching Rate">
-             <input type="number" id="TotalMTRI" placeholder="Total Meter">
-             <input type="number" id="FabRateI" placeholder="Fabric Rate">
+             <input type="number" id="DcNoI" placeholder="No" oninput="validity.valid||(value='');" min="0">
+             <input type="number" id="TotalPcsI" placeholder="total PCS"  oninput="validity.valid||(value='');" min="0">
+             <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+             <input type="number" id="RateI" placeholder="Stitching Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+             <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+             <input type="number" id="FabRateI" placeholder="Fabric Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01">
              <button id="Add" class="Add">+</button>
     
          </div>
@@ -87,6 +89,11 @@ function AddDCs (){
      </div>
      </div>
      <br>`);
+    
+
+
+ 
+
      
 }
 
@@ -108,21 +115,20 @@ function AddLine(container){
     const FabRateInput = container.querySelector("#FabRateI");
 
 
-    
 
     AddLineIteam.insertAdjacentHTML("beforeend", `
     <div class="AddLine-Fabric">
     <input type="number" value="0" style="width: 50px;" readonly="readonly">
-    <input type="number" id="DcNo" value="${DcNoInput.value}">
-    <input type="number" id="TotalPcs" value="${TotalPcsInput.value}">
-    <input type="number" id="CNSPTN" value="${CNSPTNInput.value}" step="any">
-    <input type="number" id="Rate" value="${RateInput.value}">
-    <input type="number" id="UsedMtr" value="${CNSPTNInput.value*TotalPcsInput.value}" step="any">
-    <input type="number" id="TotalMTR" value="${TotalMTRInput.value}">
-    <input type="number" id="WasteMTRv" readonly value="${TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value)}" step="any">
-    <input type="number" id="FabRatev" value="${FabRateInput.value}">
-    <input type="number" id="Debit" readonly value="${(TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value))*FabRateInput.value}">
-    <input type="number" id="Total" readonly value="${(TotalPcsInput.value*RateInput.value)}">
+    <input type="number" id="DcNo" value="${DcNoInput.value}" oninput="validity.valid||(value='');" min="0">
+    <input type="number" id="TotalPcs" value="${TotalPcsInput.value}" oninput="validity.valid||(value='');" min="0">
+    <input type="number" id="CNSPTN" value="${CNSPTNInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+    <input type="number" id="Rate" value="${RateInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+    <input type="number" id="UsedMtr" value="${CNSPTNInput.value*TotalPcsInput.value}" step="any" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+    <input type="number" id="TotalMTR" value="${TotalMTRInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+    <input type="number" id="WasteMTRv" readonly value="${TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value)}" step="any" >
+    <input type="number" id="FabRatev" value="${FabRateInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+    <input type="number" id="Debit" readonly value="${(TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value))*FabRateInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+    <input type="number" id="Total" readonly value="${(TotalPcsInput.value*RateInput.value)}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
     <button class="DeleteBtn">X</button>
     </div>`);
 
@@ -143,7 +149,7 @@ function AddLine(container){
         Debit.value = RestMTR.value*FabRate.value;
         Total.value = TotalPcs.value*Rate.value;
         TotalCalculator(container);
-        validateInput(TotalPcs);
+        //validateInput(TotalPcs);
         
     });
     CNSPTN.addEventListener("input",()=>{
@@ -179,7 +185,7 @@ function AddLine(container){
 
   TotalCalculator(container);
 
-
+  addEventListenersToInputs(container);
 }
 
 function RemoveDc(Dc , container){
@@ -247,7 +253,32 @@ function SumTotal (container){
 
 }
 
-function validateInput(inputElement) {
-    inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
+// function validateInput(inputElement) {
+//     if (inputElement.value == "-" || inputElement.value == "+" || inputElement.value == "." || inputElement.value == "/" || inputElement.value == "*" ) {
+//         console.log("input has a invalid value");
+//     }else console.log("input has a valid value");
+// }
+function inputKeyDown( InputBox ){
+    InputBox.addEventListener("keydown", (e) => {
+        if (e.code === "Enter" || e.code === "NumpadEnter") {
+            console.log("enter")
+            
+        }
+    });
+
 }
 
+function addEventListenersToInputs(container) {
+    const inputs = container.querySelectorAll('.AddLine-Fabric input[type="number"]');
+    inputs.forEach((input, index) => {
+        input.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default form submission behavior
+                const nextIndex = index + 1;
+                if (nextIndex < inputs.length) {
+                    inputs[nextIndex].focus(); // Focus on the next input field
+                }
+            }
+        });
+    });
+}
