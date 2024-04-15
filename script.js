@@ -149,7 +149,6 @@ function AddLine(container){
         Debit.value = RestMTR.value*FabRate.value;
         Total.value = TotalPcs.value*Rate.value;
         TotalCalculator(container);
-        //validateInput(TotalPcs);
         
     });
     CNSPTN.addEventListener("input",()=>{
@@ -213,7 +212,7 @@ function TotalCalculator (container){
     container.querySelectorAll("#Debit").forEach(debit => {DebitNum +=  parseInt(debit.value);});
     container.querySelector("#DebitFab").value=DebitNum;
 
-    //Final Ammount
+    //Final Amount
     SumTotal (container);
     CashTotal (container)
     container.querySelector("#TotalAMT").value = parseInt(container.querySelector("#RTGSAMT").value) + parseInt(container.querySelector("#CashAMT").value);
@@ -290,5 +289,3 @@ document.body.addEventListener("keydown", (event) => {
 });
 
 
-
-//onkeydown ="keydown(this)"
