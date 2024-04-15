@@ -58,12 +58,12 @@ function AddDCs (){
          <div class="AddLine-Iteam"></div>
          <div class="AddLine-Fabric">
              <input type="number" value="0" style="width: 50px;" readonly="readonly">
-             <input type="number" id="DcNoI" placeholder="No" oninput="validity.valid||(value='');" min="0" >
-             <input type="number" id="TotalPcsI" placeholder="total PCS"  oninput="validity.valid||(value='');" min="0" onkeydown ="keydown(this)">
-             <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="validity.valid||(value='');" min="0.01" step="0.01">
-             <input type="number" id="RateI" placeholder="Stitching Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01">
-             <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="validity.valid||(value='');" min="0.01" step="0.01">
-             <input type="number" id="FabRateI" placeholder="Fabric Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+             <input type="number" id="DcNoI" placeholder="No" oninput="validity.valid||(value='');" min="0"  >
+             <input type="number" id="TotalPcsI" placeholder="total PCS"  oninput="validity.valid||(value='');" min="0" >
+             <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
+             <input type="number" id="RateI" placeholder="Stitching Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
+             <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
+             <input type="number" id="FabRateI" placeholder="Fabric Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
              <button id="Add" class="Add">+</button>
     
          </div>
@@ -184,6 +184,13 @@ function AddLine(container){
 
 
   TotalCalculator(container);
+       AddLineIteam.value = "";
+       DcNoInput.value = "";
+       TotalPcsInput.value = "";
+       RateInput.value = "";
+       CNSPTNInput.value = "";
+       TotalMTRInput.value = "";
+       FabRateInput.value = "";
 
   
 }
@@ -254,36 +261,34 @@ function SumTotal (container){
 }
 
 
-function keydown( InputBox ){
-    InputBox.addEventListener("keydown", (e) => {
-        if (e.code === "Enter" || e.code === "NumpadEnter") {
-            if (InputBox.id == "DcNoI" ) {
-                console.log(InputBox)
-                InputBox.parentElement.querySelector("#TotalPcsI").focus()
-            }else if (InputBox.id == "TotalPcsI" ) {
-                console.log(InputBox)
-                InputBox.parentElement.querySelector("#CNSPTNI").focus()
-            }else if (InputBox.id == "CNSPTNI" ) {
-                console.log(InputBox)
-                InputBox.parentElement.querySelector("#RateI").focus()
-            }else if (InputBox.id == "RateI" ) {
-                console.log(InputBox)
-                InputBox.parentElement.querySelector("#TotalMTRI").focus()
-            }else if (InputBox.id == "TotalMTRI" ) {
-                console.log(InputBox)
-                InputBox.parentElement.querySelector("#FabRateI").focus()
-            }else if (InputBox.id == "FabRateI" ) {
-                console.log(InputBox)
-                const container = InputBox.parentElement.parentElement;
-                const AddLineIteam = container.querySelector(".AddLine-Iteam");
+document.body.addEventListener("keydown", (event) => {
+    if (event.code === "Enter" || event.code === "NumpadEnter") {
+        const target = event.target;
+        if (target.id == "DcNoI") {
                 
+                target.parentElement.querySelector("#TotalPcsI").focus()
+            }else if (target.id == "TotalPcsI" ) {
+                
+                target.parentElement.querySelector("#CNSPTNI").focus()
+            }else if (target.id == "CNSPTNI" ) {
+                
+                target.parentElement.querySelector("#RateI").focus()
+            }else if (target.id == "RateI" ) {
+                
+                target.parentElement.querySelector("#TotalMTRI").focus()
+            }else if (target.id == "TotalMTRI" ) {
+                
+                target.parentElement.querySelector("#FabRateI").focus()
+            }else if (target.id == "FabRateI" ) {
+                
+                const container = target.parentElement.parentElement;
+                const AddLineIteam = container.querySelector(".AddLine-Iteam");
                 AddLine(container,AddLineIteam);
+                target.parentElement.querySelector("#DcNoI").focus()
             }
-            
-        }
-    });
+    }
+});
 
-}
 
-    
-   
+
+//onkeydown ="keydown(this)"
