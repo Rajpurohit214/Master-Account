@@ -58,8 +58,8 @@ function AddDCs (){
          <div class="AddLine-Iteam"></div>
          <div class="AddLine-Fabric">
              <input type="number" value="0" style="width: 50px;" readonly="readonly">
-             <input type="number" id="DcNoI" placeholder="No" oninput="validity.valid||(value='');" min="0">
-             <input type="number" id="TotalPcsI" placeholder="total PCS"  oninput="validity.valid||(value='');" min="0">
+             <input type="number" id="DcNoI" placeholder="No" oninput="validity.valid||(value='');" min="0" >
+             <input type="number" id="TotalPcsI" placeholder="total PCS"  oninput="validity.valid||(value='');" min="0" onkeydown ="keydown(this)">
              <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="validity.valid||(value='');" min="0.01" step="0.01">
              <input type="number" id="RateI" placeholder="Stitching Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01">
              <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="validity.valid||(value='');" min="0.01" step="0.01">
@@ -185,7 +185,7 @@ function AddLine(container){
 
   TotalCalculator(container);
 
-  addEventListenersToInputs(container);
+  
 }
 
 function RemoveDc(Dc , container){
@@ -253,32 +253,37 @@ function SumTotal (container){
 
 }
 
-// function validateInput(inputElement) {
-//     if (inputElement.value == "-" || inputElement.value == "+" || inputElement.value == "." || inputElement.value == "/" || inputElement.value == "*" ) {
-//         console.log("input has a invalid value");
-//     }else console.log("input has a valid value");
-// }
-function inputKeyDown( InputBox ){
+
+function keydown( InputBox ){
     InputBox.addEventListener("keydown", (e) => {
         if (e.code === "Enter" || e.code === "NumpadEnter") {
-            console.log("enter")
+            if (InputBox.id == "DcNoI" ) {
+                console.log(InputBox)
+                InputBox.parentElement.querySelector("#TotalPcsI").focus()
+            }else if (InputBox.id == "TotalPcsI" ) {
+                console.log(InputBox)
+                InputBox.parentElement.querySelector("#CNSPTNI").focus()
+            }else if (InputBox.id == "CNSPTNI" ) {
+                console.log(InputBox)
+                InputBox.parentElement.querySelector("#RateI").focus()
+            }else if (InputBox.id == "RateI" ) {
+                console.log(InputBox)
+                InputBox.parentElement.querySelector("#TotalMTRI").focus()
+            }else if (InputBox.id == "TotalMTRI" ) {
+                console.log(InputBox)
+                InputBox.parentElement.querySelector("#FabRateI").focus()
+            }else if (InputBox.id == "FabRateI" ) {
+                console.log(InputBox)
+                const container = InputBox.parentElement.parentElement;
+                const AddLineIteam = container.querySelector(".AddLine-Iteam");
+                
+                AddLine(container,AddLineIteam);
+            }
             
         }
     });
 
 }
 
-function addEventListenersToInputs(container) {
-    const inputs = container.querySelectorAll('.AddLine-Fabric input[type="number"]');
-    inputs.forEach((input, index) => {
-        input.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent the default form submission behavior
-                const nextIndex = index + 1;
-                if (nextIndex < inputs.length) {
-                    inputs[nextIndex].focus(); // Focus on the next input field
-                }
-            }
-        });
-    });
-}
+    
+   
