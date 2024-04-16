@@ -2,6 +2,8 @@
     margin: 0px;
     padding: 0px;
 }
+
+
 .Main-Container{
     box-sizing: border-box;
     margin: 20px;
@@ -183,3 +185,20 @@ input{
 
 
 
+  .DeleteBtn {
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgb(235, 78, 78);
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    transition-duration: 0.3s;
+  }
+
+ 
+  
+  .DeleteBtn:hover {
+    background-color: rgb(255, 0, 0);
+    transform: scale(0.9);
+  }
+ 
