@@ -88,7 +88,7 @@ function AddDCs (){
          </div>
      </div>
      </div>
-     <br>`);
+     `);
     
 
 
