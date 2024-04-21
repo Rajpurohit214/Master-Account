@@ -66,6 +66,28 @@ input{
     display: flex;
     justify-content: center ;
 }
+
+
+/* BTN ADD */
+.BtnM {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  width: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(48, 177, 31);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px rgb(35, 131, 23);
+  transition-duration: .3s;
+}
+
+
 .Btn {
     position: relative;
     display: flex;
@@ -83,9 +105,9 @@ input{
     box-shadow: 5px 5px 0px rgb(140, 32, 212);
     transition-duration: .3s;
   }
-  
-  .svg {
-    width: 14px;
+
+  .svg,.svgM {
+    width: 12px;
     position: absolute;
     right: -6px;
     margin-right: 20px;
@@ -94,11 +116,11 @@ input{
     
   }
   
-  .Btn:hover {
+  .Btn:hover,.BtnM:hover {
     color: transparent;
   }
   
-  .Btn:hover svg {
+  .Btn:hover svg  {
     right: 43%;
     margin: 0;
     padding: 0;
@@ -106,82 +128,19 @@ input{
     transition-duration: .3s;
   }
   
-  .Btn:active {
+  .Btn:active  {
     transform: translate(3px , 3px);
     transition-duration: .3s;
     box-shadow: 2px 2px 0px rgb(140, 32, 212);
   }
-
-
-
-
-
-
-
-
-
-/* Note that you only needs to edit the config to customize the button! */
-
-.plusButton {
-    /* Config start */
-    --plus_sideLength: 2.5rem;
-    --plus_topRightTriangleSideLength: 0.9rem;
-    /* Config end */
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid white;
-    width: var(--plus_sideLength);
-    height: var(--plus_sideLength);
-    background-color: #000000;
-    overflow: hidden;
+  .BtnM:active {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 2px 2px 0px rgb(35, 131, 23);
   }
-  
-  .plusButton::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
-    border-style: solid;
-    border-color: transparent white transparent transparent;
-    transition-timing-function: ease-in-out;
-    transition-duration: 0.2s;
-  }
-  
-  .plusButton:hover {
-    cursor: pointer;
-  }
-  
-  .plusButton:hover::before {
-    --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
-  }
-  
-  .plusButton:focus-visible::before {
-    --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
-  }
-  
-  .plusButton>.plusIcon {
-    fill: white;
-    width: calc(var(--plus_sideLength) * 0.7);
-    height: calc(var(--plus_sideLength) * 0.7);
-    z-index: 1;
-    transition-timing-function: ease-in-out;
-    transition-duration: 0.2s;
-  }
-  
-  .plusButton:hover>.plusIcon {
-    fill: black;
-    transform: rotate(180deg);
-  }
-  
-  .plusButton:focus-visible>.plusIcon {
-    fill: black;
-    transform: rotate(180deg);
-  }
+
+
+
 
 
 
@@ -202,3 +161,61 @@ input{
     transform: scale(0.9);
   }
  
+  .Material-Names{
+    display: flex;
+    flex-grow: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+   
+    
+  }
+  .Material-value{
+    display: flex;
+    max-width: 100%;
+    box-sizing: border-box;
+    
+  }
+  .Material-Names input{
+   min-width: 0;
+  }
+  
+  .Material-Container,.Payment-Container{
+      box-sizing: border-box;
+
+      box-shadow: 0 2 0;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 0px 10px 1px black;
+      background-color: aqua;
+      width: calc(50vw - 30px);
+  }
+  .Material-PaymentContainer{
+    display: flex;
+
+  }
+  .Material-Container{
+    margin: 20px 10px 20px 20px;
+
+}
+.Payment-Container{
+    margin: 20px 20px 20px 10px;
+
+}
+
+
+input::-webkit-inner-spin-button{
+    display: none;
+    -webkit-appearance: none;
+}
+
+.SubTotalM{
+  display: flex;
+  justify-content: center;
+}
+
+.Material-Container input {
+  margin: 1px;
+}
+#SubtotalMT,#SubtotalM{
+  height: 30px;
+}

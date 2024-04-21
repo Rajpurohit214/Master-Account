@@ -5,20 +5,173 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tailor Hisab</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     </head>
     <body>
-    <header><h1>Tailor Hisab</h1></header>
-    <div id="MainBox">
-    </div>
-    <div id="btndiv">
-        <button class="Btn" id="AddDcBtn">ADD DC
-            <svg class="svg" viewBox="0 0 24 24" width="50px" height="50px">
-        <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3" />
-      </svg>
-          </button>
-      </div>
-    <script src="script.js"></script>
+        <header>
+            <h1>Tailor Hisab</h1>
+        </header>
+        <section>
+            <div id="MainBox"></div>
+            <div id="btndiv">
+                <button class="Btn" id="AddDcBtn">ADD DC
+                    <svg class="svg" viewbox="0 0 24 24" width="50px" height="50px">
+                        <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+        <section class="Material-PaymentContainer">
+         <div class="Material-Container">
+            <div class="Material-Names">
+                <input type="text" name="Rate" id="Rate"  value="Rate" style="visibility: hidden; width: 90px; ">
+                <input type="text" name="Sign" id="sign" value="Rate's :-"  >
+                <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="1.5" >
+                <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="1.5" >
+                <input type="number" name="RollCoverRate" id="RollCoverRate" value="4.5" >
+                <input type="number" name="MetalIDRate" id="MetalIDRate" value="1.0" >
+                <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="20.0" >
+                <input type="number" name="ExtraRate" id="ExtraRate" value="0.0" >
+                <div id="btndivm" style="visibility: hidden;">
+                    <button class="BtnM" id="AddDcBtnM">
+                        <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                    </button>
+             </div>
+            </div>
+            <div class="Material-Names">
+                <input type="text" name="SlipNoName" id="SlipNoName" value="No" readonly style="width: 90px; ">
+                <input type="text" name="SlipDateName" id="SlipDateName" value="Slip Date" readonly>
+                <input type="text" name="FlatCoverName" id="FlatCoverName" value="Flat Cover" readonly>
+                <input type="text" name="PattiCoverName" id="PattiCoverName" value="Patti Cover" readonly>
+                <input type="text" name="RollCoverName" id="RollCoverName" value="Roll Cover" readonly>
+                <input type="text" name="MetalIDName" id="MetalIDName" value="Metal ID" readonly>
+                <input type="text" name="ButtonGrossName" id="ButtonGrossName" value="Button Gross" readonly>
+                <input type="text" name="ExtraName" id="ExtraName" value="Other" >
+                <div id="btndivm" style="visibility: hidden;">
+                    <button class="BtnM" id="AddDcBtnM">
+                        <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                    </button>
+             </div>
+            </div>
+            <div class="addlinematerial"></div>
+            <div class="Material-Names">
+                <input type="number" name="SlipNoValue" id="SlipNoValue" value="0"  style="width: 90px; ">
+                <input type="text" name="Date" id="Date" value="01/04/2024"  >
+                <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="FlatCover" >
+                <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="FlatCover" >
+                <input type="number" name="RollCoverRate" id="RollCoverRate" value="FlatCover" >
+                <input type="number" name="MetalIDRate" id="MetalIDRate" value="FlatCover" >
+                <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="FlatCover" >
+                <input type="number" name="ExtraRate" id="ExtraRate" value="FlatCover" >
+                <div id="btndivm">
+                    <button class="BtnM" id="AddDcBtnM">
+                        <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="Material-Names">
+                <input type="number" name="SlipNoValue" id="SlipNoValue" value="0"  style="visibility: hidden; width: 90px;">
+                <input type="text" name="SubTotal" id="SubTotal" value="SUB TOTAL    :-" >
+                <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="FlatCover" >
+                <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="FlatCover" >
+                <input type="number" name="RollCoverRate" id="RollCoverRate" value="FlatCover" >
+                <input type="number" name="MetalIDRate" id="MetalIDRate" value="FlatCover" >
+                <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="FlatCover" >
+                <input type="number" name="ExtraRate" id="ExtraRate" value="FlatCover" >
+                <div id="btndivm">
+                    <button class="BtnM" id="AddDcBtnM" style="visibility: hidden;">
+                        <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="SubTotalM">
+                 <input type="text" value="SUB TOTAL" id="SubtotalMT">
+                 <input type="number" name="SubtotalM" id="SubtotalM">
+            </div>
+         </div>
+         <div class="Payment-Container">
+            <div class="Material-Names">
+                <input type="text" name="SlipNoName" id="SlipNoName" value="Slip No" readonly >
+                <input type="text" name="SlipDateName" id="SlipDateName" value="Slip Date" readonly>
+                <input type="text" name="FlatCoverName" id="FlatCoverName" value="Flat Cover" readonly>
+                <input type="text" name="PattiCoverName" id="PattiCoverName" value="Patti Cover" readonly>
+                <input type="text" name="RollCoverName" id="RollCoverName" value="Roll Cover" readonly>
+                <input type="text" name="MetalIDName" id="MetalIDName" value="Metal ID" readonly>
+                <input type="text" name="ButtonGrossName" id="ButtonGrossName" value="Button Gross" readonly>
+                <input type="text" name="ExtraName" id="ExtraName" value="Other" >
+                <div id="btndivm" style="visibility: hidden;">
+                    <button class="BtnM" id="AddDcBtnM">
+                        <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                    </button>
+             </div>
+            </div>
+            <div class="Material-Names">
+                <input type="text" name="Rate" id="Rate"  value="Rate" style="visibility: hidden;">
+                <input type="text" name="Sign" id="sign" value="Rate's :-"  >
+                <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="1.5" >
+                <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="1.5" >
+                <input type="number" name="RollCoverRate" id="RollCoverRate" value="4.5" >
+                <input type="number" name="MetalIDRate" id="MetalIDRate" value="1.0" >
+                <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="20.0" >
+                <input type="number" name="ExtraRate" id="ExtraRate" value="0.0" >
+                <div id="btndivm" style="visibility: hidden;">
+                    <button class="BtnM" id="AddDcBtnM">
+                        <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                    </button>
+             </div>
+            </div>
+            <div class="addlinematerial"></div>
+            <div class="Material-Names">
+                <input type="number" name="SlipNoValue" id="SlipNoValue" value="0" >
+                <input type="date" name="Date" id="Date" value="2024-04-01" >
+                <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="FlatCover" >
+                <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="FlatCover" >
+                <input type="number" name="RollCoverRate" id="RollCoverRate" value="FlatCover" >
+                <input type="number" name="MetalIDRate" id="MetalIDRate" value="FlatCover" >
+                <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="FlatCover" >
+                <input type="number" name="ExtraRate" id="ExtraRate" value="FlatCover" >
+                <div id="btndivm">
+                    <button class="BtnM" id="AddDcBtnM">
+                        <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="Material-Names">
+                <input type="number" name="SlipNoValue" id="SlipNoValue" value="0"  style="visibility: hidden;">
+                <input type="text" name="SubTotal" id="SubTotal" value="SUB TOTAL    :-" >
+                <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="FlatCover" >
+                <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="FlatCover" >
+                <input type="number" name="RollCoverRate" id="RollCoverRate" value="FlatCover" >
+                <input type="number" name="MetalIDRate" id="MetalIDRate" value="FlatCover" >
+                <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="FlatCover" >
+                <input type="number" name="ExtraRate" id="ExtraRate" value="FlatCover" >
+                <div id="btndivm">
+                    <button class="BtnM" id="AddDcBtnM" style="visibility: hidden;">
+                        <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+         </div>
+        </section>
+        <script src="script.js"></script>
 
-</body>
+    </body>
 </html>

@@ -11,6 +11,9 @@ document.body.addEventListener("click", (click) => {
         target.closest(".Main-Container").remove();
         
     }
+    if (target.classList.contains("svg")) {
+        AddDCs();
+    }
     if(target.id === "AddDcBtn"){
         
         AddDCs();
