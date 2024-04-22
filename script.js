@@ -23,13 +23,39 @@ document.body.addEventListener("click", (click) => {
         const container = target.closest(".Main-Container");
         RemoveDc(Dcline , container);
     }
+    if(target.classList.contains("BtnM")){
+        AddMaterial();
+    }
+    if (target.classList.contains("svgM")) {
+        AddMaterial();
+    }
 });
 
 
 
 
 
-
+function AddMaterial(){
+    const MaterialBox = document.querySelector(".addlinematerial")
+    MaterialBox.insertAdjacentHTML("beforeend",`
+    <div class="Material-Names">
+    <input type="number" name="SlipNoValue" id="SlipNoValue" value="0"  style="width: 90px; ">
+    <input type="text" name="Date" id="Date" value="01/04/2024"  >
+    <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="0" >
+    <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="0" >
+    <input type="number" name="RollCoverRate" id="RollCoverRate" value="0" >
+    <input type="number" name="MetalIDRate" id="MetalIDRate" value="0" >
+    <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="0" >
+    <input type="number" name="ExtraRate" id="ExtraRate" value="0" >
+    <div id="btndivm">
+        <button class="BtnMX" id="AddDcBtnM" >
+            <svg class="svgMX" viewbox="0 0 24 24" width="50px" height="50px" >
+                <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+            </svg>
+        </button>
+    </div>
+</div>`)
+}
 
 
 function AddDCs (){

@@ -83,10 +83,31 @@ input{
   font-weight: 500;
   cursor: pointer;
   border-radius: 10px;
-  box-shadow: 5px 5px 0px rgb(35, 131, 23);
+  box-shadow: 3px 3px 0px  rgb(35, 131, 23);
   transition-duration: .3s;
+  margin: 5px;
 }
-
+.BtnMX {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  width: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(177, 31, 31);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px rgb(94, 16, 16);
+  transition-duration: .3s;
+  margin: 5px;
+}
+.svgMX{
+  transform: rotate(45deg);
+}
 
 .Btn {
     position: relative;
@@ -102,21 +123,21 @@ input{
     font-weight: 500;
     cursor: pointer;
     border-radius: 10px;
-    box-shadow: 5px 5px 0px rgb(140, 32, 212);
+    box-shadow: 5px 5px 0px  rgb(140, 32, 212);
     transition-duration: .3s;
   }
 
-  .svg,.svgM {
+  .svg,.svgM,.svgMX {
     width: 12px;
     position: absolute;
     right: -6px;
     margin-right: 20px;
     fill: white;
     transition-duration: .3s;
-    
+       
   }
   
-  .Btn:hover,.BtnM:hover {
+  .Btn:hover,.BtnM:hover,.BtnMX {
     color: transparent;
   }
   
@@ -136,7 +157,12 @@ input{
   .BtnM:active {
     transform: translate(3px , 3px);
     transition-duration: .3s;
-    box-shadow: 2px 2px 0px rgb(35, 131, 23);
+    box-shadow: 0px 0px 0px rgb(35, 131, 23);
+  }
+  .BtnMX:active {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 0px 0px 0px rgb(94, 16, 16);
   }
 
 
@@ -214,8 +240,10 @@ input::-webkit-inner-spin-button{
 }
 
 .Material-Container input {
-  margin: 1px;
+  margin: 2px;
+  gap: 2px;
 }
 #SubtotalMT,#SubtotalM{
   height: 30px;
 }
+
