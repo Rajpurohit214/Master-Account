@@ -29,6 +29,14 @@ document.body.addEventListener("click", (click) => {
     if (target.classList.contains("svgM")) {
         AddMaterial();
     }
+    if (target.classList.contains("svgMX")) {
+        MaterialLine = target.parentElement.parentElement.parentElement
+       RemoveMaterial(MaterialLine);
+    }
+    if (target.classList.contains("BtnMX")) {
+        MaterialLine = target.parentElement.parentElement.parentElement
+        RemoveMaterial(MaterialLine);
+    }
 });
 
 
@@ -36,17 +44,26 @@ document.body.addEventListener("click", (click) => {
 
 
 function AddMaterial(){
+    const SlipNoValue =document.getElementById("SlipNoValue");
+    const FlatCoverValue =document.getElementById("FlatCoverValue");
+    const PattiCoverValue =document.getElementById("PattiCoverValue");
+    const RollCoverValue=document.getElementById("RollCoverValue");
+    const MetalIDValue =document.getElementById("MetalIDValue");
+    const ButtonGrossValue=document.getElementById("ButtonGrossValue");
+    const ExtraValue=document.getElementById("ExtraValue");
+    const DateValue = document.getElementById("DateValue");
+    
     const MaterialBox = document.querySelector(".addlinematerial")
     MaterialBox.insertAdjacentHTML("beforeend",`
     <div class="Material-Names">
-    <input type="number" name="SlipNoValue" id="SlipNoValue" value="0"  style="width: 90px; ">
-    <input type="text" name="Date" id="Date" value="01/04/2024"  >
-    <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="0" >
-    <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="0" >
-    <input type="number" name="RollCoverRate" id="RollCoverRate" value="0" >
-    <input type="number" name="MetalIDRate" id="MetalIDRate" value="0" >
-    <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="0" >
-    <input type="number" name="ExtraRate" id="ExtraRate" value="0" >
+    <input type="number" name="SlipNoRate" id="SlipNoRate" value="${SlipNoValue.value}"  style="width: 90px; ">
+    <input type="text" name="DateRate" id="DateRate" value="${DateValue.value}"  >
+    <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="${FlatCoverValue.value}" >
+    <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="${PattiCoverValue.value}" >
+    <input type="number" name="RollCoverRate" id="RollCoverRate" value="${RollCoverValue.value}" >
+    <input type="number" name="MetalIDRate" id="MetalIDRate" value="${MetalIDValue.value}" >
+    <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="${ButtonGrossValue.value}" >
+    <input type="number" name="ExtraRate" id="ExtraRate" value="${ExtraValue.value}" >
     <div id="btndivm">
         <button class="BtnMX" id="AddDcBtnM" >
             <svg class="svgMX" viewbox="0 0 24 24" width="50px" height="50px" >
@@ -55,6 +72,7 @@ function AddMaterial(){
         </button>
     </div>
 </div>`)
+TotalMaterial ()
 }
 
 
@@ -225,7 +243,10 @@ function AddLine(container){
 
   
 }
-
+function RemoveMaterial (Line){
+    Line.remove()
+    TotalMaterial ()
+}
 function RemoveDc(Dc , container){
     Dc.remove();
     TotalCalculator (container);
@@ -238,6 +259,48 @@ function RemoveDc(Dc , container){
 //         SN[i].value= i + 1 ;
 //     }
 // }
+
+function TotalMaterial (){
+    const FlatCoverSubTotal  =document.getElementById("FlatCoverSubTotal");
+    const PattiCoverSubTotal  =document.getElementById("PattiCoverSubTotal");
+    const RollCoverSubTotal =document.getElementById("RollCoverSubTotal");
+    const MetalIDSubTotal  =document.getElementById("MetalIDSubTotal");
+    const ButtonGrossSubTotal =document.getElementById("ButtonGrossSubTotal");
+    const ExtraSubTotal =document.getElementById("ExtraSubTotal");
+    const SubTotal =document.getElementById("SubtotalM");
+
+    let FlatCount = 0;
+   document.querySelectorAll("#FlatCoverRate").forEach(Number =>{FlatCount += parseInt(Number.value)})
+    FlatCoverSubTotal.value = FlatCount;
+    
+
+    let PattiCount = 0;
+   document.querySelectorAll("#PattiCoverRate").forEach(Number =>{PattiCount += parseInt(Number.value)})
+   PattiCoverSubTotal.value = PattiCount;
+
+    let RollCount = 0;
+   document.querySelectorAll("#RollCoverRate").forEach(Number =>{RollCount += parseInt(Number.value)})
+   RollCoverSubTotal.value = RollCount;
+
+    let MetalIDCount = 0;
+   document.querySelectorAll("#MetalIDRate").forEach(Number =>{ MetalIDCount += parseInt(Number.value)})
+   MetalIDSubTotal.value = MetalIDCount;
+
+    let ButtonGrossCount = 0;
+   document.querySelectorAll("#ButtonGrossRate").forEach(Number =>{ ButtonGrossCount += parseInt(Number.value)})
+   ButtonGrossSubTotal.value = ButtonGrossCount;
+
+    let ExtraCount = 0;
+   document.querySelectorAll("#ExtraRate").forEach(Number =>{ExtraCount += parseInt(Number.value)})
+   ExtraSubTotal.value = ExtraCount;
+
+    let SubCount = 0;
+   document.querySelectorAll(".Stotal").forEach(Number =>{SubCount += parseInt(Number.value)})
+   SubTotal.value = SubCount;
+    
+    
+    
+}
 function TotalCalculator (container){
     // debit total
     let DebitNum = 0;
