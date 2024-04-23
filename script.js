@@ -31,11 +31,28 @@ document.body.addEventListener("click", (click) => {
     }
     if (target.classList.contains("svgMX")) {
         MaterialLine = target.parentElement.parentElement.parentElement
+
        RemoveMaterial(MaterialLine);
     }
     if (target.classList.contains("BtnMX")) {
-        MaterialLine = target.parentElement.parentElement.parentElement
+        MaterialLine = target.parentElement.parentElement
+
         RemoveMaterial(MaterialLine);
+    }
+    if(target.classList.contains("BtnP")){
+        AddPayment();
+    }
+    if (target.classList.contains("svgP")) {
+        AddPayment();
+    }
+    if (target.classList.contains("svgPX")) {
+        PaymentLine = target.parentElement.parentElement.parentElement
+    
+       RemovePayment(PaymentLine);
+    }
+    if (target.classList.contains("BtnPX")) {
+        MaterialLine = target.parentElement.parentElement
+        RemovePayment(PaymentLine);
     }
 });
 
@@ -43,6 +60,43 @@ document.body.addEventListener("click", (click) => {
 
 
 
+function AddPayment(){
+    const SlipNoValue =document.getElementById("SlipNoValue");
+    const FlatCoverValue =document.getElementById("FlatCoverValue");
+    const PattiCoverValue =document.getElementById("PattiCoverValue");
+    const RollCoverValue=document.getElementById("RollCoverValue");
+    const MetalIDValue =document.getElementById("MetalIDValue");
+    const ButtonGrossValue=document.getElementById("ButtonGrossValue");
+    const ExtraValue=document.getElementById("ExtraValue");
+    const DateValue = document.getElementById("DateValue");
+    
+    const PaymentBox = document.querySelector(".addlinepayment")
+    PaymentBox.insertAdjacentHTML("beforeend",`
+    <div class="Material-Names">
+                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0">
+                <input type="date" name="PaymentDateInput" id="PaymentDateInput"  value="2024-04-01">
+                <input type="number" name="AmountInput" id="AmountInput"  value="0">
+                <select name="TypeI" id="TypeInput">
+                    <option value="RTGS">RTGS</option>
+                    <option value="GPAY">G.Pay</option>
+                    <option value="CHEQUE">Cheque</option>
+                    <option value="CASHAC">Cash A/C</option>
+                    <option value="CASHWO">Cash W/O</option>
+                    <option value="BANK">Bank</option>
+                    <option value="NEFT">NEFT</option>
+                    <option value="IMPS">IMPS</option>
+                </select>
+                <input type="text" name="RemarksInput" id="RemarksInput"  placeholder="Remarks"                                             >
+                <div id="btndivp">
+                    <button class="BtnPX" id="AddDcBtnP" >
+                        <svg class="svgPX" viewbox="0 0 24 24" width="50px" height="50px" >
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                     </button>
+                </div>
+            </div>`)
+
+}
 function AddMaterial(){
     const SlipNoValue =document.getElementById("SlipNoValue");
     const FlatCoverValue =document.getElementById("FlatCoverValue");
@@ -243,8 +297,11 @@ function AddLine(container){
 
   
 }
-function RemoveMaterial (Line){
-    Line.remove()
+function RemovePayment (PaymentLine){
+    PaymentLine.remove()
+}
+function RemoveMaterial (MaterialLine){
+    MaterialLine.remove()
     TotalMaterial ()
 }
 function RemoveDc(Dc , container){

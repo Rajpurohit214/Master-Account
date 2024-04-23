@@ -2,6 +2,9 @@
     margin: 0px;
     padding: 0px;
 }
+body{
+  background-color: rgb(26, 22, 22);
+}
 
 
 .Main-Container{
@@ -11,7 +14,7 @@
     border-radius: 20px;
     padding: 10px;
     box-shadow: 0 0px 10px 1px black;
-    background-color: aqua;
+    background-color: rgb(18, 71, 71);
     width: calc(100vw - 40px);
 }
 .Container-Heading{
@@ -87,6 +90,24 @@ input{
   transition-duration: .3s;
   margin: 5px;
 }
+.BtnP {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  width: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(48, 177, 31);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px  rgb(35, 131, 23);
+  transition-duration: .3s;
+  margin: 5px;
+}
 .BtnMX {
   position: relative;
   display: flex;
@@ -105,7 +126,28 @@ input{
   transition-duration: .3s;
   margin: 5px;
 }
+.BtnPX {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  width: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(177, 31, 31);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px rgb(94, 16, 16);
+  transition-duration: .3s;
+  margin: 5px;
+}
 .svgMX{
+  transform: rotate(45deg);
+}
+.svgPX{
   transform: rotate(45deg);
 }
 
@@ -127,7 +169,7 @@ input{
     transition-duration: .3s;
   }
 
-  .svg,.svgM,.svgMX {
+  .svg,.svgM,.svgMX,.svgP,.svgPX {
     width: 12px;
     position: absolute;
     right: -6px;
@@ -159,7 +201,17 @@ input{
     transition-duration: .3s;
     box-shadow: 0px 0px 0px rgb(35, 131, 23);
   }
+  .BtnP:active {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 0px 0px 0px rgb(35, 131, 23);
+  }
   .BtnMX:active {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 0px 0px 0px rgb(94, 16, 16);
+  }
+  .BtnPX:active {
     transform: translate(3px , 3px);
     transition-duration: .3s;
     box-shadow: 0px 0px 0px rgb(94, 16, 16);
@@ -212,7 +264,7 @@ input{
       border-radius: 20px;
       padding: 10px;
       box-shadow: 0 0px 10px 1px black;
-      background-color: aqua;
+      background-color: rgb(27, 38, 73);
       width: calc(50vw - 30px);
   }
   .Material-PaymentContainer{
