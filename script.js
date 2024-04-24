@@ -64,16 +64,117 @@ function AddPayment(){
     const DateInput =document.getElementById("PaymentDateInput");
     const TypeInput =document.getElementById("TypeInput");
     const AmountInput =document.getElementById("AmountInput");
-    const RemarksImput =document.getElementById("RemarksInput");
+    const RemarksInput =document.getElementById("RemarksInput");
+
+    let innerhtml="" ;
+
+
+    if (TypeInput.value === "0") {
+        innerhtml  = `
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "1") {
+    
+        innerhtml  = `
+        <option value="1">G.Pay</option>
+        <option value="0">RTGS</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "2") {
+    
+        innerhtml  = `
+        <option value="2">Cheque</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "3") {
+    
+        innerhtml  = `
+        <option value="3">Cash A/C</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "4") {
+    
+        innerhtml  = `
+        <option value="4">Cash W/O</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="5">Bank</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "5") {
+    
+        innerhtml  = `
+        <option value="5">Bank</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "6") {
+    
+        innerhtml  = `
+        <option value="6">NEFT</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "7") {
+    
+        innerhtml  = `
+        <option value="7">IMPS</option> 
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank</option>
+        <option value="6">NEFT</option>
+        `;
+    };
+
 
     const PaymentBox = document.querySelector(".addlinepayment")
     PaymentBox.insertAdjacentHTML("beforeend",`
     <div class="Material-Names">
                 <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0">
-                <input type="date" name="PaymentDateInput" id="PaymentDateInput"  value="2024-04-01">
-                <input type="number" name="AmountInput" id="AmountInput"  value="0">
-                <select name="TypeI" id="TypeValue">${Selectionn()}</select >
-                <input type="text" name="RemarksInput" id="RemarksInput"  placeholder="Remarks"                                             >
+                <input type="date" name="PaymentDateInput" id="PaymentDateValue"  value="${DateInput.value}">
+                <input type="number" name="AmountInput" id="AmountValue"  value="${AmountInput.value}">
+                <select name="TypeI" id="TypeValue">${innerhtml}</select >
+                <input type="text" name="RemarksInput" id="RemarksValue"  placeholder="Remarks"  value="${RemarksInput.value}" >
                 <div id="btndivp">
                     <button class="BtnPX" id="AddDcBtnP" >
                         <svg class="svgPX" viewbox="0 0 24 24" width="50px" height="50px" >
@@ -82,6 +183,10 @@ function AddPayment(){
                      </button>
                 </div>
             </div>`)
+
+
+ 
+
 
            
 }
@@ -306,7 +411,7 @@ function RemoveDc(Dc , container){
 //     for (let i = 0; i < SN.length; i++) {
 //         SN[i].value= i + 1 ;
 //     }
-// }
+// 
 
 function TotalMaterial (){
     const FlatCoverSubTotal  =document.getElementById("FlatCoverSubTotal");
@@ -436,85 +541,3 @@ document.body.addEventListener("keydown", (event) => {
 
 
 
-// <!DOCTYPE html>
-// <html lang="en">
-// <head>
-//     <meta charset="UTF-8">
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     <title>Dynamic Select Options</title>
-// </head>
-// <body>
-//     <h1>Dynamic Select Options</h1>
-//     <select id="TypeInput" onchange="createNewSelect()">
-//         <option value="0">Select Payment Type</option>
-//         <option value="1">RTGS</option>
-//         <option value="2">G.Pay</option>
-//         <!-- Add more options as needed -->
-//     </select>
-
-//     <script>
-//         function createNewSelect() {
-//             const selectedValue = document.getElementById("TypeInput").value;
-
-//             // Create a new select element
-//             const newSelect = document.createElement("select");
-//             newSelect.id = "NewSelect"; // Set a unique ID for the new select
-
-//             // Add options based on the selected value
-//             if (selectedValue === "1") {
-//                 // Add RTGS options
-//                 newSelect.innerHTML = `
-//                     <option value="1">RTGS</option>
-//                     <option value="2">G.Pay</option>
-//                     <!-- Add more RTGS options -->
-//                 `;
-//             } else if (selectedValue === "2") {
-//                 // Add G.Pay options
-//                 newSelect.innerHTML = `
-//                     <option value="2">G.Pay</option>
-//                     <option value="1">RTGS</option>
-//                     <!-- Add more G.Pay options -->
-//                 `;
-//             }
-
-//             // Set the selected option based on the user's choice
-//             newSelect.value = selectedValue;
-
-//             // Add the new select to the document
-//             document.body.appendChild(newSelect);
-//         }
-//     </script>
-// </body>
-// </html>
-
-
-
-
-
-
-
-// {/* console.log(TypeInput.value) 
-// if (selectedValue === "1") {
-//     // Add RTGS options
-//     newSelect.innerHTML = `
-//         <option value="1">RTGS</option>
-//         <option value="2">G.Pay</option>
-//         <!-- Add more RTGS options -->
-//     `;
-// } else if (selectedValue === "2") {
-//     // Add G.Pay options
-//     newSelect.innerHTML = `
-//         <option value="2">G.Pay</option>
-//         <option value="1">RTGS</option>
-//         <!-- Add more G.Pay options -->
-//     `;
-// }
-
-// <option value="0">RTGS</option>
-// <option value="1">G.Pay</option>
-// <option value="2">Cheque</option>
-// <option value="3">Cash A/C</option>
-// <option value="4">Cash W/O</option>
-// <option value="5">Bank</option>
-// <option value="6">NEFT</option>
-// <option value="7">IMPS</option>  */}

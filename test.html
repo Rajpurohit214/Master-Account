@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Dynamic Select Options</title>
+ </head>
+ <body>
+       <input type="date" name="date" id="date">
+       <button onclick="myfunction()">me</button >
+        <input type="date" name="newdate" id="newdate">
+    
+    
+
+     <script>
+
+        function myfunction(){
+            const dates = document.getElementById("date");
+            const  newdate = document.getElementById("newdate")
+            newdate.value = dates.value;
+        }
+        
+     </script>
+ </body>
+ </html>
+
+
+
+
+
+
+
+
