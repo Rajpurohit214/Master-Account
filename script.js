@@ -51,7 +51,7 @@ document.body.addEventListener("click", (click) => {
        RemovePayment(PaymentLine);
     }
     if (target.classList.contains("BtnPX")) {
-        MaterialLine = target.parentElement.parentElement
+        PaymentLine = target.parentElement.parentElement
         RemovePayment(PaymentLine);
     }
 });
@@ -76,7 +76,7 @@ function AddPayment(){
         <option value="2">Cheque</option>
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
-        <option value="5">Bank</option>
+        <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
         <option value="7">IMPS</option> 
         `;
@@ -88,7 +88,7 @@ function AddPayment(){
         <option value="2">Cheque</option>
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
-        <option value="5">Bank</option>
+        <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
         <option value="7">IMPS</option> 
         `;
@@ -100,7 +100,7 @@ function AddPayment(){
         <option value="1">G.Pay</option>
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
-        <option value="5">Bank</option>
+        <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
         <option value="7">IMPS</option> 
         `;
@@ -112,7 +112,7 @@ function AddPayment(){
         <option value="1">G.Pay</option>
         <option value="2">Cheque</option>
         <option value="4">Cash W/O</option>
-        <option value="5">Bank</option>
+        <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
         <option value="7">IMPS</option> 
         `;
@@ -124,14 +124,14 @@ function AddPayment(){
         <option value="1">G.Pay</option>
         <option value="2">Cheque</option>
         <option value="3">Cash A/C</option>
-        <option value="5">Bank</option>
+        <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "5") {
     
         innerhtml  = `
-        <option value="5">Bank</option>
+        <option value="5">Bank W/O</option>
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
         <option value="2">Cheque</option>
@@ -149,7 +149,7 @@ function AddPayment(){
         <option value="2">Cheque</option>
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
-        <option value="5">Bank</option>
+        <option value="5">Bank W/O</option>
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "7") {
@@ -161,7 +161,7 @@ function AddPayment(){
         <option value="2">Cheque</option>
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
-        <option value="5">Bank</option>
+        <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
         `;
     };
@@ -183,16 +183,14 @@ function AddPayment(){
                      </button>
                 </div>
             </div>`)
-
+TotalPayment();
 
  
 
 
            
 }
-function Selectionn(inp){
-    console.log("inp");
-}
+
 function AddMaterial(){
     const SlipNoValue =document.getElementById("SlipNoValue");
     const FlatCoverValue =document.getElementById("FlatCoverValue");
@@ -394,7 +392,8 @@ function AddLine(container){
   
 }
 function RemovePayment (PaymentLine){
-    PaymentLine.remove()
+    PaymentLine.remove();
+    TotalPayment ();
 }
 function RemoveMaterial (MaterialLine){
     MaterialLine.remove()
@@ -406,13 +405,60 @@ function RemoveDc(Dc , container){
 
  
 }
-// You can keep the existing UpdateSN function if needed
-// function UpdateSN (){
-//     for (let i = 0; i < SN.length; i++) {
-//         SN[i].value= i + 1 ;
-//     }
-// 
 
+function TotalPayment (){
+    const TaxAmt = document.getElementById("RtgsTotalPayment");
+    const CashAmt = document.getElementById("CashTotalPayment");
+
+    let CashCount = 0;
+    let TaxCount = 0;
+
+
+    document.querySelectorAll("#TypeValue").forEach(TypeInput =>{ 
+
+    if (TypeInput.value === "0") {
+        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        TaxAmt.value = TaxCount;
+      
+
+    } else if (TypeInput.value === "1") {
+        CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        CashAmt.value = CashCount;
+
+    } else if (TypeInput.value === "2") {
+        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        TaxAmt.value = TaxCount;
+
+    } else if (TypeInput.value === "3") {
+        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        TaxAmt.value = TaxCount;
+
+    } else if (TypeInput.value === "4") {
+        CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        CashAmt.value = CashCount;
+
+
+    } else if (TypeInput.value === "5") {
+        CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        CashAmt.value = CashCount;
+  
+
+    } else if (TypeInput.value === "6") {
+        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        TaxAmt.value = TaxCount;
+
+    } else if (TypeInput.value === "7") {
+        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        TaxAmt.value = TaxCount;
+
+    }else {
+        CashAmt.value = CashCount;
+        TaxAmt.value = TaxCount;
+    }
+    
+    document.getElementById("FinalTotalPayment").value = parseInt(TaxAmt.value) + parseInt(CashAmt.value)
+});
+}
 function TotalMaterial (){
     const FlatCoverSubTotal  =document.getElementById("FlatCoverSubTotal");
     const PattiCoverSubTotal  =document.getElementById("PattiCoverSubTotal");

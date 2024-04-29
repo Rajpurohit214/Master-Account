@@ -4,22 +4,112 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Dynamic Select Options</title>
+     <style>
+          .Payment-Container{
+      box-sizing: border-box;
+
+      box-shadow: 0 2 0;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 0px 10px 1px black;
+      background-color: rgb(27, 38, 73);
+      width: calc(50vw - 30px);
+  }
+  .Payment-Container{
+    display: flex;
+
+  }
+  .BtnPX {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  width: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(177, 31, 31);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px rgb(94, 16, 16);
+  transition-duration: .3s;
+  margin: 5px;
+}
+.svgPX{
+  transform: rotate(45deg);
+}
+
+.svgP,.svgPX {
+    width: 12px;
+    position: absolute;
+    right: -6px;
+    margin-right: 20px;
+    fill: white;
+    transition-duration: .3s;
+       
+  }
+
+     </style>
  </head>
  <body>
-       <input type="date" name="date" id="date">
-       <button onclick="myfunction()">me</button >
-        <input type="date" name="newdate" id="newdate">
+    <div class="Payment-Container" >
+        <div class="Material-Names">
+            <input type="text" name="SN" id="SNp" value="SN" readonly style="width: 40px;">
+            <input type="text" name="PaymentDateName" id="PaymentDateName" value="Date" readonly>
+            <input type="text" name="AmountName" id="AmountName" value="Amount" readonly>
+            <input type="text" name="TypeName" id="TypeName" value="Transaction Type" readonly>
+            <input type="text" name="RemarksName" id="RemarksName" value="Remarks" readonly>
+            <div id="btndivp" style="visibility: hidden;">
+                <button class="BtnP" id="AddDcBtnP">
+                    <svg class="svgP" viewbox="0 0 24 24" width="50px" height="50px">
+                        <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                    </svg>
+                </button>
+         </div>
+        </div>
+        <div class="addlinepayment"></div>
+        <div class="Material-Names">
+            <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0">
+            <input type="date" name="PaymentDateInput" id="PaymentDateInput" >
+            <input type="number" name="AmountInput" id="AmountInput"  value="0">
+            <select name="TypeI" id="TypeInput">
+                <option value="0">RTGS</option>
+                <option value="1">G.Pay</option >
+                <option value="2">Cheque</option>
+                <option value="3">Cash A/C</option>
+                <option value="4">Cash W/O</option>
+                <option value="5">Bank W/O</option>
+                <option value="6">NEFT</option>
+                <option value="7">IMPS</option>
+            </select>
+            <input type="text" name="RemarksInput" id="RemarksInput"  placeholder="Remarks"                                             >
+            <div id="btndivp">
+                <button class="BtnP" id="AddDcBtnP">
+                    <svg class="svgP" viewbox="0 0 24 24" width="50px" height="50px">
+                        <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="Material-Names">
+            <input type="text" name="CashTotalP" id="CashTotalP" value="W/O Tax Amount" >
+            <input type="number" name="CashTotalPayment" id="CashTotalPayment" value="0"  >
+
+            <input type="text" name="RtgsTotalP" id="RtgsTotalP" value="Tax Amount" >
+            <input type="number" name="RtgsTotalPayment" id="RtgsTotalPayment" value="0" >
+
+            <input type="text" name="FinalTotalP" id="FinalTotalP" value="Total Amount" >
+            <input type="number" name="FinalTotalPayment" id="FinalTotalPayment" value="0" >
+        </div>
+     </div>
     
-    
+
 
      <script>
 
-        function myfunction(){
-            const dates = document.getElementById("date");
-            const  newdate = document.getElementById("newdate")
-            newdate.value = dates.value;
-        }
-        
+
      </script>
  </body>
  </html>
