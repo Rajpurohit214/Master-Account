@@ -5,7 +5,9 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Dynamic Select Options</title>
      <style>
-          .Payment-Container{
+
+
+ .Payment-Container{
       box-sizing: border-box;
 
       box-shadow: 0 2 0;
@@ -15,10 +17,7 @@
       background-color: rgb(27, 38, 73);
       width: calc(50vw - 30px);
   }
-  .Payment-Container{
-    display: flex;
 
-  }
   .BtnPX {
   position: relative;
   display: flex;
@@ -50,7 +49,35 @@
     transition-duration: .3s;
        
   }
-
+  .BtnP {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  width: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(48, 177, 31);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px  rgb(35, 131, 23);
+  transition-duration: .3s;
+  margin: 5px;
+}
+.Material-Names{
+    display: flex;
+    flex-grow: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+   
+    
+  }
+  .Material-Names input{
+   min-width: 0;
+  }
      </style>
  </head>
  <body>
@@ -109,7 +136,190 @@
 
      <script>
 
+function TotalPayment (){
+    const TaxAmt = document.getElementById("RtgsTotalPayment");
+    const CashAmt = document.getElementById("CashTotalPayment");
 
+    let CashCount = 0;
+    let TaxCount = 0;
+
+    const TypesInput = document.querySelectorAll("#TypeValue");
+
+    TypesInput.forEach(TypeInput =>{ 
+
+    if (TypeInput.value === "0" || TypeInput.value === "2" ||TypeInput.value === "3" ||TypeInput.value === "6" ||TypeInput.value === "7") {
+        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        
+    } else if (TypeInput.value === "1" || TypeInput.value === "4" || TypeInput.value === "5") {
+        CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        
+    }});
+
+    TaxAmt.value = TaxCount;
+    CashAmt.value = CashCount;
+    document.getElementById("FinalTotalPayment").value = parseInt(TaxAmt.value) + parseInt(CashAmt.value);
+    
+    
+};
+
+
+document.body.addEventListener("click", (click) => {
+    const target = click.target;
+if(target.classList.contains("BtnP")){
+        AddPayment();
+    }
+    if (target.classList.contains("svgP")) {
+        AddPayment();
+    }
+    if (target.classList.contains("svgPX")) {
+        PaymentLine = target.parentElement.parentElement.parentElement
+    
+       RemovePayment(PaymentLine);
+    }
+    if (target.classList.contains("BtnPX")) {
+        PaymentLine = target.parentElement.parentElement
+        RemovePayment(PaymentLine);
+    }
+});
+
+
+
+
+
+function AddPayment(){
+    const DateInput =document.getElementById("PaymentDateInput");
+    const TypeInput =document.getElementById("TypeInput");
+    const AmountInput =document.getElementById("AmountInput");
+    const RemarksInput =document.getElementById("RemarksInput");
+
+    let innerhtml="" ;
+
+
+    if (TypeInput.value === "0") {
+        innerhtml  = `
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "1") {
+    
+        innerhtml  = `
+        <option value="1">G.Pay</option>
+        <option value="0">RTGS</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "2") {
+    
+        innerhtml  = `
+        <option value="2">Cheque</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "3") {
+    
+        innerhtml  = `
+        <option value="3">Cash A/C</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "4") {
+    
+        innerhtml  = `
+        <option value="4">Cash W/O</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "5") {
+    
+        innerhtml  = `
+        <option value="5">Bank W/O</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "6") {
+    
+        innerhtml  = `
+        <option value="6">NEFT</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (TypeInput.value === "7") {
+    
+        innerhtml  = `
+        <option value="7">IMPS</option> 
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        `;
+    };
+
+
+    const PaymentBox = document.querySelector(".addlinepayment")
+    PaymentBox.insertAdjacentHTML("beforeend",`
+    <div class="Material-Names">
+                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0">
+                <input type="date" name="PaymentDateInput" id="PaymentDateValue"  value="${DateInput.value}">
+                <input type="number" name="AmountInput" id="AmountValue"  value="${AmountInput.value}">
+                <select name="TypeI" id="TypeValue">${innerhtml}</select >
+                <input type="text" name="RemarksInput" id="RemarksValue"  placeholder="Remarks"  value="${RemarksInput.value}" >
+                <div id="btndivp">
+                    <button class="BtnPX" id="AddDcBtnP" >
+                        <svg class="svgPX" viewbox="0 0 24 24" width="50px" height="50px" >
+                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                        </svg>
+                     </button>
+                </div>
+            </div>`)
+TotalPayment();
+
+ 
+
+
+           
+}
+function RemovePayment (PaymentLine){
+    PaymentLine.remove();
+    TotalPayment ();
+}
      </script>
  </body>
  </html>

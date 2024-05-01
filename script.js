@@ -172,8 +172,8 @@ function AddPayment(){
     <div class="Material-Names">
                 <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0">
                 <input type="date" name="PaymentDateInput" id="PaymentDateValue"  value="${DateInput.value}">
-                <input type="number" name="AmountInput" id="AmountValue"  value="${AmountInput.value}">
-                <select name="TypeI" id="TypeValue">${innerhtml}</select >
+                <input type="number" name="AmountInput" class="AmountValue" id="AmountValue"  value="${AmountInput.value}">
+                <select name="TypeI" class="TypeValue" id="TypeValue">${innerhtml}</select >
                 <input type="text" name="RemarksInput" id="RemarksValue"  placeholder="Remarks"  value="${RemarksInput.value}" >
                 <div id="btndivp">
                     <button class="BtnPX" id="AddDcBtnP" >
@@ -184,12 +184,18 @@ function AddPayment(){
                 </div>
             </div>`)
 TotalPayment();
+const amountInputFields = PaymentBox.querySelectorAll(".AmountValue");
+amountInputFields.forEach(inputField => {
+    inputField.addEventListener("input",()=>{ 
+        if (inputField.value == "") {
+            inputField.value = 0;
+        };
+        TotalPayment();
+    });
+});
 
- 
 
-
-           
-}
+};
 
 function AddMaterial(){
     const SlipNoValue =document.getElementById("SlipNoValue");
@@ -203,15 +209,15 @@ function AddMaterial(){
     
     const MaterialBox = document.querySelector(".addlinematerial")
     MaterialBox.insertAdjacentHTML("beforeend",`
-    <div class="Material-Names">
+    <div class="Material-Names" id="Material" >
     <input type="number" name="SlipNoRate" id="SlipNoRate" value="${SlipNoValue.value}"  style="width: 90px; ">
     <input type="text" name="DateRate" id="DateRate" value="${DateValue.value}"  >
-    <input type="number" name="FlatCoverRate" id="FlatCoverRate" value="${FlatCoverValue.value}" >
-    <input type="number" name="PattiCoverRate" id="PattiCoverRate" value="${PattiCoverValue.value}" >
-    <input type="number" name="RollCoverRate" id="RollCoverRate" value="${RollCoverValue.value}" >
-    <input type="number" name="MetalIDRate" id="MetalIDRate" value="${MetalIDValue.value}" >
-    <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" value="${ButtonGrossValue.value}" >
-    <input type="number" name="ExtraRate" id="ExtraRate" value="${ExtraValue.value}" >
+    <input type="number" name="FlatCoverRate" id="FlatCoverRate" class="FlatCoverRate" value="${FlatCoverValue.value}" >
+    <input type="number" name="PattiCoverRate" id="PattiCoverRate" class="PattiCoverRate" value="${PattiCoverValue.value}" >
+    <input type="number" name="RollCoverRate" id="RollCoverRate"  class="RollCoverRate" value="${RollCoverValue.value}" >
+    <input type="number" name="MetalIDRate" id="MetalIDRate"  class="MetalIDRate" value="${MetalIDValue.value}" >
+    <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" class="ButtonGrossRate"value="${ButtonGrossValue.value}" >
+    <input type="number" name="ExtraRate" id="ExtraRate" class ="ExtraRate"value="${ExtraValue.value}" >
     <div id="btndivm">
         <button class="BtnMX" id="AddDcBtnM" >
             <svg class="svgMX" viewbox="0 0 24 24" width="50px" height="50px" >
@@ -413,52 +419,25 @@ function TotalPayment (){
     let CashCount = 0;
     let TaxCount = 0;
 
+    const TypesInput = document.querySelectorAll("#TypeValue");
 
-    document.querySelectorAll("#TypeValue").forEach(TypeInput =>{ 
+    TypesInput.forEach(TypeInput =>{ 
 
-    if (TypeInput.value === "0") {
+    if (TypeInput.value === "0" || TypeInput.value === "2" ||TypeInput.value === "3" ||TypeInput.value === "6" ||TypeInput.value === "7") {
         TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        TaxAmt.value = TaxCount;
-      
-
-    } else if (TypeInput.value === "1") {
+        
+    } else if (TypeInput.value === "1" || TypeInput.value === "4" || TypeInput.value === "5") {
         CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        CashAmt.value = CashCount;
+        
+    }});
 
-    } else if (TypeInput.value === "2") {
-        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        TaxAmt.value = TaxCount;
-
-    } else if (TypeInput.value === "3") {
-        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        TaxAmt.value = TaxCount;
-
-    } else if (TypeInput.value === "4") {
-        CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        CashAmt.value = CashCount;
-
-
-    } else if (TypeInput.value === "5") {
-        CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        CashAmt.value = CashCount;
-  
-
-    } else if (TypeInput.value === "6") {
-        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        TaxAmt.value = TaxCount;
-
-    } else if (TypeInput.value === "7") {
-        TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        TaxAmt.value = TaxCount;
-
-    }else {
-        CashAmt.value = CashCount;
-        TaxAmt.value = TaxCount;
-    }
+    TaxAmt.value = TaxCount;
+    CashAmt.value = CashCount;
+    document.getElementById("FinalTotalPayment").value = parseInt(TaxAmt.value) + parseInt(CashAmt.value);
     
-    document.getElementById("FinalTotalPayment").value = parseInt(TaxAmt.value) + parseInt(CashAmt.value)
-});
-}
+    
+};
+
 function TotalMaterial (){
     const FlatCoverSubTotal  =document.getElementById("FlatCoverSubTotal");
     const PattiCoverSubTotal  =document.getElementById("PattiCoverSubTotal");
@@ -493,9 +472,15 @@ function TotalMaterial (){
    document.querySelectorAll("#ExtraRate").forEach(Number =>{ExtraCount += parseInt(Number.value)})
    ExtraSubTotal.value = ExtraCount;
 
-    let SubCount = 0;
-   document.querySelectorAll(".Stotal").forEach(Number =>{SubCount += parseInt(Number.value)})
-   SubTotal.value = SubCount;
+
+  // document.querySelectorAll(".Stotal").forEach(Number =>{SubCount += parseInt(Number.value)})
+   let Flat = (parseFloat(document.getElementById("FlatCoverRs").value) *  parseInt(FlatCoverSubTotal.value));
+   let patti = (parseFloat(document.getElementById("PattiCoverRs").value) *  parseInt(PattiCoverSubTotal.value));
+   let roll = (parseFloat(document.getElementById("RollCoverRs").value) *  parseInt(RollCoverSubTotal.value));
+   let btn = (parseFloat(document.getElementById("ButtonGrossRs").value) *  parseInt(ButtonGrossSubTotal.value));
+   let id = (parseFloat(document.getElementById("MetalIDRs").value) *  parseInt(MetalIDSubTotal.value));
+   let other = (parseFloat(document.getElementById("ExtraRs").value) *  parseInt(ExtraSubTotal.value));
+   SubTotal.value = Flat + patti + roll + btn + id + other;
     
     
     
@@ -553,7 +538,7 @@ function SumTotal (container){
 
 }
 
-
+// value changes  
 document.body.addEventListener("keydown", (event) => {
     if (event.code === "Enter" || event.code === "NumpadEnter") {
         const target = event.target;
@@ -578,12 +563,140 @@ document.body.addEventListener("keydown", (event) => {
                 const AddLineIteam = container.querySelector(".AddLine-Iteam");
                 AddLine(container,AddLineIteam);
                 target.parentElement.querySelector("#DcNoI").focus()
+                // yaha se material ka shuru
+            }else if (target.id == "SlipNoValue" ) {
+                target.parentElement.querySelector("#DateValue").focus();
+            }else if (target.id == "DateValue" ) {
+                target.parentElement.querySelector("#FlatCoverValue").focus();
+            }else if (target.id == "FlatCoverValue" ) {
+                target.parentElement.querySelector("#PattiCoverValue").focus();
+            }else if (target.id == "PattiCoverValue" ) {
+                target.parentElement.querySelector("#RollCoverValue").focus();
+            }else if (target.id == "RollCoverValue" ) {
+                target.parentElement.querySelector("#MetalIDValue").focus();
+            }else if (target.id == "MetalIDValue" ) {
+                target.parentElement.querySelector("#ButtonGrossValue").focus();
+            }else if (target.id == "ButtonGrossValue" ) {
+                target.parentElement.querySelector("#ExtraValue").focus();
+            }else if (target.id == "ExtraValue" ) {
+              AddMaterial();
             }
     }
 });
+document.body.addEventListener("change", (event) => {
+    
+        let innerhtml="" ;
 
+    if (event.target.value === "0") {
+        innerhtml  = `
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (event.target.value === "1") {
+    
+        innerhtml  = `
+        <option value="1">G.Pay</option>
+        <option value="0">RTGS</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (event.target.value === "2") {
+    
+        innerhtml  = `
+        <option value="2">Cheque</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (event.target.value === "3") {
+    
+        innerhtml  = `
+        <option value="3">Cash A/C</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (event.target.value === "4") {
+    
+        innerhtml  = `
+        <option value="4">Cash W/O</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (event.target.value === "5") {
+    
+        innerhtml  = `
+        <option value="5">Bank W/O</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (event.target.value === "6") {
+    
+        innerhtml  = `
+        <option value="6">NEFT</option>
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="7">IMPS</option> 
+        `;
+    } else if (event.target.value === "7") {
+    
+        innerhtml  = `
+        <option value="7">IMPS</option> 
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option>
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        `;
+    };
+    // For example, you can check the selected value and update the total accordingly
+    event.target.innerHTML = innerhtml;
 
-
-
+   TotalPayment();
+});
+document.body.addEventListener("input",(event)=>{
+    const I = event.target;
+    if (I.classList.contains("FlatCoverRate") ||I.classList.contains("PattiCoverRate") ||I.classList.contains("RollCoverRate") ||I.classList.contains("MetalIDRate") ||I.classList.contains("ButtonGrossRate") ||I.classList.contains("FlatCoverRs") ||I.classList.contains("PattiCoverRs") ||I.classList.contains("RollCoverRs") ||I.classList.contains("MetalIDRs") ||I.classList.contains("ButtonGrossRs")||I.classList.contains("ExtraRs")) {
+        if (I.value == "") {
+            I.value = 0;
+        };
+        TotalMaterial();
+    }
+    
+ });
 
 
