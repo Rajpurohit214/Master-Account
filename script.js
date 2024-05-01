@@ -56,6 +56,7 @@ document.body.addEventListener("click", (click) => {
     }
 });
 
+const date =document.getElementById("DateValue");
 
 
 
@@ -65,8 +66,9 @@ function AddPayment(){
     const TypeInput =document.getElementById("TypeInput");
     const AmountInput =document.getElementById("AmountInput");
     const RemarksInput =document.getElementById("RemarksInput");
-
-    let innerhtml="" ;
+if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
+        
+       let innerhtml="" ;
 
 
     if (TypeInput.value === "0") {
@@ -170,9 +172,9 @@ function AddPayment(){
     const PaymentBox = document.querySelector(".addlinepayment")
     PaymentBox.insertAdjacentHTML("beforeend",`
     <div class="Material-Names">
-                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0">
+                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0" readonly disabled>
                 <input type="date" name="PaymentDateInput" id="PaymentDateValue"  value="${DateInput.value}">
-                <input type="number" name="AmountInput" class="AmountValue" id="AmountValue"  value="${AmountInput.value}">
+                <input type="number" name="AmountInput" class="AmountValue" id="AmountValue"  value="${AmountInput.value}" placeholder="Enter Amount">
                 <select name="TypeI" class="TypeValue" id="TypeValue">${innerhtml}</select >
                 <input type="text" name="RemarksInput" id="RemarksValue"  placeholder="Remarks"  value="${RemarksInput.value}" >
                 <div id="btndivp">
@@ -193,11 +195,15 @@ amountInputFields.forEach(inputField => {
         TotalPayment();
     });
 });
-
+} else {
+    alert("Please Enter Amount");
+    AmountInput.focus();
+}
 
 };
 
 function AddMaterial(){
+    
     const SlipNoValue =document.getElementById("SlipNoValue");
     const FlatCoverValue =document.getElementById("FlatCoverValue");
     const PattiCoverValue =document.getElementById("PattiCoverValue");
@@ -206,27 +212,60 @@ function AddMaterial(){
     const ButtonGrossValue=document.getElementById("ButtonGrossValue");
     const ExtraValue=document.getElementById("ExtraValue");
     const DateValue = document.getElementById("DateValue");
+
+    if (
+        SlipNoValue.value !== "" ||
+        FlatCoverValue.value != "" ||
+        PattiCoverValue.value !== "" ||
+        RollCoverValue.value !== "" ||
+        MetalIDValue.value !== "" ||
+        ButtonGrossValue.value !== "" ||
+        ExtraValue.value !== ""
+    ) {
+        // At least one input value is empty
+        if (SlipNoValue.value == "") SlipNoValue.value = 0;
+        if (FlatCoverValue.value == "") FlatCoverValue.value = 0;
+        if (PattiCoverValue.value == "") PattiCoverValue.value = 0;
+        if (RollCoverValue.value == "") RollCoverValue.value = 0;
+        if (MetalIDValue.value == "") MetalIDValue.value = 0;
+        if (ButtonGrossValue.value == "") ButtonGrossValue.value = 0;
+        if (ExtraValue.value == "") ExtraValue.value = 0;
+        
+        
+  
     
-    const MaterialBox = document.querySelector(".addlinematerial")
+    
+    
+    
+    
+        const MaterialBox = document.querySelector(".addlinematerial")
     MaterialBox.insertAdjacentHTML("beforeend",`
-    <div class="Material-Names" id="Material" >
-    <input type="number" name="SlipNoRate" id="SlipNoRate" value="${SlipNoValue.value}"  style="width: 90px; ">
-    <input type="text" name="DateRate" id="DateRate" value="${DateValue.value}"  >
-    <input type="number" name="FlatCoverRate" id="FlatCoverRate" class="FlatCoverRate" value="${FlatCoverValue.value}" >
-    <input type="number" name="PattiCoverRate" id="PattiCoverRate" class="PattiCoverRate" value="${PattiCoverValue.value}" >
-    <input type="number" name="RollCoverRate" id="RollCoverRate"  class="RollCoverRate" value="${RollCoverValue.value}" >
-    <input type="number" name="MetalIDRate" id="MetalIDRate"  class="MetalIDRate" value="${MetalIDValue.value}" >
-    <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" class="ButtonGrossRate"value="${ButtonGrossValue.value}" >
-    <input type="number" name="ExtraRate" id="ExtraRate" class ="ExtraRate"value="${ExtraValue.value}" >
-    <div id="btndivm">
-        <button class="BtnMX" id="AddDcBtnM" >
-            <svg class="svgMX" viewbox="0 0 24 24" width="50px" height="50px" >
-                <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
-            </svg>
-        </button>
-    </div>
-</div>`)
-TotalMaterial ()
+      <div class="Material-Names" id="Material" >
+      <input type="number" name="SlipNoRate" id="SlipNoRate" value="${SlipNoValue.value}"  style="width: 90px; " placeholder="NO">
+      <input type="date" name="DateRate" id="DateRate" value="${DateValue.value}"  >
+      <input type="number" name="FlatCoverRate" id="FlatCoverRate" class="FlatCoverRate" value="${FlatCoverValue.value}" placeholder="Flat-Cover" >
+      <input type="number" name="PattiCoverRate" id="PattiCoverRate" class="PattiCoverRate" value="${PattiCoverValue.value}"  placeholder="Patti-Cover">
+      <input type="number" name="RollCoverRate" id="RollCoverRate"  class="RollCoverRate" value="${RollCoverValue.value}" placeholder="RollCover">
+      <input type="number" name="MetalIDRate" id="MetalIDRate"  class="MetalIDRate" value="${MetalIDValue.value}" placeholder="Metal-ID">
+      <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" class="ButtonGrossRate"value="${ButtonGrossValue.value}" placeholder="Button-Gross">
+      <input type="number" name="ExtraRate" id="ExtraRate" class ="ExtraRate"value="${ExtraValue.value}" placeholder="Extra">
+      <div id="btndivm">
+          <button class="BtnMX" id="AddDcBtnM" >
+              <svg class="svgMX" viewbox="0 0 24 24" width="50px" height="50px" >
+                  <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+              </svg>
+          </button>
+        </div>
+      </div>`)
+    TotalMaterial ()
+    let VALUE = 0;
+    AllClear(VALUE)
+    SlipNoValue.focus();
+} else {
+   
+   alert("Enter At least One Value");
+   SlipNoValue.focus();
+}
 }
 
 
@@ -316,7 +355,20 @@ function AddLine(container){
     const FabRateInput = container.querySelector("#FabRateI");
 
 
+    
 
+    if (
+        DcNoInput.value !== "" &&
+        TotalPcsInput.value !== "" &&
+        RateInput.value !== "" &&
+        CNSPTNInput.value !== "" &&
+        TotalMTRInput.value !== "" &&
+        FabRateInput.value !== ""
+    ) {
+
+    
+    
+    
     AddLineIteam.insertAdjacentHTML("beforeend", `
     <div class="AddLine-Fabric">
     <input type="number" value="0" style="width: 50px;" readonly="readonly">
@@ -394,9 +446,44 @@ function AddLine(container){
        CNSPTNInput.value = "";
        TotalMTRInput.value = "";
        FabRateInput.value = "";
+       DcNoInput.focus();
+       DcNoInput.classList.remove("Empty");
 
-  
-}
+       TotalPcsInput.classList.remove("Empty");
+
+       CNSPTNInput.classList.remove("Empty");
+
+       RateInput.classList.remove("Empty");
+
+       TotalMTRInput.classList.remove("Empty");
+
+       FabRateInput.classList.remove("Empty");
+
+    } else if (DcNoInput.value === ""){ 
+        DcNoInput.focus();
+        DcNoInput.classList.add("Empty");
+    }
+       else if (TotalPcsInput.value === "") {
+        TotalPcsInput.focus();
+        TotalPcsInput.classList.add("Empty");
+    }
+      else if (CNSPTNInput.value === ""){ 
+        CNSPTNInput.focus();
+        CNSPTNInput.classList.add("Empty");
+    }
+       else if (RateInput.value === ""){ 
+        RateInput.focus();
+        RateInput.classList.add("Empty");
+    }
+       else if (TotalMTRInput.value === "") {
+        TotalMTRInput.focus();
+        TotalMTRInput.classList.add("Empty");
+    }
+      else  if (FabRateInput.value === "") {
+        FabRateInput.focus();
+        FabRateInput.classList.add("Empty");
+    }  
+};
 function RemovePayment (PaymentLine){
     PaymentLine.remove();
     TotalPayment ();
@@ -565,34 +652,67 @@ document.body.addEventListener("keydown", (event) => {
                 target.parentElement.querySelector("#DcNoI").focus()
                 // yaha se material ka shuru
             }else if (target.id == "SlipNoValue" ) {
+                
+                if(target.parentElement.querySelector("#SlipNoValue").value == ""){
+                    target.parentElement.querySelector("#SlipNoValue").value = 0;
+                }
                 target.parentElement.querySelector("#DateValue").focus();
             }else if (target.id == "DateValue" ) {
+                if(target.parentElement.querySelector("#DateValue").value == ""){
+                    target.parentElement.querySelector("#DateValue").value = 0;
+                }
                 target.parentElement.querySelector("#FlatCoverValue").focus();
             }else if (target.id == "FlatCoverValue" ) {
+                if(target.parentElement.querySelector("#FlatCoverValue").value == ""){
+                    target.parentElement.querySelector("#FlatCoverValue").value = 0;
+                }
                 target.parentElement.querySelector("#PattiCoverValue").focus();
             }else if (target.id == "PattiCoverValue" ) {
+                if(target.parentElement.querySelector("#PattiCoverValue").value == ""){
+                    target.parentElement.querySelector("#PattiCoverValue").value = 0;
+                }
                 target.parentElement.querySelector("#RollCoverValue").focus();
             }else if (target.id == "RollCoverValue" ) {
+                if(target.parentElement.querySelector("#RollCoverValue").value == ""){
+                    target.parentElement.querySelector("#RollCoverValue").value = 0;
+                }
                 target.parentElement.querySelector("#MetalIDValue").focus();
             }else if (target.id == "MetalIDValue" ) {
+                if(target.parentElement.querySelector("#MetalIDValue").value == ""){
+                    target.parentElement.querySelector("#MetalIDValue").value = 0;
+                }
                 target.parentElement.querySelector("#ButtonGrossValue").focus();
             }else if (target.id == "ButtonGrossValue" ) {
+                if(target.parentElement.querySelector("#ButtonGrossValue").value == ""){
+                    target.parentElement.querySelector("#ButtonGrossValue").value = 0;
+                }
                 target.parentElement.querySelector("#ExtraValue").focus();
             }else if (target.id == "ExtraValue" ) {
+                if(target.parentElement.querySelector("#ExtraValue").value == ""){
+                    target.parentElement.querySelector("#ExtraValue").value = 0;
+                }
                 target.parentElement.querySelector("#SlipNoValue").focus();
               AddMaterial();
-              AllClear(Material)
+              let VALUE = 0;
+              AllClear(VALUE)
               // payment start
             }else if (target.id == "PaymentDateInput"){
+                if(target.parentElement.querySelector("#PaymentDateInput").value == ""){
+                    target.parentElement.querySelector("#PaymentDateInput").value = "";
+                }
                 target.parentElement.querySelector("#AmountInput").focus();
             }else if (target.id == "AmountInput"){
+                if(target.parentElement.querySelector("#AmountInput").value == ""){
+                    target.parentElement.querySelector("#AmountInput").value = 0;
+                }
                 target.parentElement.querySelector("#TypeInput").focus();
             }else if (target.id == "TypeInput"){
                 target.parentElement.querySelector("#RemarksInput").focus();
             }else if (target.id == "RemarksInput"){
                 target.parentElement.querySelector("#PaymentDateInput").focus();
                 AddPayment();
-                AllClear(Payment);
+                let VALUE = 1;
+                AllClear(VALUE)
             }
     }
 });
@@ -713,9 +833,9 @@ document.body.addEventListener("input",(event)=>{
  });
 
 
-function AllClear(Material,Payment,Dc){
+function AllClear(VALUE){
     // clearing materials
-    if(Material){
+    if(VALUE == 0){
     document.getElementById("SlipNoValue").value=""  
     document.getElementById("DateValue").value=""  
     document.getElementById("FlatCoverValue").value="" 
@@ -724,7 +844,7 @@ function AllClear(Material,Payment,Dc){
     document.getElementById("MetalIDValue").value="" 
     document.getElementById("ButtonGrossValue").value="" 
     document.getElementById("ExtraValue").value="" 
-    }else if(Payment){
+    }else if(VALUE == 1){
         document.getElementById("PaymentDateInput").value=""  
         document.getElementById("AmountInput").value=""  
         document.getElementById("TypeInput").innerHTML= `
@@ -737,8 +857,6 @@ function AllClear(Material,Payment,Dc){
         <option value="6">NEFT</option>
         <option value="7">IMPS</option>` 
         document.getElementById("RemarksInput").value="" 
-
-    }else if(Dc){
 
     }
 }

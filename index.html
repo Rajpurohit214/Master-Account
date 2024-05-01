@@ -61,14 +61,14 @@
             </div>
             <div class="addlinematerial"></div>
             <div class="Material-Names">
-                <input type="number" name="SlipNoValue" id="SlipNoValue" value=""  style="width: 90px; ">
-                <input type="text" name="DateValue" id="DateValue" value="01/04/2024"  >
-                <input type="number" name="FlatCoverValue" id="FlatCoverValue" value="" >
-                <input type="number" name="PattiCoverValue" id="PattiCoverValue" value="" >
-                <input type="number" name="RollCoverValue" id="RollCoverValue" value="" >
-                <input type="number" name="MetalIDValue" id="MetalIDValue" value="" >
-                <input type="number" name="ButtonGrossNValue" id="ButtonGrossValue" value="" >
-                <input type="number" name="ExtraValue" id="ExtraValue" value="" >
+                <input type="number" name="SlipNoValue" id="SlipNoValue" value=""  style="width: 90px; " placeholder="No" oninput="validity.valid||(value='');" min="0">
+                <input type="date" name="DateValue" id="DateValue" value="2024-01-04"  >
+                <input type="number" name="FlatCoverValue" id="FlatCoverValue" value=""  oninput="validity.valid||(value='');" min="0" placeholder="Flat-Cover">
+                <input type="number" name="PattiCoverValue" id="PattiCoverValue" value=""  oninput="validity.valid||(value='');" min="0"  placeholder="Patti-Cover">
+                <input type="number" name="RollCoverValue" id="RollCoverValue" value=""  oninput="validity.valid||(value='');" min="0" placeholder="Roll-Cover">
+                <input type="number" name="MetalIDValue" id="MetalIDValue" value=""  oninput="validity.valid||(value='');" min="0" placeholder="Metal-ID">
+                <input type="number" name="ButtonGrossNValue" id="ButtonGrossValue" value=""  oninput="validity.valid||(value='');" min="0.01" step="0.01" placeholder="Btn-Gross">
+                <input type="number" name="ExtraValue" id="ExtraValue" value=""  oninput="validity.valid||(value='');" min="0.01" step="0.01" placeholder="Extra">
                 <div id="btndivm">
                     <button class="BtnM" id="AddDcBtnM" >
                         <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px" >
@@ -80,12 +80,12 @@
             <div class="Material-Names">
                 <input type="number" name="SlipNoValue" id="Sl" value="0"  style="visibility: hidden; width: 90px;">
                 <input type="text" name="SubTotal" id="SubTotal" value="SUB TOTAL    :-" >
-                <input type="number" name="FlatCoverSubTotal" id="FlatCoverSubTotal"  class="Stotal" value="0" >
-                <input type="number" name="PattiCoverSubTotal" id="PattiCoverSubTotal" class="Stotal" value="0" >
-                <input type="number" name="RollCoverSubTotal" id="RollCoverSubTotal" class="Stotal" value="0" >
-                <input type="number" name="MetalIDSubTotal" id="MetalIDSubTotal" class="Stotal" value="0" >
-                <input type="number" name="ButtonGrossSubTotal" id="ButtonGrossSubTotal" class="Stotal" value="0" >
-                <input type="number" name="ExtraSubTotal" id="ExtraSubTotal" class="Stotal" value="0" >
+                <input type="number" name="FlatCoverSubTotal" id="FlatCoverSubTotal"  class="Stotal" value="0" readonly>
+                <input type="number" name="PattiCoverSubTotal" id="PattiCoverSubTotal" class="Stotal" value="0" readonly>
+                <input type="number" name="RollCoverSubTotal" id="RollCoverSubTotal" class="Stotal" value="0" readonly>
+                <input type="number" name="MetalIDSubTotal" id="MetalIDSubTotal" class="Stotal" value="0" readonly>
+                <input type="number" name="ButtonGrossSubTotal" id="ButtonGrossSubTotal" class="Stotal" value="0" readonly>
+                <input type="number" name="ExtraSubTotal" id="ExtraSubTotal" class="Stotal" value="0" readonly>
                 <div id="btndivm">
                     <button class="BtnM" id="AddDcBtnM" style="visibility: hidden;">
                         <svg class="svgM" viewbox="0 0 24 24" width="50px" height="50px">
@@ -95,15 +95,15 @@
                 </div>
             </div>
             <div class="SubTotalM">
-                 <input type="text" value="SUB TOTAL" id="SubtotalMT">
-                 <input type="number" name="SubtotalM" id="SubtotalM">
+                 <input type="text" value="Final TOTAL" id="SubtotalMT" readonly>
+                 <input type="number" name="SubtotalM" id="SubtotalM" readonly>
             </div>
          </div>
          <div class="Payment-Container" >
             <div class="Material-Names">
-                <input type="text" name="SN" id="SNp" value="SN" readonly style="width: 40px;">
+                <input type="text" name="SN" id="SNp" value="SN" readonly style="width: 40px;" >
                 <input type="text" name="PaymentDateName" id="PaymentDateName" value="Date" readonly>
-                <input type="text" name="AmountName" id="AmountName" value="Amount" readonly>
+                <input type="text" name="AmountName" id="AmountName" value="Amount" readonly >
                 <input type="text" name="TypeName" id="TypeName" value="Transaction Type" readonly>
                 <input type="text" name="RemarksName" id="RemarksName" value="Remarks" readonly>
                 <div id="btndivp" style="visibility: hidden;">
@@ -116,9 +116,9 @@
             </div>
             <div class="addlinepayment"></div>
             <div class="Material-Names">
-                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0">
+                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0" readonly disabled>
                 <input type="date" name="PaymentDateInput" id="PaymentDateInput" >
-                <input type="number" name="AmountInput" id="AmountInput"  value="0">
+                <input type="number" name="AmountInput" id="AmountInput"  value="" placeholder="Enter Amount" oninput="validity.valid||(value='');" min="0" required> 
                 <select name="TypeI" id="TypeInput">
                     <option value="0">RTGS</option>
                     <option value="1">G.Pay</option >
@@ -139,14 +139,14 @@
                 </div>
             </div>
             <div class="Material-Names">
-                <input type="text" name="CashTotalP" id="CashTotalP" value="W/O Tax Amount" >
-                <input type="number" name="CashTotalPayment" id="CashTotalPayment" value="0"  >
+                <input type="text" name="CashTotalP" id="CashTotalP" value="W/O Tax Amount" readonly>
+                <input type="number" name="CashTotalPayment" id="CashTotalPayment" value="0"   readonly>
 
-                <input type="text" name="RtgsTotalP" id="RtgsTotalP" value="Tax Amount" >
-                <input type="number" name="RtgsTotalPayment" id="RtgsTotalPayment" value="0" >
+                <input type="text" name="RtgsTotalP" id="RtgsTotalP" value="Tax Amount" readonly>
+                <input type="number" name="RtgsTotalPayment" id="RtgsTotalPayment" value="0" readonly>
 
-                <input type="text" name="FinalTotalP" id="FinalTotalP" value="Total Amount" >
-                <input type="number" name="FinalTotalPayment" id="FinalTotalPayment" value="0" >
+                <input type="text" name="FinalTotalP" id="FinalTotalP" value="Total Amount"  readonly>
+                <input type="number" name="FinalTotalPayment" id="FinalTotalPayment" value="0" readonly>
             </div>
          </div>
         </section>
