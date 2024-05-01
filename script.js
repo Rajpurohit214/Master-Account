@@ -579,7 +579,20 @@ document.body.addEventListener("keydown", (event) => {
             }else if (target.id == "ButtonGrossValue" ) {
                 target.parentElement.querySelector("#ExtraValue").focus();
             }else if (target.id == "ExtraValue" ) {
+                target.parentElement.querySelector("#SlipNoValue").focus();
               AddMaterial();
+              AllClear(Material)
+              // payment start
+            }else if (target.id == "PaymentDateInput"){
+                target.parentElement.querySelector("#AmountInput").focus();
+            }else if (target.id == "AmountInput"){
+                target.parentElement.querySelector("#TypeInput").focus();
+            }else if (target.id == "TypeInput"){
+                target.parentElement.querySelector("#RemarksInput").focus();
+            }else if (target.id == "RemarksInput"){
+                target.parentElement.querySelector("#PaymentDateInput").focus();
+                AddPayment();
+                AllClear(Payment);
             }
     }
 });
@@ -700,3 +713,32 @@ document.body.addEventListener("input",(event)=>{
  });
 
 
+function AllClear(Material,Payment,Dc){
+    // clearing materials
+    if(Material){
+    document.getElementById("SlipNoValue").value=""  
+    document.getElementById("DateValue").value=""  
+    document.getElementById("FlatCoverValue").value="" 
+    document.getElementById("PattiCoverValue").value="" 
+    document.getElementById("RollCoverValue").value="" 
+    document.getElementById("MetalIDValue").value="" 
+    document.getElementById("ButtonGrossValue").value="" 
+    document.getElementById("ExtraValue").value="" 
+    }else if(Payment){
+        document.getElementById("PaymentDateInput").value=""  
+        document.getElementById("AmountInput").value=""  
+        document.getElementById("TypeInput").innerHTML= `
+        <option value="0">RTGS</option>
+        <option value="1">G.Pay</option >
+        <option value="2">Cheque</option>
+        <option value="3">Cash A/C</option>
+        <option value="4">Cash W/O</option>
+        <option value="5">Bank W/O</option>
+        <option value="6">NEFT</option>
+        <option value="7">IMPS</option>` 
+        document.getElementById("RemarksInput").value="" 
+
+    }else if(Dc){
+
+    }
+}
