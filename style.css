@@ -265,7 +265,7 @@ input{
    min-width: 0;
   }
   
-  .Material-Container,.Payment-Container{
+  .Material-Container{
       box-sizing: border-box;
 
       box-shadow: 0 2 0;
@@ -273,6 +273,26 @@ input{
       padding: 10px;
       box-shadow: 0 0px 10px 1px black;
       background-color: rgb(27, 38, 73);
+      width: calc(100vw - 30px);
+  }
+  .Payment-Container{
+      box-sizing: border-box;
+
+      box-shadow: 0 2 0;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 0px 10px 1px black;
+      background-color: rgb(104, 28, 28);
+      width: calc(50vw - 30px);
+  }
+  .Total-Container{
+      box-sizing: border-box;
+
+      box-shadow: 0 2 0;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 0px 10px 1px black;
+      background-color: rgb(89, 22, 102);
       width: calc(50vw - 30px);
   }
   .Material-PaymentContainer{

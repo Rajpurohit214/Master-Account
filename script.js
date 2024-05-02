@@ -172,7 +172,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
     const PaymentBox = document.querySelector(".addlinepayment")
     PaymentBox.insertAdjacentHTML("beforeend",`
     <div class="Material-Names">
-                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0" readonly disabled>
+                <input type="number" name="SN" id="SNp" class="SNp" style="width: 40px;" value="0" readonly disabled>
                 <input type="date" name="PaymentDateInput" id="PaymentDateValue"  value="${DateInput.value}">
                 <input type="number" name="AmountInput" class="AmountValue" id="AmountValue"  value="${AmountInput.value}" placeholder="Enter Amount">
                 <select name="TypeI" class="TypeValue" id="TypeValue">${innerhtml}</select >
@@ -186,6 +186,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
                 </div>
             </div>`)
 TotalPayment();
+
+UpdateSerialPayment();
 const amountInputFields = PaymentBox.querySelectorAll(".AmountValue");
 amountInputFields.forEach(inputField => {
     inputField.addEventListener("input",()=>{ 
@@ -198,6 +200,7 @@ amountInputFields.forEach(inputField => {
 } else {
     alert("Please Enter Amount");
     AmountInput.focus();
+    
 }
 
 };
@@ -303,7 +306,7 @@ function AddDCs (){
              <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
              <input type="number" id="RateI" placeholder="Stitching Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
              <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
-             <input type="number" id="FabRateI" placeholder="Fabric Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
+             <input type="number" id="FabRateI" placeholder="Fabric Rate" min="0" step="0.01" oninput="validity.valid||(value='');"  >
              <button id="Add" class="Add">+</button>
     
          </div>
@@ -362,16 +365,15 @@ function AddLine(container){
         TotalPcsInput.value !== "" &&
         RateInput.value !== "" &&
         CNSPTNInput.value !== "" &&
-        TotalMTRInput.value !== "" &&
-        FabRateInput.value !== ""
+        TotalMTRInput.value !== "" 
     ) {
-
+        
     
     
     
     AddLineIteam.insertAdjacentHTML("beforeend", `
     <div class="AddLine-Fabric">
-    <input type="number" value="0" style="width: 50px;" readonly="readonly">
+    <input type="number" value="0" class="sndc" style="width: 50px;" readonly="readonly" disabled>
     <input type="number" id="DcNo" value="${DcNoInput.value}" oninput="validity.valid||(value='');" min="0">
     <input type="number" id="TotalPcs" value="${TotalPcsInput.value}" oninput="validity.valid||(value='');" min="0">
     <input type="number" id="CNSPTN" value="${CNSPTNInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
@@ -398,6 +400,11 @@ function AddLine(container){
     const Debit = AddLineIteam.lastElementChild.querySelector("#Debit");
     const Total = AddLineIteam.lastElementChild.querySelector("#Total");
     const FabRate = AddLineIteam.lastElementChild.querySelector("#FabRatev");
+
+    if(FabRate.value == ""){
+            FabRate.value=0;
+    }
+
 
     TotalPcs.addEventListener("input",()=>{
         UsedMTR.value = CNSPTN.value * TotalPcs.value;
@@ -447,6 +454,7 @@ function AddLine(container){
        TotalMTRInput.value = "";
        FabRateInput.value = "";
        DcNoInput.focus();
+       UpdateSerialDC (container)
        DcNoInput.classList.remove("Empty");
 
        TotalPcsInput.classList.remove("Empty");
@@ -479,14 +487,15 @@ function AddLine(container){
         TotalMTRInput.focus();
         TotalMTRInput.classList.add("Empty");
     }
-      else  if (FabRateInput.value === "") {
-        FabRateInput.focus();
-        FabRateInput.classList.add("Empty");
-    }  
+    //   else  if (FabRateInput.value === "") {
+    //     FabRateInput.focus();
+    //     FabRateInput.classList.add("Empty");
+    // }  
 };
 function RemovePayment (PaymentLine){
     PaymentLine.remove();
     TotalPayment ();
+    UpdateSerialPayment()
 }
 function RemoveMaterial (MaterialLine){
     MaterialLine.remove()
@@ -495,6 +504,7 @@ function RemoveMaterial (MaterialLine){
 function RemoveDc(Dc , container){
     Dc.remove();
     TotalCalculator (container);
+    UpdateSerialDC (container);
 
  
 }
@@ -649,7 +659,7 @@ document.body.addEventListener("keydown", (event) => {
                 const container = target.parentElement.parentElement;
                 const AddLineIteam = container.querySelector(".AddLine-Iteam");
                 AddLine(container,AddLineIteam);
-                target.parentElement.querySelector("#DcNoI").focus()
+                //target.parentElement.querySelector("#DcNoI").focus()
                 // yaha se material ka shuru
             }else if (target.id == "SlipNoValue" ) {
                 
@@ -858,5 +868,18 @@ function AllClear(VALUE){
         <option value="7">IMPS</option>` 
         document.getElementById("RemarksInput").value="" 
 
+    }
+}
+
+function UpdateSerialDC (container){
+    const sndcs =container.querySelectorAll(".sndc");
+    for (let i = 0; i < sndcs.length; i++) {
+        sndcs[i].value = i+1;
+    }
+}
+function UpdateSerialPayment(){
+    const snps = document.querySelectorAll(".SNp");
+    for (let i = 0; i < snps.length; i++) {
+        snps[i].value = i+1;
     }
 }
