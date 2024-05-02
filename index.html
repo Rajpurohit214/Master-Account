@@ -152,53 +152,18 @@
             </div>
          </div>
          <div class="Total-Container" >
-            <div class="Material-Names">
-                <input type="text" name="SN" id="SNp" value="SN" readonly style="width: 40px;" >
-                <input type="text" name="PaymentDateName" id="PaymentDateName" value="Date" readonly>
-                <input type="text" name="AmountName" id="AmountName" value="Amount" readonly >
-                <input type="text" name="TypeName" id="TypeName" value="Transaction Type" readonly>
-                <input type="text" name="RemarksName" id="RemarksName" value="Remarks" readonly>
-                <div id="btndivp" style="visibility: hidden;">
-                    <button class="BtnP" id="AddDcBtnP">
-                        <svg class="svgP" viewbox="0 0 24 24" width="50px" height="50px">
-                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
-                        </svg>
-                    </button>
-             </div>
+            <h2>PAYABLE AMOUNT</h2>
+            <div class="AMTDiv">
+                <h3>Cash Amount :- </h3>
+                <input type="number" id="CashTotal">
             </div>
-            <div class="addlinepayment"></div>
-            <div class="Material-Names">
-                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0" readonly disabled>
-                <input type="date" name="PaymentDateInput" id="PaymentDateInput" >
-                <input type="number" name="AmountInput" id="AmountInput"  value="" placeholder="Enter Amount" oninput="validity.valid||(value='');" min="0" required> 
-                <select name="TypeI" id="TypeInput">
-                    <option value="0">RTGS</option>
-                    <option value="1">G.Pay</option >
-                    <option value="2">Cheque</option>
-                    <option value="3">Cash A/C</option>
-                    <option value="4">Cash W/O</option>
-                    <option value="5">Bank W/O</option>
-                    <option value="6">NEFT</option>
-                    <option value="7">IMPS</option>
-                </select>
-                <input type="text" name="RemarksInput" id="RemarksInput"  placeholder="Remarks"                                             >
-                <div id="btndivp">
-                    <button class="BtnP" id="AddDcBtnP">
-                        <svg class="svgP" viewbox="0 0 24 24" width="50px" height="50px">
-                            <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
-                        </svg>
-                    </button>
-                </div>
+            <div class="AMTDiv">
+                <h3>RTGS Amount :- </h3>
+                <input type="number" id="RTGSTotal">
             </div>
-            <div class="Material-Names">
-                <input type="text" name="CashTotalP" id="CashTotalP" value="W/O Tax Amount" readonly>
-                <input type="number" name="CashTotalPayment" id="CashTotalPayment" value="0"   readonly>
-
-                <input type="text" name="RtgsTotalP" id="RtgsTotalP" value="Tax Amount" readonly>
-                <input type="number" name="RtgsTotalPayment" id="RtgsTotalPayment" value="0" readonly>
-
-                <input type="text" name="FinalTotalP" id="FinalTotalP" value="Total Amount"  readonly>
-                <input type="number" name="FinalTotalPayment" id="FinalTotalPayment" value="0" readonly>
+            <div class="AMTDiv">
+                <h3>Total Amount :- </h3>
+                <input type="number" id="GrandTotal">
             </div>
          </div>
         </section>

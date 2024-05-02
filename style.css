@@ -283,20 +283,13 @@ input{
       padding: 10px;
       box-shadow: 0 0px 10px 1px black;
       background-color: rgb(104, 28, 28);
-      width: calc(50vw - 30px);
+      width: calc(65vw - 30px);
   }
-  .Total-Container{
-      box-sizing: border-box;
 
-      box-shadow: 0 2 0;
-      border-radius: 20px;
-      padding: 10px;
-      box-shadow: 0 0px 10px 1px black;
-      background-color: rgb(89, 22, 102);
-      width: calc(50vw - 30px);
-  }
   .Material-PaymentContainer{
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
+    
 
   }
   .Material-Container{
@@ -327,3 +320,24 @@ input::-webkit-inner-spin-button{
   height: 30px;
 }
 
+.AMTDiv{
+  justify-content: center;
+  display: flex;
+  flex-grow: 0;
+  gap: 10px;
+}
+.Total-Container{
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2 0;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 0px 10px 1px black;
+  background-color: rgb(89, 22, 102);
+  width: calc(30vw - 30px);
+  text-align: center;
+  margin: 20px;
+  gap: 10px;
+ 
+  
+}
