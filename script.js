@@ -186,6 +186,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
                 </div>
             </div>`)
 TotalPayment();
+GrandTotalUpdate ()
 
 UpdateSerialPayment();
 const amountInputFields = PaymentBox.querySelectorAll(".AmountValue");
@@ -195,6 +196,7 @@ amountInputFields.forEach(inputField => {
             inputField.value = 0;
         };
         TotalPayment();
+        
     });
 });
 } else {
@@ -202,6 +204,7 @@ amountInputFields.forEach(inputField => {
     AmountInput.focus();
     
 }
+
 
 };
 
@@ -268,8 +271,9 @@ function AddMaterial(){
    
    alert("Enter At least One Value");
    SlipNoValue.focus();
-}
-}
+};
+GrandTotalUpdate ()
+};
 
 
 function AddDCs (){
@@ -322,17 +326,17 @@ function AddDCs (){
              <input value="Total AMT" type="text" readonly="readonly">
              </div>
              <div class="Total-Value">
-             <input type="number" id="DebitFab" readonly>
-             <input type="number" id="cgst" value="0">
-             <input type="number" id="sgst" value="0">
-             <input type="number" id="CashAMT" value="0" readonly>
-             <input type="number" id="RTGSAMT" value="0">
+             <input type="number" id="DebitFab" class="DebitFab" readonly value="0">
+             <input type="number" id="cgst" class="cgst" value="0">
+             <input type="number" id="sgst" class="sgst" value="0">
+             <input type="number" id="CashAMT" Class="CashAMT" value="0" readonly>
+             <input type="number" id="RTGSAMT" Class="RTGSAMT" value="0">
              <input type="number" id="TotalAMT" value="0" readonly>
          </div>
      </div>
      </div>
      `);
-    
+   
 
 
  
@@ -412,6 +416,7 @@ function AddLine(container){
         Debit.value = RestMTR.value*FabRate.value;
         Total.value = TotalPcs.value*Rate.value;
         TotalCalculator(container);
+        GrandTotalUpdate ();
         
     });
     CNSPTN.addEventListener("input",()=>{
@@ -419,28 +424,33 @@ function AddLine(container){
       RestMTR.value = TotalMTR.value - UsedMTR.value;
       Debit.value = RestMTR.value*FabRate.value;
       TotalCalculator(container);
+      GrandTotalUpdate ();
     });
     Rate.addEventListener("input",()=>{
         Total.value = TotalPcs.value*Rate.value;
         TotalCalculator(container);
+        GrandTotalUpdate ();
     });
     
     TotalMTR.addEventListener("input",()=>{
         RestMTR.value = TotalMTR.value - UsedMTR.value;
         Debit.value = RestMTR.value*FabRate.value;
         TotalCalculator(container);
+        GrandTotalUpdate ();
 
     });
 
     FabRate.addEventListener("input",()=>{
         Debit.value = RestMTR.value*FabRate.value;
         TotalCalculator(container);
+        GrandTotalUpdate ();
     });
     UsedMTR.addEventListener("input",()=>{
         CNSPTN.value = UsedMTR.value/TotalPcs.value;
         RestMTR.value = TotalMTR.value - UsedMTR.value;
         Debit.value = RestMTR.value*FabRate.value;
         TotalCalculator(container);
+        GrandTotalUpdate ();
     });
 
 
@@ -491,20 +501,62 @@ function AddLine(container){
     //     FabRateInput.focus();
     //     FabRateInput.classList.add("Empty");
     // }  
+    GrandTotalUpdate ();
 };
+
+function GrandTotalUpdate (){
+    const GrandTotal = document.getElementById("GrandTotal");
+    const RTGSTotal = document.getElementById("RTGSTotal");
+    const CashTotal = document.getElementById("CashTotal");
+
+    const CashAmtS = document.querySelectorAll(".CashAMT");
+     let CASHAMTDC = 0;
+    CashAmtS.forEach(Amt => {
+        CASHAMTDC =+ parseInt(Amt.value);
+    });
+    const RTGSAmtS = document.querySelectorAll(".RTGSAMT");
+     let RTGSAMTDC = 0;
+    RTGSAmtS.forEach(rAmt => {
+        RTGSAMTDC =+ parseInt(rAmt.value);
+    });
+    const DebitAmtS = document.querySelectorAll(".DebitFab");
+     let DebitAMTDC = 0;
+    DebitAmtS.forEach(dAmt => {
+        DebitAMTDC =+ parseInt(dAmt.value);
+    });
+    const cgstAmtS = document.querySelectorAll(".cgst");
+     let cgstAMTDC = 0;
+       cgstAmtS.forEach(cgst => {
+        cgstAMTDC =+ parseInt(cgst.value);
+    });
+    const sgstAmtS = document.querySelectorAll(".sgst");
+     let sgstAMTDC = 0;
+    sgstAmtS.forEach(sgst => {
+        sgstAMTDC =+ parseInt(sgst.value);
+    });
+
+    CashTotal.value = CASHAMTDC - (parseInt(document.getElementById("SubtotalM").value)+parseInt(document.getElementById("CashTotalPayment").value) + DebitAMTDC);
+    RTGSTotal.value = RTGSAMTDC - parseInt(document.getElementById("RtgsTotalPayment").value) ;
+
+
+    GrandTotal.value = sgstAMTDC + cgstAMTDC + parseInt(CashTotal.value);
+}
 function RemovePayment (PaymentLine){
     PaymentLine.remove();
     TotalPayment ();
     UpdateSerialPayment()
+    GrandTotalUpdate ()
 }
 function RemoveMaterial (MaterialLine){
     MaterialLine.remove()
     TotalMaterial ()
+    GrandTotalUpdate ()
 }
 function RemoveDc(Dc , container){
     Dc.remove();
     TotalCalculator (container);
     UpdateSerialDC (container);
+    GrandTotalUpdate ()
 
  
 }
@@ -522,9 +574,11 @@ function TotalPayment (){
 
     if (TypeInput.value === "0" || TypeInput.value === "2" ||TypeInput.value === "3" ||TypeInput.value === "6" ||TypeInput.value === "7") {
         TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        GrandTotalUpdate ();
         
     } else if (TypeInput.value === "1" || TypeInput.value === "4" || TypeInput.value === "5") {
         CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
+        GrandTotalUpdate ();
         
     }});
 
@@ -532,7 +586,7 @@ function TotalPayment (){
     CashAmt.value = CashCount;
     document.getElementById("FinalTotalPayment").value = parseInt(TaxAmt.value) + parseInt(CashAmt.value);
     
-    
+    GrandTotalUpdate ();
 };
 
 function TotalMaterial (){
@@ -580,7 +634,7 @@ function TotalMaterial (){
    SubTotal.value = Flat + patti + roll + btn + id + other;
     
     
-    
+   GrandTotalUpdate ();
 }
 function TotalCalculator (container){
     // debit total
@@ -592,7 +646,7 @@ function TotalCalculator (container){
     SumTotal (container);
     CashTotal (container)
     container.querySelector("#TotalAMT").value = parseInt(container.querySelector("#RTGSAMT").value) + parseInt(container.querySelector("#CashAMT").value);
-    
+    GrandTotalUpdate ();
 }
 function CashTotal (container){
         // total amount cash
@@ -600,7 +654,7 @@ function CashTotal (container){
         let  CashNum = 0;
         container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
         container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value);
-        
+        GrandTotalUpdate ();
 }
 function SumTotal (container){
          // cheque total
@@ -613,23 +667,22 @@ function SumTotal (container){
          CGST.addEventListener("input",()=>{
             SGST.value = CGST.value;
             RTGSAMT.value = (CGST.value * 2) / 0.05;
-            container.querySelector("#TotalAMT").value= parseInt(RTGSAMT.value) + parseInt(CashAmt.value);
-  
-            
+            container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+            GrandTotalUpdate ();
          })
          SGST.addEventListener("input",()=>{
             CGST.value = SGST.value;
             RTGSAMT.value = (SGST.value * 2) / 0.05;
-            container.querySelector("#TotalAMT").value= parseInt(RTGSAMT.value) + parseInt(CashAmt.value);
-
+            container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+            GrandTotalUpdate ();
 
          })
          RTGSAMT.addEventListener("input",()=>{
             CGST.value = ((RTGSAMT.value /100) *5)/2;
             SGST.value = ((RTGSAMT.value /100) *5)/2;
             RTGSAMT.value = (SGST.value * 2) / 0.05;
-            container.querySelector("#TotalAMT").value= parseInt(RTGSAMT.value) + parseInt(CashAmt.value);
-
+            container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+            GrandTotalUpdate ();
          })
 
 
@@ -830,14 +883,17 @@ document.body.addEventListener("change", (event) => {
     event.target.innerHTML = innerhtml;
 
    TotalPayment();
+   GrandTotalUpdate ()
 });
 document.body.addEventListener("input",(event)=>{
     const I = event.target;
     if (I.classList.contains("FlatCoverRate") ||I.classList.contains("PattiCoverRate") ||I.classList.contains("RollCoverRate") ||I.classList.contains("MetalIDRate") ||I.classList.contains("ButtonGrossRate") ||I.classList.contains("FlatCoverRs") ||I.classList.contains("PattiCoverRs") ||I.classList.contains("RollCoverRs") ||I.classList.contains("MetalIDRs") ||I.classList.contains("ButtonGrossRs")||I.classList.contains("ExtraRs")) {
         if (I.value == "") {
             I.value = 0;
+            GrandTotalUpdate ();
         };
         TotalMaterial();
+        GrandTotalUpdate ();
     }
     
  });
