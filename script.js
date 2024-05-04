@@ -654,6 +654,7 @@ function CashTotal (container){
         let  CashNum = 0;
         container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
         container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value);
+        TotalCalculator (container);
         GrandTotalUpdate ();
 }
 function SumTotal (container){
@@ -668,12 +669,17 @@ function SumTotal (container){
             SGST.value = CGST.value;
             RTGSAMT.value = (CGST.value * 2) / 0.05;
             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+            CashTotal (container)
+            TotalCalculator (container)
             GrandTotalUpdate ();
+            
          })
          SGST.addEventListener("input",()=>{
             CGST.value = SGST.value;
             RTGSAMT.value = (SGST.value * 2) / 0.05;
             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+            CashTotal (container)
+            TotalCalculator (container)
             GrandTotalUpdate ();
 
          })
@@ -682,6 +688,8 @@ function SumTotal (container){
             SGST.value = ((RTGSAMT.value /100) *5)/2;
             RTGSAMT.value = (SGST.value * 2) / 0.05;
             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+            CashTotal (container)
+            TotalCalculator (container)
             GrandTotalUpdate ();
          })
 
