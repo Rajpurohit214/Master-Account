@@ -1,3 +1,8 @@
+window.addEventListener("load", ()=>{
+    document.getElementById("AddDcBtn").click();
+  
+})
+
 document.body.addEventListener("click", (click) => {
     const target = click.target;
     // Check if the clicked element is an button
@@ -61,18 +66,18 @@ const date =document.getElementById("DateValue");
 
 
 
-function AddPayment(){
-    const DateInput =document.getElementById("PaymentDateInput");
-    const TypeInput =document.getElementById("TypeInput");
-    const AmountInput =document.getElementById("AmountInput");
-    const RemarksInput =document.getElementById("RemarksInput");
-if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
-        
-       let innerhtml="" ;
 
+function AddPayment(){
+const DateInput = document.getElementById("PaymentDateInput");
+const TypeInput = document.getElementById("TypeInput");
+const AmountInput = document.getElementById("AmountInput");
+const RemarksInput = document.getElementById("RemarksInput");
+if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
+
+    let innerhtml = "";
 
     if (TypeInput.value === "0") {
-        innerhtml  = `
+        innerhtml = `
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
         <option value="2">Cheque</option>
@@ -83,8 +88,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "1") {
-    
-        innerhtml  = `
+
+        innerhtml = `
         <option value="1">G.Pay</option>
         <option value="0">RTGS</option>
         <option value="2">Cheque</option>
@@ -95,8 +100,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "2") {
-    
-        innerhtml  = `
+
+        innerhtml = `
         <option value="2">Cheque</option>
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
@@ -107,8 +112,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "3") {
-    
-        innerhtml  = `
+
+        innerhtml = `
         <option value="3">Cash A/C</option>
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
@@ -119,8 +124,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "4") {
-    
-        innerhtml  = `
+
+        innerhtml = `
         <option value="4">Cash W/O</option>
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
@@ -131,8 +136,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "5") {
-    
-        innerhtml  = `
+
+        innerhtml = `
         <option value="5">Bank W/O</option>
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
@@ -143,8 +148,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "6") {
-    
-        innerhtml  = `
+
+        innerhtml = `
         <option value="6">NEFT</option>
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
@@ -155,8 +160,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="7">IMPS</option> 
         `;
     } else if (TypeInput.value === "7") {
-    
-        innerhtml  = `
+
+        innerhtml = `
         <option value="7">IMPS</option> 
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
@@ -168,9 +173,10 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         `;
     };
 
-
     const PaymentBox = document.querySelector(".addlinepayment")
-    PaymentBox.insertAdjacentHTML("beforeend",`
+    PaymentBox.insertAdjacentHTML(
+        "beforeend",
+        `
     <div class="Material-Names">
                 <input type="number" name="SN" id="SNp" class="SNp" style="width: 40px;" value="0" readonly disabled>
                 <input type="date" name="PaymentDateInput" id="PaymentDateValue"  value="${DateInput.value}">
@@ -184,27 +190,25 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
                         </svg>
                      </button>
                 </div>
-            </div>`)
-TotalPayment();
-GrandTotalUpdate ()
+            </div>`
+    )
+    TotalPayment();
+    UpdateSerialPayment();
+    const amountInputFields = PaymentBox.querySelectorAll(".AmountValue");
+    amountInputFields.forEach(inputField => {
+        inputField.addEventListener("input", () => {
+            if (inputField.value == "") {
+                inputField.value = 0;
+            };
+            TotalPayment();
 
-UpdateSerialPayment();
-const amountInputFields = PaymentBox.querySelectorAll(".AmountValue");
-amountInputFields.forEach(inputField => {
-    inputField.addEventListener("input",()=>{ 
-        if (inputField.value == "") {
-            inputField.value = 0;
-        };
-        TotalPayment();
-        
+        });
     });
-});
 } else {
     alert("Please Enter Amount");
     AmountInput.focus();
-    
-}
 
+}
 
 };
 
@@ -249,12 +253,12 @@ function AddMaterial(){
       <div class="Material-Names" id="Material" >
       <input type="number" name="SlipNoRate" id="SlipNoRate" value="${SlipNoValue.value}"  style="width: 90px; " placeholder="NO">
       <input type="date" name="DateRate" id="DateRate" value="${DateValue.value}"  >
-      <input type="number" name="FlatCoverRate" id="FlatCoverRate" class="FlatCoverRate" value="${FlatCoverValue.value}" placeholder="Flat-Cover" >
-      <input type="number" name="PattiCoverRate" id="PattiCoverRate" class="PattiCoverRate" value="${PattiCoverValue.value}"  placeholder="Patti-Cover">
-      <input type="number" name="RollCoverRate" id="RollCoverRate"  class="RollCoverRate" value="${RollCoverValue.value}" placeholder="RollCover">
-      <input type="number" name="MetalIDRate" id="MetalIDRate"  class="MetalIDRate" value="${MetalIDValue.value}" placeholder="Metal-ID">
-      <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" class="ButtonGrossRate"value="${ButtonGrossValue.value}" placeholder="Button-Gross">
-      <input type="number" name="ExtraRate" id="ExtraRate" class ="ExtraRate"value="${ExtraValue.value}" placeholder="Extra">
+      <input type="number" name="FlatCoverRate" id="FlatCoverRate" class="FlatCoverRate" value="${FlatCoverValue.value}" placeholder="Flat-Cover" oninput="preventNegative(this)">
+      <input type="number" name="PattiCoverRate" id="PattiCoverRate" class="PattiCoverRate" value="${PattiCoverValue.value}"  placeholder="Patti-Cover" oninput="preventNegative(this)">
+      <input type="number" name="RollCoverRate" id="RollCoverRate"  class="RollCoverRate" value="${RollCoverValue.value}" placeholder="RollCover" oninput="preventNegative(this)">
+      <input type="number" name="MetalIDRate" id="MetalIDRate"  class="MetalIDRate" value="${MetalIDValue.value}" placeholder="Metal-ID" oninput="preventNegative(this)">
+      <input type="number" name="ButtonGrossNRate" id="ButtonGrossRate" class="ButtonGrossRate"value="${ButtonGrossValue.value}" placeholder="Button-Gross" oninput="preventNegative(this)">
+      <input type="number" name="ExtraRate" id="ExtraRate" class ="ExtraRate"value="${ExtraValue.value}" placeholder="Extra" oninput="preventNegative(this)">
       <div id="btndivm">
           <button class="BtnMX" id="AddDcBtnM" >
               <svg class="svgMX" viewbox="0 0 24 24" width="50px" height="50px" >
@@ -274,7 +278,6 @@ function AddMaterial(){
 };
 GrandTotalUpdate ()
 };
-
 
 function AddDCs (){
 
@@ -305,12 +308,12 @@ function AddDCs (){
          <div class="AddLine-Iteam"></div>
          <div class="AddLine-Fabric">
              <input type="number" value="0" style="width: 50px;" readonly="readonly">
-             <input type="number" id="DcNoI" placeholder="No" oninput="validity.valid||(value='');" min="0"  >
-             <input type="number" id="TotalPcsI" placeholder="total PCS"  oninput="validity.valid||(value='');" min="0" >
-             <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
-             <input type="number" id="RateI" placeholder="Stitching Rate" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
-             <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="validity.valid||(value='');" min="0.01" step="0.01" >
-             <input type="number" id="FabRateI" placeholder="Fabric Rate" min="0" step="0.01" oninput="validity.valid||(value='');"  >
+             <input type="number" id="DcNoI" placeholder="No" oninput="preventNegative(this)"  >
+             <input type="number" id="TotalPcsI" placeholder="total PCS"  oninput="preventNegative(this)" >
+             <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="preventNegative(this)" >
+             <input type="number" id="RateI" placeholder="Stitching Rate" oninput="preventNegative(this)" >
+             <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="preventNegative(this)" >
+             <input type="number" id="FabRateI" placeholder="Fabric Rate" oninput="preventNegative(this)"  >
              <button id="Add" class="Add">+</button>
     
          </div>
@@ -327,10 +330,10 @@ function AddDCs (){
              </div>
              <div class="Total-Value">
              <input type="number" id="DebitFab" class="DebitFab" readonly value="0">
-             <input type="number" id="cgst" class="cgst" value="0">
-             <input type="number" id="sgst" class="sgst" value="0">
+             <input type="number" id="cgst" class="cgst" value="0" oninput="preventNegative(this)">
+             <input type="number" id="sgst" class="sgst" value="0" oninput="preventNegative(this)">
              <input type="number" id="CashAMT" Class="CashAMT" value="0" readonly>
-             <input type="number" id="RTGSAMT" Class="RTGSAMT" value="0">
+             <input type="number" id="RTGSAMT" Class="RTGSAMT" value="0" oninput="preventNegative(this)">
              <input type="number" id="TotalAMT" value="0" readonly>
          </div>
      </div>
@@ -344,14 +347,8 @@ function AddDCs (){
      
 }
 
-// Function to add a new line within a specific container
 function AddLine(container){
 
-     SumTotal(container);
-
-  
-
-    
     
     const AddLineIteam = container.querySelector(".AddLine-Iteam");
     const DcNoInput = container.querySelector("#DcNoI");
@@ -378,16 +375,16 @@ function AddLine(container){
     AddLineIteam.insertAdjacentHTML("beforeend", `
     <div class="AddLine-Fabric">
     <input type="number" value="0" class="sndc" style="width: 50px;" readonly="readonly" disabled>
-    <input type="number" id="DcNo" value="${DcNoInput.value}" oninput="validity.valid||(value='');" min="0">
-    <input type="number" id="TotalPcs" value="${TotalPcsInput.value}" oninput="validity.valid||(value='');" min="0">
-    <input type="number" id="CNSPTN" value="${CNSPTNInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
-    <input type="number" id="Rate" value="${RateInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
-    <input type="number" id="UsedMtr" value="${CNSPTNInput.value*TotalPcsInput.value}" step="any" oninput="validity.valid||(value='');" min="0.01" step="0.01">
-    <input type="number" id="TotalMTR" value="${TotalMTRInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+    <input type="number" id="DcNo" value="${DcNoInput.value}" oninput="preventNegative(this)">
+    <input type="number" id="TotalPcs" value="${TotalPcsInput.value}" oninput="preventNegative(this)">
+    <input type="number" id="CNSPTN" value="${CNSPTNInput.value}" oninput="preventNegative(this)">
+    <input type="number" id="Rate" value="${RateInput.value}" oninput="preventNegative(this)">
+    <input type="number" id="UsedMtr" value="${CNSPTNInput.value*TotalPcsInput.value}" step="any" oninput="preventNegative(this)">
+    <input type="number" id="TotalMTR" value="${TotalMTRInput.value}" oninput="preventNegative(this)">
     <input type="number" id="WasteMTRv" readonly value="${TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value)}" step="any" >
-    <input type="number" id="FabRatev" value="${FabRateInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
-    <input type="number" id="Debit" readonly value="${(TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value))*FabRateInput.value}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
-    <input type="number" id="Total" readonly value="${(TotalPcsInput.value*RateInput.value)}" oninput="validity.valid||(value='');" min="0.01" step="0.01">
+    <input type="number" id="FabRatev" value="${FabRateInput.value}" oninput="preventNegative(this)">
+    <input type="number" id="Debit" readonly value="${(TotalMTRInput.value - (CNSPTNInput.value * TotalPcsInput.value))*FabRateInput.value}" oninput="preventNegative(this)">
+    <input type="number" id="Total" readonly value="${(TotalPcsInput.value*RateInput.value)}" oninput="preventNegative(this)">
     <button class="DeleteBtn ">
     X
     </button>
@@ -416,7 +413,6 @@ function AddLine(container){
         Debit.value = RestMTR.value*FabRate.value;
         Total.value = TotalPcs.value*Rate.value;
         TotalCalculator(container);
-        GrandTotalUpdate ();
         
     });
     CNSPTN.addEventListener("input",()=>{
@@ -424,38 +420,36 @@ function AddLine(container){
       RestMTR.value = TotalMTR.value - UsedMTR.value;
       Debit.value = RestMTR.value*FabRate.value;
       TotalCalculator(container);
-      GrandTotalUpdate ();
+      
     });
     Rate.addEventListener("input",()=>{
         Total.value = TotalPcs.value*Rate.value;
         TotalCalculator(container);
-        GrandTotalUpdate ();
+        
     });
     
     TotalMTR.addEventListener("input",()=>{
         RestMTR.value = TotalMTR.value - UsedMTR.value;
         Debit.value = RestMTR.value*FabRate.value;
         TotalCalculator(container);
-        GrandTotalUpdate ();
+       
 
     });
 
     FabRate.addEventListener("input",()=>{
         Debit.value = RestMTR.value*FabRate.value;
         TotalCalculator(container);
-        GrandTotalUpdate ();
+        
     });
     UsedMTR.addEventListener("input",()=>{
         CNSPTN.value = UsedMTR.value/TotalPcs.value;
         RestMTR.value = TotalMTR.value - UsedMTR.value;
         Debit.value = RestMTR.value*FabRate.value;
         TotalCalculator(container);
-        GrandTotalUpdate ();
     });
 
 
 
-  TotalCalculator(container);
        AddLineIteam.value = "";
        DcNoInput.value = "";
        TotalPcsInput.value = "";
@@ -497,68 +491,22 @@ function AddLine(container){
         TotalMTRInput.focus();
         TotalMTRInput.classList.add("Empty");
     }
-    //   else  if (FabRateInput.value === "") {
-    //     FabRateInput.focus();
-    //     FabRateInput.classList.add("Empty");
-    // }  
-    GrandTotalUpdate ();
+    TotalCalculator(container);
 };
 
-function GrandTotalUpdate (){
-    const GrandTotal = document.getElementById("GrandTotal");
-    const RTGSTotal = document.getElementById("RTGSTotal");
-    const CashTotal = document.getElementById("CashTotal");
-
-    const CashAmtS = document.querySelectorAll(".CashAMT");
-     let CASHAMTDC = 0;
-    CashAmtS.forEach(Amt => {
-        CASHAMTDC =+ parseInt(Amt.value);
-    });
-    const RTGSAmtS = document.querySelectorAll(".RTGSAMT");
-     let RTGSAMTDC = 0;
-    RTGSAmtS.forEach(rAmt => {
-        RTGSAMTDC =+ parseInt(rAmt.value);
-    });
-    const DebitAmtS = document.querySelectorAll(".DebitFab");
-     let DebitAMTDC = 0;
-    DebitAmtS.forEach(dAmt => {
-        DebitAMTDC =+ parseInt(dAmt.value);
-    });
-    const cgstAmtS = document.querySelectorAll(".cgst");
-     let cgstAMTDC = 0;
-       cgstAmtS.forEach(cgst => {
-        cgstAMTDC =+ parseInt(cgst.value);
-    });
-    const sgstAmtS = document.querySelectorAll(".sgst");
-     let sgstAMTDC = 0;
-    sgstAmtS.forEach(sgst => {
-        sgstAMTDC =+ parseInt(sgst.value);
-    });
-
-    CashTotal.value = CASHAMTDC - (parseInt(document.getElementById("SubtotalM").value)+parseInt(document.getElementById("CashTotalPayment").value) + DebitAMTDC);
-    RTGSTotal.value = RTGSAMTDC - parseInt(document.getElementById("RtgsTotalPayment").value) ;
-
-
-    GrandTotal.value = sgstAMTDC + cgstAMTDC + parseInt(CashTotal.value);
-}
 function RemovePayment (PaymentLine){
     PaymentLine.remove();
     TotalPayment ();
     UpdateSerialPayment()
-    GrandTotalUpdate ()
 }
 function RemoveMaterial (MaterialLine){
     MaterialLine.remove()
     TotalMaterial ()
-    GrandTotalUpdate ()
 }
 function RemoveDc(Dc , container){
     Dc.remove();
     TotalCalculator (container);
     UpdateSerialDC (container);
-    GrandTotalUpdate ()
-
- 
 }
 
 function TotalPayment (){
@@ -574,11 +522,11 @@ function TotalPayment (){
 
     if (TypeInput.value === "0" || TypeInput.value === "2" ||TypeInput.value === "3" ||TypeInput.value === "6" ||TypeInput.value === "7") {
         TaxCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        GrandTotalUpdate ();
+        
         
     } else if (TypeInput.value === "1" || TypeInput.value === "4" || TypeInput.value === "5") {
         CashCount += parseInt(TypeInput.previousSibling.previousSibling.value)
-        GrandTotalUpdate ();
+        
         
     }});
 
@@ -637,66 +585,142 @@ function TotalMaterial (){
    GrandTotalUpdate ();
 }
 function TotalCalculator (container){
+    const RTGSAMT = container.querySelector("#RTGSAMT");
     // debit total
     let DebitNum = 0;
     container.querySelectorAll("#Debit").forEach(debit => {DebitNum +=  parseInt(debit.value);});
     container.querySelector("#DebitFab").value=DebitNum;
 
-    //Final Amount
-    SumTotal (container);
-    CashTotal (container)
-    container.querySelector("#TotalAMT").value = parseInt(container.querySelector("#RTGSAMT").value) + parseInt(container.querySelector("#CashAMT").value);
-    GrandTotalUpdate ();
-}
-function CashTotal (container){
-        // total amount cash
-        const RTGSAMT = container.querySelector("#RTGSAMT");
+     // cheque total
+     const CGST = container.querySelector("#cgst");
+     const SGST = container.querySelector("#sgst");
+     const CashAmt = container.querySelector("#CashAMT");
+ 
+     CGST.addEventListener("input",()=>{
+        SGST.value = CGST.value;
+        RTGSAMT.value = ((SGST.value * 2) / 0.05) + SGST.value * 2;
         let  CashNum = 0;
         container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
-        container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value);
-        TotalCalculator (container);
+        container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value) + parseFloat(CGST.value)+ parseFloat(SGST.value) - parseInt(container.querySelector("#DebitFab").value) ;     
+        container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + parseFloat(RTGSAMT.value)   ;   
         GrandTotalUpdate ();
+    })
+     SGST.addEventListener("input",()=>{
+        CGST.value = SGST.value;
+        RTGSAMT.value = ((SGST.value * 2) / 0.05) + SGST.value * 2;
+        let  CashNum = 0;
+        container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
+        container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value) + parseFloat(CGST.value)+ parseFloat(SGST.value) - parseInt(container.querySelector("#DebitFab").value);
+        container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + parseFloat(RTGSAMT.value)  ;   
+        GrandTotalUpdate ();
+    })
+     RTGSAMT.addEventListener("input",()=>{
+        CGST.value = ((RTGSAMT.value /100) *5)/2;
+        SGST.value = ((RTGSAMT.value /100) *5)/2;
+
+        let  CashNum = 0;
+        container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
+        container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value) + parseFloat(CGST.value)+ parseFloat(SGST.value) - parseInt(container.querySelector("#DebitFab").value);
+        container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + parseFloat(RTGSAMT.value)   ; 
+        GrandTotalUpdate ();
+    })    
+
+    // total amount cash
+    let  CashNum = 0;
+    container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
+    container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value) + parseFloat(CGST.value)+ parseFloat(SGST.value) - parseInt(container.querySelector("#DebitFab").value) ;
+
+
+    
+    //Final Amount
+    container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + parseFloat(RTGSAMT.value)   ; 
+    GrandTotalUpdate ();
+
 }
-function SumTotal (container){
-         // cheque total
-         const CGST = container.querySelector("#cgst");
-         const SGST = container.querySelector("#sgst");
-         const RTGSAMT = container.querySelector("#RTGSAMT");
-         const CashAmt = container.querySelector("#CashAMT");
-         const debit = container.querySelector("#DebitFab");
+
+function GrandTotalUpdate (){
+    const GrandTotal = document.getElementById("GrandTotal");
+    const RTGSTotal = document.getElementById("RTGSTotal");
+    const CashTotal = document.getElementById("CashTotal");
+
+    const CashAmtS = document.querySelectorAll(".CashAMT");
+     let CASHAMTDC = 0;
+    CashAmtS.forEach(Amt => {
+        CASHAMTDC =+ parseInt(Amt.value);
+    });
+    const RTGSAmtS = document.querySelectorAll(".RTGSAMT");
+     let RTGSAMTDC = 0;
+    RTGSAmtS.forEach(rAmt => {
+        RTGSAMTDC =+ parseInt(rAmt.value);
+    });
+
+    const cgstAmtS = document.querySelectorAll(".cgst");
+     let cgstAMTDC = 0;
+       cgstAmtS.forEach(cgst => {
+        cgstAMTDC =+ parseInt(cgst.value);
+    });
+    const sgstAmtS = document.querySelectorAll(".sgst");
+     let sgstAMTDC = 0;
+    sgstAmtS.forEach(sgst => {
+        sgstAMTDC =+ parseInt(sgst.value);
+    });
+
+    CashTotal.value = CASHAMTDC - (parseInt(document.getElementById("SubtotalM").value)+parseInt(document.getElementById("CashTotalPayment").value));
+    RTGSTotal.value = RTGSAMTDC - parseInt(document.getElementById("RtgsTotalPayment").value) ;
+
+
+    GrandTotal.value = parseFloat(RTGSTotal.value) +  parseInt(CashTotal.value);
+}
+// function CashTotal (container){
+//         // total amount cash
+//         const RTGSAMT = container.querySelector("#RTGSAMT");
+//         let  CashNum = 0;
+//         container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
+//         container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value);
+//         TotalCalculator (container);
+//         GrandTotalUpdate ();
+// }
+// function {
+//          // cheque total
+//          const CGST = container.querySelector("#cgst");
+//          const SGST = container.querySelector("#sgst");
+//          const RTGSAMT = container.querySelector("#RTGSAMT");
+//          const CashAmt = container.querySelector("#CashAMT");
+//          const debit = container.querySelector("#DebitFab");
      
-         CGST.addEventListener("input",()=>{
-            SGST.value = CGST.value;
-            RTGSAMT.value = (CGST.value * 2) / 0.05;
-            container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
-            CashTotal (container)
-            TotalCalculator (container)
-            GrandTotalUpdate ();
+//          CGST.addEventListener("input",()=>{
+//             SGST.value = CGST.value;
+//             RTGSAMT.value = (CGST.value * 2) / 0.05;
+//             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+//             CashTotal (container)
+//             TotalCalculator (container)
+//             GrandTotalUpdate ();
             
-         })
-         SGST.addEventListener("input",()=>{
-            CGST.value = SGST.value;
-            RTGSAMT.value = (SGST.value * 2) / 0.05;
-            container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
-            CashTotal (container)
-            TotalCalculator (container)
-            GrandTotalUpdate ();
+//          })
+//          SGST.addEventListener("input",()=>{
+//             CGST.value = SGST.value;
+//             RTGSAMT.value = (SGST.value * 2) / 0.05;
+//             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+//             CashTotal (container)
+//             TotalCalculator (container)
+//             GrandTotalUpdate ();
 
-         })
-         RTGSAMT.addEventListener("input",()=>{
-            CGST.value = ((RTGSAMT.value /100) *5)/2;
-            SGST.value = ((RTGSAMT.value /100) *5)/2;
-            RTGSAMT.value = (SGST.value * 2) / 0.05;
-            container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
-            CashTotal (container)
-            TotalCalculator (container)
-            GrandTotalUpdate ();
-         })
+//          })
+//          RTGSAMT.addEventListener("input",()=>{
+//             CGST.value = ((RTGSAMT.value /100) *5)/2;
+//             SGST.value = ((RTGSAMT.value /100) *5)/2;
+//             RTGSAMT.value = (SGST.value * 2) / 0.05;
+//             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
+//             CashTotal (container)
+//             TotalCalculator (container)
+//             GrandTotalUpdate ();
+//          })
 
 
-}
+// }
 
 // value changes  
+
 document.body.addEventListener("keydown", (event) => {
     if (event.code === "Enter" || event.code === "NumpadEnter") {
         const target = event.target;
@@ -891,7 +915,6 @@ document.body.addEventListener("change", (event) => {
     event.target.innerHTML = innerhtml;
 
    TotalPayment();
-   GrandTotalUpdate ()
 });
 document.body.addEventListener("input",(event)=>{
     const I = event.target;
@@ -901,7 +924,6 @@ document.body.addEventListener("input",(event)=>{
             GrandTotalUpdate ();
         };
         TotalMaterial();
-        GrandTotalUpdate ();
     }
     
  });
@@ -945,5 +967,14 @@ function UpdateSerialPayment(){
     const snps = document.querySelectorAll(".SNp");
     for (let i = 0; i < snps.length; i++) {
         snps[i].value = i+1;
+    }
+}
+
+
+
+
+function preventNegative(input) {
+    if (input.value < 0 || input.value == "") {
+        input.value = 0;
     }
 }
