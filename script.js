@@ -294,7 +294,7 @@ function AddDCs (){
             </div>
             <div class="Container-Heading">
              <input style="width: 50px;" value="SN" type="text" readonly="readonly">
-             <select name="Doctype" id="Type" style="width:13.4%;"><option value="DcNO">Dc NO</option><option value="BillNO">Bill NO</option></select>
+             <input value="Dc No" type="text" readonly="readonly">
              <input value="Total Pcs" type="text" readonly="readonly">
              <input value="Consumption" type="text" readonly="readonly">
              <input value="Job Rate" type="text" readonly="readonly">
@@ -304,37 +304,38 @@ function AddDCs (){
              <input value="Fab Rate" type="text" readonly="readonly">
              <input value="Debits" type="text" readonly="readonly">
              <input value="Total" type="text" readonly="readonly">
+             <button class="DeleteBtn " style="visibility:hidden;">X</button>
            </div>
          <div class="AddLine-Iteam"></div>
          <div class="AddLine-Fabric">
          <div class="DcNoI">
          <label for="DcNoI">DcNo:</label>
-         <input type="number" id="DcNoI" placeholder="No" oninput="preventNegative(this)">
+         <input type="number" id="DcNoI" placeholder="______________" oninput="preventNegative(this)">
      </div>
      
      <div class="TotalPcsI">
          <label for="TotalPcsI">Total Pieces:</label>
-         <input type="number" id="TotalPcsI" placeholder="total PCS" oninput="preventNegative(this)">
+         <input type="number" id="TotalPcsI" placeholder="______________" oninput="preventNegative(this)">
      </div>
      
      <div class="CNSPTNI">
          <label for="CNSPTNI">Consumption:</label>
-         <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="preventNegative(this)">
+         <input type="number" id="CNSPTNI" placeholder="______________" oninput="preventNegative(this)">
      </div>
      
      <div class="RateI">
          <label for="RateI">Stitching Rate:</label>
-         <input type="number" id="RateI" placeholder="Stitching Rate" oninput="preventNegative(this)">
+         <input type="number" id="RateI" placeholder="______________" oninput="preventNegative(this)">
      </div>
      
      <div class="TotalMTRI">
          <label for="TotalMTRI">Total Meter:</label>
-         <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="preventNegative(this)">
+         <input type="number" id="TotalMTRI" placeholder="______________" oninput="preventNegative(this)">
      </div>
      
      <div class="FabRateI">
          <label for="FabRateI">Fabric Rate:</label>
-         <input type="number" id="FabRateI" placeholder="Fabric Rate" oninput="preventNegative(this)">
+         <input type="number" id="FabRateI" placeholder="______________" oninput="preventNegative(this)">
      </div>
      
              <button id="Add" class="Add">+</button>
