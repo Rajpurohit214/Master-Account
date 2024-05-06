@@ -307,13 +307,36 @@ function AddDCs (){
            </div>
          <div class="AddLine-Iteam"></div>
          <div class="AddLine-Fabric">
-             <input type="number" value="0" style="width: 50px;" readonly="readonly">
-             <input type="number" id="DcNoI" placeholder="No" oninput="preventNegative(this)"  >
-             <input type="number" id="TotalPcsI" placeholder="total PCS"  oninput="preventNegative(this)" >
-             <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="preventNegative(this)" >
-             <input type="number" id="RateI" placeholder="Stitching Rate" oninput="preventNegative(this)" >
-             <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="preventNegative(this)" >
-             <input type="number" id="FabRateI" placeholder="Fabric Rate" oninput="preventNegative(this)"  >
+         <div class="DcNoI">
+         <label for="DcNoI">DcNo:</label>
+         <input type="number" id="DcNoI" placeholder="No" oninput="preventNegative(this)">
+     </div>
+     
+     <div class="TotalPcsI">
+         <label for="TotalPcsI">Total Pieces:</label>
+         <input type="number" id="TotalPcsI" placeholder="total PCS" oninput="preventNegative(this)">
+     </div>
+     
+     <div class="CNSPTNI">
+         <label for="CNSPTNI">Consumption:</label>
+         <input type="number" id="CNSPTNI" placeholder="Consumption" oninput="preventNegative(this)">
+     </div>
+     
+     <div class="RateI">
+         <label for="RateI">Stitching Rate:</label>
+         <input type="number" id="RateI" placeholder="Stitching Rate" oninput="preventNegative(this)">
+     </div>
+     
+     <div class="TotalMTRI">
+         <label for="TotalMTRI">Total Meter:</label>
+         <input type="number" id="TotalMTRI" placeholder="Total Meter" oninput="preventNegative(this)">
+     </div>
+     
+     <div class="FabRateI">
+         <label for="FabRateI">Fabric Rate:</label>
+         <input type="number" id="FabRateI" placeholder="Fabric Rate" oninput="preventNegative(this)">
+     </div>
+     
              <button id="Add" class="Add">+</button>
     
          </div>
@@ -671,77 +694,29 @@ function GrandTotalUpdate (){
 
     GrandTotal.value = parseFloat(RTGSTotal.value) +  parseInt(CashTotal.value);
 }
-// function CashTotal (container){
-//         // total amount cash
-//         const RTGSAMT = container.querySelector("#RTGSAMT");
-//         let  CashNum = 0;
-//         container.querySelectorAll("#Total").forEach(Cash => {CashNum +=  parseInt(Cash.value);});
-//         container.querySelector("#CashAMT").value= ( CashNum - RTGSAMT.value);
-//         TotalCalculator (container);
-//         GrandTotalUpdate ();
-// }
-// function {
-//          // cheque total
-//          const CGST = container.querySelector("#cgst");
-//          const SGST = container.querySelector("#sgst");
-//          const RTGSAMT = container.querySelector("#RTGSAMT");
-//          const CashAmt = container.querySelector("#CashAMT");
-//          const debit = container.querySelector("#DebitFab");
-     
-//          CGST.addEventListener("input",()=>{
-//             SGST.value = CGST.value;
-//             RTGSAMT.value = (CGST.value * 2) / 0.05;
-//             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
-//             CashTotal (container)
-//             TotalCalculator (container)
-//             GrandTotalUpdate ();
-            
-//          })
-//          SGST.addEventListener("input",()=>{
-//             CGST.value = SGST.value;
-//             RTGSAMT.value = (SGST.value * 2) / 0.05;
-//             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
-//             CashTotal (container)
-//             TotalCalculator (container)
-//             GrandTotalUpdate ();
 
-//          })
-//          RTGSAMT.addEventListener("input",()=>{
-//             CGST.value = ((RTGSAMT.value /100) *5)/2;
-//             SGST.value = ((RTGSAMT.value /100) *5)/2;
-//             RTGSAMT.value = (SGST.value * 2) / 0.05;
-//             container.querySelector("#TotalAMT").value=  parseInt(CashAmt.value) + (parseInt(SGST.value) + parseInt(CGST.value));
-//             CashTotal (container)
-//             TotalCalculator (container)
-//             GrandTotalUpdate ();
-//          })
-
-
-// }
-
-// value changes  
 
 document.body.addEventListener("keydown", (event) => {
     if (event.code === "Enter" || event.code === "NumpadEnter") {
         const target = event.target;
         if (target.id == "DcNoI") {
                 
-                target.parentElement.querySelector("#TotalPcsI").focus()
+                target.parentElement.parentElement.querySelector("#TotalPcsI").focus()
             }else if (target.id == "TotalPcsI" ) {
                 
-                target.parentElement.querySelector("#CNSPTNI").focus()
+                target.parentElement.parentElement.querySelector("#CNSPTNI").focus()
             }else if (target.id == "CNSPTNI" ) {
                 
-                target.parentElement.querySelector("#RateI").focus()
+                target.parentElement.parentElement.querySelector("#RateI").focus()
             }else if (target.id == "RateI" ) {
                 
-                target.parentElement.querySelector("#TotalMTRI").focus()
+                target.parentElement.parentElement.querySelector("#TotalMTRI").focus()
             }else if (target.id == "TotalMTRI" ) {
                 
-                target.parentElement.querySelector("#FabRateI").focus()
+                target.parentElement.parentElement.querySelector("#FabRateI").focus()
             }else if (target.id == "FabRateI" ) {
                 
-                const container = target.parentElement.parentElement;
+                const container = target.parentElement.parentElement.parentElement;
                 const AddLineIteam = container.querySelector(".AddLine-Iteam");
                 AddLine(container,AddLineIteam);
                 //target.parentElement.querySelector("#DcNoI").focus()
