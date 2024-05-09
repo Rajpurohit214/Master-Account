@@ -48,14 +48,20 @@ input[type="date"] {
     height: 30px;
 }
 
+
 .DELETE{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: brown;
-    color: white;
-    border: 0PX;
+  background: transparent;
+  position: relative;
+    color: rgb(199, 83, 83);
     float: right;    
+    border: none;
+
+    transition: 400ms;
+}
+.DELETE:hover{
+  cursor: pointer;
+  color: rgb(255, 0, 0);
+  transform: rotate(180deg);
 }
 
 .AddLine-Fabric{
@@ -81,6 +87,60 @@ input[type="date"] {
  left: 10px;
  background: rgb(18, 71, 71);
  width:fit-content;
+}
+#billno{
+  border-radius: 10px 0px 0px 0px;
+  border-color: white;
+  border-right: 0px;
+  background: rgba(16, 34, 30, 0.836);
+  outline: none;
+  color: white;
+  height: 30px;
+  margin-right: 0px;
+  width: 80px;
+}
+#DocType{
+  border-radius: 0px 0px 10px 0px;
+  border-color: white;
+  border-left: 0px;
+  background: rgba(16, 34, 30, 0.836);
+  outline: none;
+  color: white;
+  height: 30px;
+  margin-right: 20px;
+  width: 70px;
+  
+}
+#billdate{
+  border-radius: 10px 0px 0px 0px;
+  border-color: white;
+  border-right: 0px;
+  background: rgba(16, 34, 30, 0.836);
+  outline: none;
+  color: white;
+  height: 30px;
+  margin-right: 0px;
+  width: 80px;
+}
+#DocDate{
+  border-radius: 0px 0px 10px 0px;
+  border-color: white;
+  border-left: 0px;
+  background: rgba(16, 34, 30, 0.836);
+  outline: none;
+  color: white;
+  height: 30px;
+  margin-right: 20px;
+  width: 150px;
+}
+#DocDate[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+  
+}
+
+.Bill-Details{
+  display: flex;
+
 }
 
 .AddLine-Fabric input{
@@ -124,9 +184,31 @@ input{
     display: flex;
     justify-content: center ;
 }
+#Adddiv{
+
+    justify-content: end ;
+}
 
 
 /* BTN ADD */
+.BtnA {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+  width: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(48, 177, 31);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px  rgb(35, 131, 23);
+  transition-duration: .3s;
+  margin: 5px;
+}
 .BtnM {
   position: relative;
   display: flex;
@@ -224,7 +306,7 @@ input{
     transition-duration: .3s;
   }
 
-  .svg,.svgM,.svgMX,.svgP,.svgPX {
+  .svg,.svgM,.svgMX,.svgP,.svgPX,.svgA {
     width: 12px;
     position: absolute;
     right: -6px;
@@ -234,7 +316,7 @@ input{
        
   }
   
-  .Btn:hover,.BtnM:hover,.BtnMX {
+  .Btn:hover,.BtnM:hover,.BtnMX,.BtnA {
     color: transparent;
   }
   
@@ -250,6 +332,11 @@ input{
     transform: translate(3px , 3px);
     transition-duration: .3s;
     box-shadow: 2px 2px 0px rgb(140, 32, 212);
+  }
+  .BtnA:active  {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 2px 2px 0px rgb(35, 131, 23);
   }
   .BtnM:active {
     transform: translate(3px , 3px);

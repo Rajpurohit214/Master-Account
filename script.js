@@ -6,7 +6,13 @@ window.addEventListener("load", ()=>{
 document.body.addEventListener("click", (click) => {
     const target = click.target;
     // Check if the clicked element is an button
-    if (target.classList.contains("Add")) {
+    if (target.classList.contains("BtnA")) {
+        const container = target.closest(".Main-Container");
+        const AddLineIteam = container.querySelector(".AddLine-Iteam");
+        
+        AddLine(container,AddLineIteam);
+    }
+    if (target.classList.contains("svgA")) {
         const container = target.closest(".Main-Container");
         const AddLineIteam = container.querySelector(".AddLine-Iteam");
         
@@ -285,12 +291,14 @@ function AddDCs (){
    
     MainBox.insertAdjacentHTML("beforeend", `
          <div class="Main-Container">
-            <button class="DELETE">X</button>
+            <button class=" DELETE material-symbols-outlined">
+            delete_forever
+            </button>
             <div class="Bill-Details">
-             <select name="Doctype" id="Type"><option value="BillNO">Bill NO</option><option value="DcNO">Dc NO</option></select>
-             <input type="text" id="DocType">
-             <input type="text" value="Doc Date">
-             <input type="date" id="DocType">
+             <input type="text" value ="Bill No    :-" id="billno" readonly>
+             <input type="text" id="DocType" placeholder="_______">
+             <input type="text" value="Doc Date   :-" readonly id ="billdate">
+             <input type="date" id="DocDate" value="2024-04-01">
             </div>
             <div class="Container-Heading">
              <input style="width: 50px;" value="SN" type="text" readonly="readonly">
@@ -337,8 +345,13 @@ function AddDCs (){
          <label for="FabRateI">Fabric Rate:</label>
          <input type="number" id="FabRateI" placeholder="______________" oninput="preventNegative(this)">
      </div>
-     
-             <button id="Add" class="Add">+</button>
+             <div id="Adddiv" >
+             <button class="BtnA" id="Add">
+                 <svg class="svgA" viewbox="0 0 24 24" width="50px" height="50px">
+                     <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
+                 </svg>
+             </button>
+      </div>
     
          </div>
     
