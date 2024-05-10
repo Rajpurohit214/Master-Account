@@ -183,7 +183,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
     PaymentBox.insertAdjacentHTML(
         "beforeend",
         `
-    <div class="Material-Names">
+    <div class="Material-Line">
                 <input type="number" name="SN" id="SNp" class="SNp" style="width: 40px;" value="0" readonly disabled>
                 <input type="date" name="PaymentDateInput" id="PaymentDateValue"  value="${DateInput.value}">
                 <input type="number" name="AmountInput" class="AmountValue" id="AmountValue"  value="${AmountInput.value}" placeholder="Enter Amount">
@@ -256,7 +256,7 @@ function AddMaterial(){
     
         const MaterialBox = document.querySelector(".addlinematerial")
     MaterialBox.insertAdjacentHTML("beforeend",`
-      <div class="Material-Names" id="Material" >
+      <div class="Material-line" id="Material" >
       <input type="number" name="SlipNoRate" id="SlipNoRate" value="${SlipNoValue.value}"  style="width: 90px; " placeholder="NO">
       <input type="date" name="DateRate" id="DateRate" value="${DateValue.value}"  >
       <input type="number" name="FlatCoverRate" id="FlatCoverRate" class="FlatCoverRate" value="${FlatCoverValue.value}" placeholder="Flat-Cover" oninput="preventNegative(this)">

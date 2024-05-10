@@ -190,7 +190,7 @@ input{
 }
 
 
-/* BTN ADD */
+/* BTN ADD---------------------------------------------*/
 .BtnA {
   position: relative;
   display: flex;
@@ -358,12 +358,6 @@ input{
     transition-duration: .3s;
     box-shadow: 0px 0px 0px rgb(94, 16, 16);
   }
-
-
-
-
-
-
   .DeleteBtn {
     color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -373,87 +367,176 @@ input{
     height: 30px;
     transition-duration: 0.3s;
   }
-
- 
-  
   .DeleteBtn:hover {
     background-color: rgb(255, 0, 0);
     transform: scale(0.9);
   }
  
-  .Material-Names{
+
+/*material container -------------------------------------------------*/
+.Material-Container{
+  margin: 20px 10px 20px 20px;
+ }
+  .Material-Container{
+    box-sizing: border-box;
+    box-shadow: 0 2 0;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 0px 2px 1px black;
+    background-color: rgb(27, 38, 73);
+    width: calc(100vw - 30px);
+}
+  .Material-Names, .Material-Value,  .Material-Line,  .Material-Input{
     display: flex;
     flex-grow: 0;
     max-width: 100%;
     box-sizing: border-box;
-   
-    
   }
-  .Material-value{
+  .Material-Input input{
+    border-radius: 10px 0px 10px 0px;
+    border-color: white;
+    background: rgba(16, 23, 46, 0.863);
+    outline: none;
+    color: white;
+    margin-left: 5px;
+  }
+  #DateValue{
+    width: 169px;
+  }
+  .SubTotalM{
     display: flex;
+    justify-content: center;
+  }
+
+  .Material-Sub{
+    display: flex;
+    flex-grow: 0;
     max-width: 100%;
     box-sizing: border-box;
-    
   }
-  .Material-Names input{
-   min-width: 0;
+  #Material input {
+    border-color: white;
+    height: 40px;
+    background: transparent;
+    outline: none;
+    color: white;
+    margin-left: 5px;
+  }
+  .Material-Sub input {
+    border-radius: 10px 0px 10px 0px;
+    border-color: white;
+    background: rgba(16, 23, 46, 0.863);
+    outline: none;
+    color: white;
+    margin-left: 5px;
+  }
+
+  #SubtotalMT {
+    border-right: none;
+    border-radius: 10px 0px 0px 0px;
+    border-color: white;
+    background: rgba(16, 23, 46, 0.863);
+    outline: none;
+    color: white;
+  }
+  #SubtotalM {
+    border-left: none;
+    border-radius: 0px 0px 10px 0px;
+    border-color: white;
+    background: rgba(16, 23, 46, 0.863);
+    outline: none;
+    color: white;
+    width: 100PX;
+  }
+
+  #DateRate{
+    width: 169px;
+  }
+  #Material  {
+    display: flex;
+    flex-grow: 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
-  .Material-Container{
-      box-sizing: border-box;
-
-      box-shadow: 0 2 0;
-      border-radius: 20px;
-      padding: 10px;
-      box-shadow: 0 0px 10px 1px black;
-      background-color: rgb(27, 38, 73);
-      width: calc(100vw - 30px);
+  .Material-Names input{
+    border-radius: 0px 0px 10px 0px;
+    border-color: white;
+    border-top: none;
+    background: rgba(16, 23, 46, 0.863);
+    outline: none;
+    color: white;
+    margin-left: 5px;
+    
   }
+  .Material-Names,  .Material-Line,  .Material-Input,.Material-Sub,.SubTotalM,#Material{
+    margin-bottom: 5px;
+  }
+  #sign{
+    margin-bottom: 5px;
+    border-bottom: 2px solid white;
+  }
+  #SlipNoName,#SlipDateName,#sign{
+    border-top: 2px solid white;
+    border-radius: 10px 0px 10px 0px;
+  }
+  .Material-Value input{
+    border-radius: 10px 0px 0px 0px;
+    border-color: white;
+    background: rgba(16, 23, 46, 0.863);
+    outline: none;
+    color: white;
+    border-bottom: 0;
+    margin-left: 5px;
+  }
+  #SubtotalMT,#SubtotalM{
+    height: 30px;
+  }
+  
+/* payment container -----------------------------------------------------------*/
   .Payment-Container{
       box-sizing: border-box;
-
       box-shadow: 0 2 0;
       border-radius: 20px;
       padding: 10px;
-      box-shadow: 0 0px 10px 1px black;
+      box-shadow: 0 0px 5px 1px black;
       background-color: rgb(104, 28, 28);
       width: calc(65vw - 30px);
   }
-
+/* ammount box of total and payment ---------------------------*/
   .Material-PaymentContainer{
     display: grid;
     grid-template-columns: auto auto;
-    
-
+  
   }
-  .Material-Container{
-    margin: 20px 10px 20px 20px;
 
-}
 .Payment-Container{
     margin: 20px 20px 20px 10px;
 
 }
-
-
 input::-webkit-inner-spin-button{
     display: none;
     -webkit-appearance: none;
 }
-
-.SubTotalM{
-  display: flex;
-  justify-content: center;
+.Payment-Names,.Payment-Input,.Total-Payment{
+    display: flex;
+    flex-grow: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.Payment-Names input, .Payment-Input input ,.Total-Payment input{
+  border-radius: 10px 0px 10px 0px;
+  border-color: white;
+  background: rgba(16, 23, 46, 0.863);
+  outline: none;
+  color: white;
+  margin-left: 5px;
 }
 
-.Material-Container input {
-  margin: 2px;
-  gap: 2px;
-}
-#SubtotalMT,#SubtotalM{
-  height: 30px;
-}
 
+
+
+/* ammount box of total and payment ---------------------------*/
 .AMTDiv{
   justify-content: center;
   display: flex;

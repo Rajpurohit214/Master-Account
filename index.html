@@ -23,7 +23,7 @@
         </section>
         <section class="Material-PaymentContainer">
          <div class="Material-Container">
-            <div class="Material-Names">
+            <div class="Material-Value">
                 <input type="text" name="Rate" id="Rate"  value="Rate" style="visibility: hidden; width: 90px; ">
                 <input type="text" name="Sign" id="sign" value="Rate's :-"  >
                 <input type="number" name="FlatCoverRs" id="FlatCoverRs" class="FlatCoverRs"value="1.5" >
@@ -58,7 +58,7 @@
              </div>
             </div>
             <div class="addlinematerial"></div>
-            <div class="Material-Names">
+            <div class="Material-Input">
                 <input type="number" name="SlipNoValue" id="SlipNoValue" value=""  style="width: 90px; " placeholder="No" oninput="validity.valid||(value='');" min="0">
                 <input type="date" name="DateValue" id="DateValue" value="2024-01-04"  >
                 <input type="number" name="FlatCoverValue" id="FlatCoverValue" value=""  oninput="validity.valid||(value='');" min="0" placeholder="Flat-Cover">
@@ -75,7 +75,7 @@
                     </button>
                 </div>
             </div>
-            <div class="Material-Names">
+            <div class="Material-Sub">
                 <input type="number" name="SlipNoValue" id="Sl" value="0"  style="visibility: hidden; width: 90px;">
                 <input type="text" name="SubTotal" id="SubTotal" value="SUB TOTAL    :-" >
                 <input type="number" name="FlatCoverSubTotal" id="FlatCoverSubTotal"  class="Stotal" value="0" readonly>
@@ -93,14 +93,14 @@
                 </div>
             </div>
             <div class="SubTotalM">
-                 <input type="text" value="Final TOTAL" id="SubtotalMT" readonly>
+                 <input type="text" value="    Final TOTAL AMOUNT  :-" id="SubtotalMT" readonly>
                  <input type="number" name="SubtotalM" id="SubtotalM" readonly value="0">
             </div>
          </div>
         </section>
         <section class="Material-PaymentContainer">
          <div class="Payment-Container" >
-            <div class="Material-Names">
+            <div class="Payment-Names">
                 <input type="text" name="SN" id="SNp" value="SN" readonly style="width: 40px;" >
                 <input type="text" name="PaymentDateName" id="PaymentDateName" value="Date" readonly>
                 <input type="text" name="AmountName" id="AmountName" value="Amount" readonly >
@@ -114,8 +114,9 @@
                     </button>
              </div>
             </div>
-            <div class="addlinepayment"></div>
-            <div class="Material-Names">
+            <div class="addlinepayment">    
+            </div>
+            <div class="Payment-Input">
                 <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0" readonly disabled>
                 <input type="date" name="PaymentDateInput" id="PaymentDateInput" >
                 <input type="number" name="AmountInput" id="AmountInput"  value="" placeholder="Enter Amount" oninput="validity.valid||(value='');" min="0" required> 
@@ -138,7 +139,7 @@
                     </button>
                 </div>
             </div>
-            <div class="Material-Names">
+            <div class="Total-Payment">
                 <input type="text" name="CashTotalP" id="CashTotalP" value="W/O Tax Amount" readonly>
                 <input type="number" name="CashTotalPayment" id="CashTotalPayment" value="0"   readonly>
 
@@ -163,6 +164,7 @@
                 <h3>Total Amount :- </h3>
                 <input type="number" id="GrandTotal">
             </div>
+            
          </div>
         </section>
         <script src="script.js"></script>
