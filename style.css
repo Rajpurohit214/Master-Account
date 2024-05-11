@@ -85,7 +85,7 @@ input[type="date"] {
  transform-origin: 0% 0%;
  pointer-events: none;
  left: 10px;
- background: rgb(18, 71, 71);
+ background: linear-gradient(rgb(18, 71, 71) 50%,rgba(16, 34, 30, 0.836) 50%);
  width:fit-content;
 }
 #billno{
@@ -133,7 +133,7 @@ input[type="date"] {
   margin-right: 20px;
   width: 150px;
 }
-#DocDate[type="date"]::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(100%);
   
 }
@@ -147,7 +147,7 @@ input[type="date"] {
   
   border-color: white;
   height: 40px;
-  background: rgb(18, 71, 71);
+  background: rgba(16, 34, 30, 0.836);
   outline: none;
   color: white;
 }
@@ -417,7 +417,7 @@ input{
   #Material input {
     border-color: white;
     height: 40px;
-    background: transparent;
+    background: rgba(16, 23, 46, 0.863);
     outline: none;
     color: white;
     margin-left: 5px;
@@ -502,6 +502,7 @@ input{
       box-shadow: 0 0px 5px 1px black;
       background-color: rgb(104, 28, 28);
       width: calc(65vw - 30px);
+      height: fit-content;
   }
 /* ammount box of total and payment ---------------------------*/
   .Material-PaymentContainer{
@@ -518,43 +519,99 @@ input::-webkit-inner-spin-button{
     display: none;
     -webkit-appearance: none;
 }
-.Payment-Names,.Payment-Input,.Total-Payment{
+.Payment-Names,.Payment-Input,.Total-Payment, .Payment-Line , .Total-Payment{
     display: flex;
     flex-grow: 0;
     max-width: 100%;
     box-sizing: border-box;
+   
 }
-.Payment-Names input, .Payment-Input input ,.Total-Payment input{
+.Payment-Names input, .Payment-Input input ,.Total-Payment input,.Payment-Line input{
   border-radius: 10px 0px 10px 0px;
   border-color: white;
-  background: rgba(16, 23, 46, 0.863);
+  background: rgb(63, 17, 17);
   outline: none;
   color: white;
   margin-left: 5px;
+  margin-bottom: 5px;
+  height: 30px;
+}
+.Payment-Line select,.Payment-Input select{
+  border-radius: 10px 0px 10px 0px;
+  border-color: white;
+  background: rgb(63, 17, 17);
+  outline: none;
+  color: white;
+  margin-left: 5px;
+
 }
 
+.Payment-Line select,.Payment-Input select{
+margin-bottom: 5px;
+  }
+.Payment-Line input[type="date"],.Payment-Input input[type="date"],.Payment-Line select,.Payment-Input select{
+width: 170px;
+text-align: center;
+}
+#SNp{
+  width: 61px;
+}
+#SNpi{
+  width: 61px;
+}
+#CashTotalP,#RtgsTotalP,#FinalTotalP{
+  border-radius: 10px 0px 0px 0px;
+  border-right: none;
+  margin-right: 0px;
 
+}
+#CashTotalPayment,#RtgsTotalPayment,#FinalTotalPayment{
+  border-radius: 0px 0px 10px 0px;
+  border-left: none;
+  margin-left: 0px;
+  width: 82px;
+}
 
 
 /* ammount box of total and payment ---------------------------*/
-.AMTDiv{
-  justify-content: center;
-  display: flex;
-  flex-grow: 0;
-  gap: 10px;
-}
+
 .Total-Container{
+  border-radius: 10px 0px 10px 0px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2 0;
-  border-radius: 20px;
-  padding: 10px;
+  height: 290px;
+  padding: 20px;
   box-shadow: 0 0px 10px 1px black;
   background-color: rgb(89, 22, 102);
   width: calc(30vw - 30px);
   text-align: center;
   margin: 20px;
   gap: 10px;
- 
   
+ 
+}
+
+.OpeningBalanceTax,.OpeningBalanceWithout,.AMTDiv{
+  justify-content: center;
+  display: flex;
+  flex-grow: 0;
+  gap: 10px;
+  height: 40px;
+  align-items: center;
+}
+
+h2,h3{
+  color: white;
+}
+
+.Total-Container input{
+  border-radius: 10px 0px 10px 0px;
+  height: 30px;
+}
+
+.pmt,.op{
+  border-radius: 10px 0px 10px 0px;
+  background-color: rgb(47, 12, 54);
+  padding: 10px;
 }

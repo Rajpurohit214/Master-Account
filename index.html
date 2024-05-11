@@ -101,7 +101,7 @@
         <section class="Material-PaymentContainer">
          <div class="Payment-Container" >
             <div class="Payment-Names">
-                <input type="text" name="SN" id="SNp" value="SN" readonly style="width: 40px;" >
+                <input type="text" name="SN" id="SNp" value="SN" readonly>
                 <input type="text" name="PaymentDateName" id="PaymentDateName" value="Date" readonly>
                 <input type="text" name="AmountName" id="AmountName" value="Amount" readonly >
                 <input type="text" name="TypeName" id="TypeName" value="Transaction Type" readonly>
@@ -117,7 +117,7 @@
             <div class="addlinepayment">    
             </div>
             <div class="Payment-Input">
-                <input type="number" name="SN" id="SNp"  style="width: 40px;" value="0" readonly disabled>
+                <input type="number" name="SN" id="SNpi"  value="0" readonly disabled>
                 <input type="date" name="PaymentDateInput" id="PaymentDateInput" >
                 <input type="number" name="AmountInput" id="AmountInput"  value="" placeholder="Enter Amount" oninput="validity.valid||(value='');" min="0" required> 
                 <select name="TypeI" id="TypeInput">
@@ -140,29 +140,41 @@
                 </div>
             </div>
             <div class="Total-Payment">
-                <input type="text" name="CashTotalP" id="CashTotalP" value="W/O Tax Amount" readonly>
+                <input type="text" name="CashTotalP" id="CashTotalP" value="W/O Tax Amount   :-" readonly>
                 <input type="number" name="CashTotalPayment" id="CashTotalPayment" value="0"   readonly>
 
-                <input type="text" name="RtgsTotalP" id="RtgsTotalP" value="Tax Amount" readonly>
+                <input type="text" name="RtgsTotalP" id="RtgsTotalP" value="Tax Amount   :-" readonly>
                 <input type="number" name="RtgsTotalPayment" id="RtgsTotalPayment" value="0" readonly>
 
-                <input type="text" name="FinalTotalP" id="FinalTotalP" value="Total Amount"  readonly>
+                <input type="text" name="FinalTotalP" id="FinalTotalP" value="Total Amount   :-"  readonly>
                 <input type="number" name="FinalTotalPayment" id="FinalTotalPayment" value="0" readonly>
             </div>
          </div>
          <div class="Total-Container" >
-            <h2>PAYABLE AMOUNT</h2>
-            <div class="AMTDiv">
+            <div class="op">
+              <div class="OpeningBalanceTax">
+                <h3>Cash Opening :- </h3>
+                <input type="number" id="OpeningBalanceTaxAmount">
+              </div>
+              <div class="OpeningBalanceWithout">
+                <h3>Rtgs Opening :- </h3>
+                <input type="number" id="CashTotalAmount">
+              </div>
+            </div>
+            <div class="pmt">
+              <h2>PAYABLE AMOUNT</h2>
+              <div class="AMTDiv">
                 <h3>Cash Amount :- </h3>
                 <input type="number" id="CashTotal">
-            </div>
-            <div class="AMTDiv">
-                <h3>RTGS Amount :- </h3>
+              </div>
+              <div class="AMTDiv">
+                <h3>Rtgs Amount :- </h3>
                 <input type="number" id="RTGSTotal">
-            </div>
-            <div class="AMTDiv">
+              </div>
+              <div class="AMTDiv">
                 <h3>Total Amount :- </h3>
                 <input type="number" id="GrandTotal">
+              </div>
             </div>
             
          </div>

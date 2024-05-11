@@ -183,8 +183,8 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
     PaymentBox.insertAdjacentHTML(
         "beforeend",
         `
-    <div class="Material-Line">
-                <input type="number" name="SN" id="SNp" class="SNp" style="width: 40px;" value="0" readonly disabled>
+    <div class="Payment-Line">
+                <input type="number" name="SN" id="SNpi" class="SNp"  value="0" readonly disabled>
                 <input type="date" name="PaymentDateInput" id="PaymentDateValue"  value="${DateInput.value}">
                 <input type="number" name="AmountInput" class="AmountValue" id="AmountValue"  value="${AmountInput.value}" placeholder="Enter Amount">
                 <select name="TypeI" class="TypeValue" id="TypeValue">${innerhtml}</select >
