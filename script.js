@@ -52,9 +52,18 @@ document.body.addEventListener("click", (click) => {
     }
     if(target.classList.contains("BtnP")){
         AddPayment();
+        target.parentElement.querySelector("#PaymentDateInput").focus();
+        let VALUE = 1;
+        AllClear(VALUE)
+        
     }
     if (target.classList.contains("svgP")) {
         AddPayment();
+
+        target.parentElement.parentElement.parentElement.querySelector("#PaymentDateInput").focus();
+        let VALUE = 1;
+        AllClear(VALUE)
+  
     }
     if (target.classList.contains("svgPX")) {
         PaymentLine = target.parentElement.parentElement.parentElement
@@ -679,6 +688,8 @@ function GrandTotalUpdate (){
     const GrandTotal = document.getElementById("GrandTotal");
     const RTGSTotal = document.getElementById("RTGSTotal");
     const CashTotal = document.getElementById("CashTotal");
+    const CashOpening = document.getElementById("CashTotalAmount");
+    const RtgsOpening = document.getElementById("OpeningBalanceTaxAmount");
 
     const CashAmtS = document.querySelectorAll(".CashAMT");
      let CASHAMTDC = 0;
@@ -702,8 +713,8 @@ function GrandTotalUpdate (){
         sgstAMTDC =+ parseInt(sgst.value);
     });
 
-    CashTotal.value = CASHAMTDC - (parseInt(document.getElementById("SubtotalM").value)+parseInt(document.getElementById("CashTotalPayment").value));
-    RTGSTotal.value = RTGSAMTDC - parseInt(document.getElementById("RtgsTotalPayment").value) ;
+    CashTotal.value =( CASHAMTDC - (parseInt(document.getElementById("SubtotalM").value)+parseInt(document.getElementById("CashTotalPayment").value))) + parseFloat(CashOpening.value);
+    RTGSTotal.value = (RTGSAMTDC - parseInt(document.getElementById("RtgsTotalPayment").value))+ parseFloat(RtgsOpening.value);
 
 
     GrandTotal.value = parseFloat(RTGSTotal.value) +  parseInt(CashTotal.value);
@@ -797,6 +808,11 @@ document.body.addEventListener("keydown", (event) => {
                 AddPayment();
                 let VALUE = 1;
                 AllClear(VALUE)
+                // openings
+            }else if (target.id == "OpeningBalanceTaxAmount"){
+                document.querySelector("#CashTotalAmount").focus();
+            }else if (target.id == "CashTotalAmount"){
+                document.querySelector("#OpeningBalanceTaxAmount").focus();
             }
     }
 });
@@ -907,7 +923,7 @@ document.body.addEventListener("change", (event) => {
 });
 document.body.addEventListener("input",(event)=>{
     const I = event.target;
-    if (I.classList.contains("FlatCoverRate") ||I.classList.contains("PattiCoverRate") ||I.classList.contains("RollCoverRate") ||I.classList.contains("MetalIDRate") ||I.classList.contains("ButtonGrossRate") ||I.classList.contains("FlatCoverRs") ||I.classList.contains("PattiCoverRs") ||I.classList.contains("RollCoverRs") ||I.classList.contains("MetalIDRs") ||I.classList.contains("ButtonGrossRs")||I.classList.contains("ExtraRs")) {
+    if (I.classList.contains("FlatCoverRate") ||I.classList.contains("PattiCoverRate") ||I.classList.contains("RollCoverRate") ||I.classList.contains("MetalIDRate") ||I.classList.contains("ButtonGrossRate") ||I.classList.contains("FlatCoverRs") ||I.classList.contains("PattiCoverRs") ||I.classList.contains("RollCoverRs") ||I.classList.contains("MetalIDRs") ||I.classList.contains("ButtonGrossRs")||I.classList.contains("ExtraRs")||I.classList.contains("OpeningBalanceTaxAmount")||I.classList.contains("CashTotalAmount")) {
         if (I.value == "") {
             I.value = 0;
             GrandTotalUpdate ();
@@ -916,6 +932,7 @@ document.body.addEventListener("input",(event)=>{
     }
     
  });
+
 
 
 function AllClear(VALUE){
