@@ -9,6 +9,25 @@ input[type="date"] {
   padding: 8px  solid;
   font-size: 16px;
 }
+
+.title{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+
+  box-sizing: border-box;
+  margin: 20px;
+  box-shadow: 0 2 0;
+  border-radius: 20px 0px 20px 0px;
+  padding: 10px;
+  box-shadow: 0 0px 2px 1px black;
+  background-color: rgb(18, 71, 71);
+  width: calc(100vw - 40px);
+  
+}
+.PAYMENTTITLE{
+  width: 65%
+}
 .Empty::placeholder  {                                                          
   
     color: red;
