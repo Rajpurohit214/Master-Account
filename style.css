@@ -2,29 +2,45 @@
     margin: 0px;
     padding: 0px;
 }
-body{
-  background-color: rgb(255, 255, 255);
-}
+
 input[type="date"] {
   padding: 8px  solid;
   font-size: 16px;
 }
-
-.title{
-  padding: 10px;
+.headingbill{
+  position: relative;
+  box-sizing: border-box;
+  margin: 20px 20px -5px 20px;
+  border-radius: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+  background-color: rgb(18, 71, 71);
+  border: solid white 5px;
+  z-index: 99;
+  margin-left: 15px;
+  color: white;
   display: flex;
   justify-content: center;
-
-  box-sizing: border-box;
-  margin: 20px;
-  box-shadow: 0 2 0;
-  border-radius: 20px 0px 20px 0px;
-  padding: 10px;
-  box-shadow: 0 0px 2px 1px black;
-  background-color: rgb(18, 71, 71);
-  width: calc(100vw - 40px);
+  width: calc(100vw - 30px);
   
 }
+.paymenthead,.totalhead,.headingmaterial{
+  position: relative;
+  box-sizing: border-box;
+  margin: 10px 0px 20px 0px;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.titleS{
+  position: relative;
+  box-sizing: border-box;
+  margin: 10px 0px 20px 0px;
+  display: flex;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+
+
 .PAYMENTTITLE{
   width: 65%
 }
@@ -36,11 +52,10 @@ input[type="date"] {
 }
 .Main-Container{
     box-sizing: border-box;
-    margin: 20px;
+    margin: 0px 20px 5px 20px;
     box-shadow: 0 2 0;
-    border-radius: 20px 0px 20px 0px;
     padding: 10px;
-    box-shadow: 0 0px 2px 1px black;
+    padding-top: 20px;
     background-color: rgb(18, 71, 71);
     width: calc(100vw - 40px);
 }
@@ -312,7 +327,7 @@ input{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 100px;
+    width: 120px;
     height: 40px;
     border: none;
     padding: 0px 20px;
@@ -595,11 +610,11 @@ text-align: center;
 /* ammount box of total and payment ---------------------------*/
 
 .Total-Container{
-  border-radius: 10px 0px 10px 0px;
+  border-radius: 20px 0px 20px 0px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2 0;
-  height: 290px;
+  height: 350px;
   padding: 20px;
   box-shadow: 0 0px 10px 1px black;
   background-color: rgb(89, 22, 102);

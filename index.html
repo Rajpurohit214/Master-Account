@@ -9,28 +9,28 @@
     </head>
     <body>
         <header>
-            <div class="title">
-            <h1>Tailor Hisab</h1>
+            <div class="titleS">
+            <h1>JOB WORK ACCOUNT</h1>
             </div>
         </header>
         <section>
-            <div class="title">
-            <h1>Pending Bills</h1>
+            <div class="title headingbill">
+            <h1>Job Work Pending Bills</h1>
             </div>
             <div id="MainBox"></div>
             <div id="btndiv">
-                <button class="Btn" id="AddDcBtn">ADD DC
+                <button class="Btn" id="AddDcBtn">ADD BILL
                     <svg class="svg" viewbox="0 0 24 24" width="50px" height="50px">
                         <path d="M12 2v20M2 12h20" stroke="#ffffff" stroke-width="3"/>
                     </svg>
                 </button>
             </div>
         </section>
-        <div class="title">
-        <h1>Material Slips</h1>
-        </div>
         <section class="Material-PaymentContainer">
          <div class="Material-Container">
+            <div class="title headingmaterial">
+                <h1>Material Slips</h1>
+                </div>
             <div class="Material-Value">
                 <input type="text" name="Rate" id="Rate"  value="Rate" style="visibility: hidden; width: 90px; ">
                 <input type="text" name="Sign" id="sign" value="Rate's :-"  >
@@ -106,12 +106,11 @@
             </div>
          </div>
         </section>
-        <div class="title">
-        <h1 class="PAYMENTTITLE">Payment Details</h1>
-        <h1 class="PAYTITLE">TOTAL PAYABLE </h1>
-        </div>
         <section class="Material-PaymentContainer">
          <div class="Payment-Container" >
+            <div class="title paymenthead">
+                <h1 >Payment Details</h1>
+                </div>
             <div class="Payment-Names">
                 <input type="text" name="SN" id="SNp" value="SN" readonly>
                 <input type="text" name="PaymentDateName" id="PaymentDateName" value="Date" readonly>
@@ -163,6 +162,9 @@
             </div>
          </div>
          <div class="Total-Container" >
+            <div class="title totalhead">
+                <h1 >TOTAL PAYABLE </h1>
+                </div>
             <div class="op">
               <div class="OpeningBalanceTax">
                 <h3>Cash Opening :- </h3>
@@ -177,15 +179,15 @@
               <h2>PAYABLE AMOUNT</h2>
               <div class="AMTDiv">
                 <h3>Cash Amount :- </h3>
-                <input type="number" id="CashTotal">
+                <input type="number" id="CashTotal" value="0">
               </div>
               <div class="AMTDiv">
                 <h3>Rtgs Amount :- </h3>
-                <input type="number" id="RTGSTotal">
+                <input type="number" id="RTGSTotal" value="0">
               </div>
               <div class="AMTDiv">
                 <h3>Total Amount :- </h3>
-                <input type="number" id="GrandTotal">
+                <input type="number" id="GrandTotal" value="0">
               </div>
             </div>
             
