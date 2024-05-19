@@ -100,7 +100,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (TypeInput.value === "1") {
 
@@ -112,7 +112,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (TypeInput.value === "2") {
 
@@ -124,7 +124,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (TypeInput.value === "3") {
 
@@ -136,7 +136,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (TypeInput.value === "4") {
 
@@ -148,7 +148,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="3">Cash A/C</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (TypeInput.value === "5") {
 
@@ -160,7 +160,7 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (TypeInput.value === "6") {
 
@@ -172,12 +172,12 @@ if (AmountInput.value !== "" && parseFloat(AmountInput.value) > 0) {
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (TypeInput.value === "7") {
 
         innerhtml = `
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
         <option value="2">Cheque</option>
@@ -829,7 +829,7 @@ document.body.addEventListener("change", (event) => {
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (event.target.value === "1") {
     
@@ -841,7 +841,7 @@ document.body.addEventListener("change", (event) => {
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (event.target.value === "2") {
     
@@ -853,7 +853,7 @@ document.body.addEventListener("change", (event) => {
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (event.target.value === "3") {
     
@@ -865,7 +865,7 @@ document.body.addEventListener("change", (event) => {
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (event.target.value === "4") {
     
@@ -877,7 +877,7 @@ document.body.addEventListener("change", (event) => {
         <option value="3">Cash A/C</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (event.target.value === "5") {
     
@@ -889,7 +889,7 @@ document.body.addEventListener("change", (event) => {
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (event.target.value === "6") {
     
@@ -901,12 +901,12 @@ document.body.addEventListener("change", (event) => {
         <option value="3">Cash A/C</option>
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         `;
     } else if (event.target.value === "7") {
     
         innerhtml  = `
-        <option value="7">IMPS</option> 
+        <option value="7">TDS</option> 
         <option value="0">RTGS</option>
         <option value="1">G.Pay</option>
         <option value="2">Cheque</option>
@@ -957,7 +957,7 @@ function AllClear(VALUE){
         <option value="4">Cash W/O</option>
         <option value="5">Bank W/O</option>
         <option value="6">NEFT</option>
-        <option value="7">IMPS</option>` 
+        <option value="7">TDS</option>` 
         document.getElementById("RemarksInput").value="" 
 
     }
