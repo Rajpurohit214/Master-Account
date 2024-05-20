@@ -4,7 +4,14 @@
 }
 
 
-
+#datehisab{
+  border-radius: 10px 10px 10px 10px;
+  height: 30px;
+  width: 150px;
+  color: white;
+  background-color: black;
+    
+}
 
 input[type="date"] {
   padding: 8px  solid;

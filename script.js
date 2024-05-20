@@ -3,6 +3,17 @@ window.addEventListener("load", ()=>{
   
 })
 
+var dates = new Date();
+var day = dates.getDate();
+var month = dates.getMonth() + 1;
+var year = dates.getFullYear();
+
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+
+var today = year + "-" + month + "-" + day;
+document.getElementById("datehisab").value = today;
+
 document.body.addEventListener("click", (click) => {
     const target = click.target;
     // Check if the clicked element is an button
