@@ -335,7 +335,7 @@ function AddDCs (){
              <button class="DeleteBtn " style="visibility:hidden;">X</button>
            </div>
          <div class="AddLine-Iteam"></div>
-         <div class="AddLine-Fabric">
+         <div class="AddLine-Fabric-Input">
          <div class="DcNoI">
          <label for="DcNoI">DcNo:</label>
          <input type="number" id="DcNoI" placeholder="______________" oninput="preventNegative(this)">

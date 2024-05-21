@@ -3,7 +3,12 @@
     padding: 0px;
 }
 
-
+@media print{
+  .AddLine-Fabric-Input,.Material-Input,.Payment-Input,#AddDcBtn{
+    position: absolute;
+    left: -999999px;
+  }
+}
 #datehisab{
   border-radius: 10px 10px 10px 10px;
   height: 30px;
@@ -121,23 +126,24 @@ input[type="date"] {
 .DELETE:hover{
   cursor: pointer;
   color: rgb(255, 0, 0);
-  transform: rotate(180deg);
+  transform: rotate(40deg);
+  
 }
 
-.AddLine-Fabric{
+.AddLine-Fabric,.AddLine-Fabric-Input{
    display: flex;
    justify-content: space-evenly;
    width: 100%;
    gap: 5px;
    margin: 5px;
 }
-.AddLine-Fabric div{
+.AddLine-Fabric div,.AddLine-Fabric-Input div{
   display: flex;
   flex-direction: column;
   
   
 }
-.AddLine-Fabric label{
+.AddLine-Fabric label,.AddLine-Fabric-Input label{
  color: white;
  position: relative;
  top: 10px;
@@ -203,7 +209,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 }
 
-.AddLine-Fabric input{
+.AddLine-Fabric input,.AddLine-Fabric-Input input{
   
   border-color: white;
   height: 40px;
@@ -559,7 +565,7 @@ input{
       box-shadow: 0 2 0;
       border-radius: 20px;
       padding: 10px;
-      box-shadow: 0 0px 5px 1px black;
+      box-shadow: 0 0px 1px 1px black;
       background-color: rgb(104, 28, 28);
       width: calc(65vw - 30px);
       height: fit-content;
@@ -640,9 +646,9 @@ text-align: center;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2 0;
-  height: 350px;
+  height: fit-content;
   padding: 20px;
-  box-shadow: 0 0px 10px 1px black;
+  box-shadow: 0 0px 1px 1px black;
   background-color: rgb(89, 22, 102);
   width: calc(30vw - 30px);
   text-align: center;
