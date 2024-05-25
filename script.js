@@ -63,14 +63,13 @@ document.body.addEventListener("click", (click) => {
     }
     if(target.classList.contains("BtnP")){
         AddPayment();
-        target.parentElement.querySelector("#PaymentDateInput").focus();
+        target.parentElement.parentElement.querySelector("#PaymentDateInput").focus();
         let VALUE = 1;
         AllClear(VALUE)
         
     }
     if (target.classList.contains("svgP")) {
         AddPayment();
-
         target.parentElement.parentElement.parentElement.querySelector("#PaymentDateInput").focus();
         let VALUE = 1;
         AllClear(VALUE)
