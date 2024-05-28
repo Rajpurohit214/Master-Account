@@ -707,23 +707,23 @@ function GrandTotalUpdate (){
     const CashAmtS = document.querySelectorAll(".CashAMT");
      let CASHAMTDC = 0;
     CashAmtS.forEach(Amt => {
-        CASHAMTDC =+ parseInt(Amt.value);
+        CASHAMTDC += parseInt(Amt.value);
     });
     const RTGSAmtS = document.querySelectorAll(".RTGSAMT");
      let RTGSAMTDC = 0;
     RTGSAmtS.forEach(rAmt => {
-        RTGSAMTDC =+ parseInt(rAmt.value);
+        RTGSAMTDC += parseInt(rAmt.value);
     });
 
     const cgstAmtS = document.querySelectorAll(".cgst");
      let cgstAMTDC = 0;
        cgstAmtS.forEach(cgst => {
-        cgstAMTDC =+ parseInt(cgst.value);
+        cgstAMTDC += parseInt(cgst.value);
     });
     const sgstAmtS = document.querySelectorAll(".sgst");
      let sgstAMTDC = 0;
     sgstAmtS.forEach(sgst => {
-        sgstAMTDC =+ parseInt(sgst.value);
+        sgstAMTDC += parseInt(sgst.value);
     });
 
     CashTotal.value =( CASHAMTDC - (parseInt(document.getElementById("SubtotalM").value)+parseInt(document.getElementById("CashTotalPayment").value))) + parseFloat(CashOpening.value);
