@@ -1,0 +1,212 @@
+@media print{
+    .AddLine-Fabric-Input,.Material-Input,.Payment-Input,#AddDcBtn{
+      position: absolute;
+      left: -999999px;
+    }
+    #Consumptionn,#prtdiv,#CNSPTN,#UsedMTRR,#UsedMtr,#TotalMTRR,#TotalMTR,#RestMTRR,#WasteMTRv,#FabRate,#Debit,#MainBox > div > button,.DeleteBtn,#btndivm,#btndivp{
+      position: absolute;
+      left: -999999px;
+    }
+    div  {
+      page-break-inside: avoid;
+    }
+
+    .Material-PaymentContainer{
+        display: block;
+        padding: 10px;
+    }
+    .Payment-Container {
+
+        width: calc(-30px + 100vw);
+        margin: 10px;
+    }
+    .Total-Container {
+        width: calc(95vw - 30px);
+        margin: 10px;
+        margin-top: 30px;
+    }
+    .Total-Heading, .Total-Value {
+        width: 80%;
+        left: 10%;
+    }
+     .op {
+     display: flex;
+    }
+
+ 
+
+  #datehisab{
+    border-radius: 10px 10px 10px 10px;
+    height: 30px;
+    width: 150px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255); 
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0%);
+    
+  }
+
+
+  .AddLine-Fabric input {
+    border-color: rgb(49, 49, 49);
+    height: 40px;
+    background: rgba(255, 255, 255, 0.835);
+    outline: none;
+    color: rgb(0, 0, 0);
+}
+
+  .headingbill{
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(0, 0, 0) 2px;
+    color: rgb(0, 0, 0);
+  }
+  .paymenthead,.totalhead,.headingmaterial{
+    color: rgb(0, 0, 0);
+  }
+  
+  .Main-Container{
+      background-color: rgb(255, 255, 255);
+      border: solid 2px black;
+  }
+
+
+  #billno{
+    border-color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.836);
+    color: rgb(0, 0, 0);
+  }
+  #DocType{
+    border-color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.836);
+    color: rgb(0, 0, 0);
+  }
+  #billdate{
+    border-color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.836);
+    color: rgb(0, 0, 0);
+  }
+  #DocDate{
+    border-color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.836);
+    color: rgb(0, 0, 0);
+  }
+  
+  .Container-Heading input{
+    background: rgb(100, 100, 100);
+    color: white;
+    border: none;
+  }
+  div.Total-Heading input{
+    background-color: rgb(100, 100, 100);
+    color: rgb(255, 255, 255);
+
+  }
+  div.Total-Value input{
+    background-color: rgba(255, 255, 255, 0.836);
+    color: rgb(0, 0, 0);
+    border-radius: 0px 0px 0px 10px;
+    border:  solid  rgb(100, 100, 100)1px ;
+    border-top: solid thin white;
+  }
+  
+
+  
+  
+  
+  
+  /*material container -------------------------------------------------*/
+
+    .Material-Container{
+      border: sloid black 2px;
+      background-color: rgb(255, 255, 255);
+  }
+
+
+    #Material input {
+      border-color: rgb(0, 0, 0);
+      background: rgba(255, 255, 255, 0.863);
+      color: rgb(0, 0, 0);
+    }
+    .Material-Sub input {
+      border-color: rgb(100, 100, 100);
+      background: rgb(100, 100, 100);
+      border: none;
+      color: white;
+    }
+
+    #SubtotalMT {
+      border-color: rgb(100, 100, 100);
+      background: rgb(100, 100, 100);
+      color: white;
+    }
+    #SubtotalM {
+      border-radius: 0px 0px 10px 0px;
+      border-color: rgb(100, 100, 100);
+      background: rgb(100, 100, 100);
+      color: white;
+    }
+ 
+    .Material-Names input{
+      border-color: white;
+      border-top: none;
+      background: rgb(100, 100, 100);
+      color: white;
+      
+    }
+
+    .Material-Value input{
+      border-color: white;
+      background: rgb(100, 100, 100);
+      color: white;
+    }
+
+    
+  /* payment container -----------------------------------------------------------*/
+    .Payment-Container{
+        background-color: rgb(255, 255, 255);
+    }
+
+  .Payment-Names input, .Payment-Input input ,.Total-Payment input,.Payment-Line input{
+    border-color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }
+  .Payment-Names input,.Total-Payment input{
+    border-color: rgb(255, 255, 255);
+    background: rgb(100, 100, 100);
+    color: rgb(255, 255, 255);
+  }
+  .Payment-Line select,.Payment-Input select{
+    border-color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }
+  
+  
+  
+  /* ammount box of total and payment ---------------------------*/
+  
+  .Total-Container{
+    background-color: rgb(255, 255, 255);
+  }
+  
+  h2,h3{
+    color: rgb(0, 0, 0);
+  }
+
+  
+  .pmt,.op{
+    background-color: rgb(182, 181, 184);
+  }
+
+
+
+h1 {
+  font-size: 1.5em;
+}
+
+.titleS input[Type="text"] {
+  font-weight: 800;
+  font-size: 15px;
+}}

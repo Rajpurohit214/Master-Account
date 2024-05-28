@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tailor Hisab</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="stylePrint.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,-25" />
     </head>
     <body>
@@ -28,7 +29,7 @@
             </div>
             </div>
         </header>
-        <section>
+        <div>
             <div class="title headingbill">
             <h1>Job Work Pending Bills</h1>
             </div>
@@ -40,8 +41,8 @@
                     </svg>
                 </button>
             </div>
-        </section>
-        <section class="Material-PaymentContainer">
+        </div>
+        <div class="Material-PaymentContainer">
          <div class="Material-Container">
             <div class="title headingmaterial">
                 <h1>Material Slips</h1>
@@ -120,8 +121,8 @@
                  <input type="number" name="SubtotalM" id="SubtotalM" readonly value="0">
             </div>
          </div>
-        </section>
-        <section class="Material-PaymentContainer">
+        </div>
+        <div class="Material-PaymentContainer">
          <div class="Payment-Container" >
             <div class="title paymenthead">
                 <h1 >Payment Details</h1>
@@ -207,7 +208,13 @@
             </div>
             
          </div>
-        </section>
+        </div>
+        <div id="prtdiv">
+            <button class="Btnprt" id="prtBtn">Print Detailed Report
+                <svg class="svgprt" style="color: white" xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16"> <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" fill="white"></path> <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" fill="white"></path>
+                </svg>
+            </button>
+        </div>
         <script src="script.js"></script>
 
     </body>

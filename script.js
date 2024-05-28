@@ -84,6 +84,9 @@ document.body.addEventListener("click", (click) => {
         PaymentLine = target.parentElement.parentElement
         RemovePayment(PaymentLine);
     }
+    if (target.classList.contains("Btnprt")) {
+       window.print()
+    }
 });
 
 const date =document.getElementById("DateValue");
@@ -323,12 +326,12 @@ function AddDCs (){
              <input style="width: 50px;" value="SN" type="text" readonly="readonly">
              <input value="Dc No" type="text" readonly="readonly">
              <input value="Total Pcs" type="text" readonly="readonly">
-             <input value="Consumption" type="text" readonly="readonly">
+             <input value="Consumption" id="Consumptionn"  type="text" readonly="readonly">
              <input value="Job Rate" type="text" readonly="readonly">
-             <input value="Used MTR" type="text" readonly="readonly">
-             <input value="Total MTR" type="text" readonly="readonly">
-             <input value="Rest MTR" type="text" readonly="readonly">
-             <input value="Fab Rate" type="text" readonly="readonly">
+             <input value="Used MTR" id="UsedMTRR" type="text" readonly="readonly">
+             <input value="Total MTR" id="TotalMTRR" type="text" readonly="readonly">
+             <input value="Rest MTR" id="RestMTRR" type="text" readonly="readonly">
+             <input value="Fab Rate" id="FabRate" type="text" readonly="readonly">
              <input value="Debits" type="text" readonly="readonly">
              <input value="Total" type="text" readonly="readonly">
              <button class="DeleteBtn " style="visibility:hidden;">X</button>

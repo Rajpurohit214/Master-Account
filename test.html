@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brother Names</title>
+    <title>Brother Names and Ages</title>
 </head>
 <body>
     <!-- Heading -->
-    <h1>Enter Your Brother's Names</h1>
+    <h1>Enter Your Brother's Names and Ages</h1>
 
-    <!-- Form to input brother names -->
+    <!-- Form to input brother names and ages -->
     <form id="brotherForm">
+        <label for="brotherName">Brother's Name:</label>
         <input type="text" id="brotherName" placeholder="Enter brother's name">
+        <br>
+        <label for="brotherAge">Brother's Age:</label>
+        <input type="number" id="brotherAge" placeholder="Enter brother's age">
+        <br>
         <button type="button" onclick="addBrother()">Add Brother</button>
         <button type="button" onclick="generateReport()">Generate Report</button>
     </form>
 
-    <!-- Display brother names -->
+    <!-- Display brother names and ages -->
     <div id="brotherList"></div>
 
     <script>
@@ -24,28 +29,30 @@
 
         function addBrother() {
             const brotherName = document.getElementById('brotherName').value;
-            brotherList.push(brotherName);
+            const brotherAge = document.getElementById('brotherAge').value;
+            brotherList.push({ name: brotherName, age: brotherAge });
+            updateBrotherList();
+        }
+
+        function updateBrotherList() {
             const brotherListDiv = document.getElementById('brotherList');
-            brotherListDiv.innerHTML = '<ul>' + brotherList.map(function(name) { return '<li>' + name + '</li>'; }).join('') + '</ul>';
+            brotherListDiv.innerHTML = '<ul>' + brotherList.map(function (brother) {
+                return '<li>' + brother.name + ' (Age: ' + brother.age + ')</li>';
+            }).join('') + '</ul>';
         }
 
         function generateReport() {
             // Create a new window for the report
             const reportWindow = window.open('', '_blank');
-            reportWindow.document.write('<html><head><title>Brother Names Report</title></head><body>');
-                
-            const brotherListDiv = document.getElementById('brotherList');
-            brotherListDiv.innerHTML = '<ul>' + brotherList.map(function(name) { return '<li>' + name + '</li>'; }).join('') + '</ul>';
+            reportWindow.document.write('<html><head><title>Brother Names and Ages Report</title></head><body>');
 
-
-            // Write the brother names to the report
-            reportWindow.document.write('<h1>Brother Names Report</h1>');
+            // Write the brother names and ages to the report
+            reportWindow.document.write('<h1>Brother Names and Ages Report</h1>');
             reportWindow.document.write('<ul>');
-            for (const name of brotherList) {
-                reportWindow.document.write(`<li>${name}</li>`);
+            for (const brother of brotherList) {
+                reportWindow.document.write(`<li>${brother.name} (Age: ${brother.age})</li>`);
             }
             reportWindow.document.write('</ul>');
-
         }
     </script>
 </body>

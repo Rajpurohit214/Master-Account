@@ -3,22 +3,13 @@
     padding: 0px;
 }
 
-@media print{
-  .AddLine-Fabric-Input,.Material-Input,.Payment-Input,#AddDcBtn{
-    position: absolute;
-    left: -999999px;
-  }
-  div {
-    page-break-inside: avoid;
-  }
-}
+
 #datehisab{
   border-radius: 10px 10px 10px 10px;
   height: 30px;
   width: 150px;
   color: white;
-  background-color: black;
-    
+  background-color: black; 
 }
 
 input[type="date"] {
@@ -38,8 +29,7 @@ input[type="date"] {
   color: white;
   display: flex;
   justify-content: center;
-  width: calc(100vw - 30px);
-  
+  width: calc(100vw - 40px);
 }
 .paymenthead,.totalhead,.headingmaterial{
   position: relative;
@@ -91,7 +81,7 @@ input[type="date"] {
     padding: 10px;
     padding-top: 20px;
     background-color: rgb(18, 71, 71);
-    width: calc(100vw - 40px);
+    width: calc(100vw - 50px);
 }
 .Container-Heading{
     display: flex;
@@ -249,7 +239,7 @@ input{
 }
 
 #btndiv{
-    width: 100vw;
+    width: 90vw;
     display: flex;
     justify-content: center ;
 }
@@ -374,14 +364,39 @@ input{
     box-shadow: 5px 5px 0px  rgb(140, 32, 212);
     transition-duration: .3s;
   }
+.Btnprt {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20vw;
+    height: 40px;
+    border: none;
+    padding: 0px 20px;
+    background-color: rgb(11, 0, 161);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px rgb(7, 0, 102);
+    transition-duration: .3s;
+    left: 50%;
+    transform: translateX(-60%);
+    margin: 30px;
+    font-size:20px;
+  }
 
-  .svg,.svgM,.svgMX,.svgP,.svgPX,.svgA {
+  .svg,.svgM,.svgMX,.svgP,.svgPX,.svgA,.svgprt {
     width: 12px;
     position: absolute;
     right: -6px;
     margin-right: 20px;
     fill: white;
     transition-duration: .3s;
+       
+  }
+   .svgprt {
+    width: 30px;
        
   }
   
@@ -401,6 +416,12 @@ input{
     transform: translate(3px , 3px);
     transition-duration: .3s;
     box-shadow: 2px 2px 0px rgb(140, 32, 212);
+  }
+  .Btnprt:active  {
+    transform: translate(-60% , 3px);
+    
+    transition-duration: .1s;
+    box-shadow: 2px 2px 0px rgb(11, 0, 161);
   }
   .BtnA:active  {
     transform: translate(3px , 3px);
@@ -453,7 +474,7 @@ input{
     padding: 10px;
     box-shadow: 0 0px 2px 1px black;
     background-color: rgb(27, 38, 73);
-    width: calc(100vw - 30px);
+    width: calc(100vw - 40px);
 }
   .Material-Names, .Material-Value,  .Material-Line,  .Material-Input{
     display: flex;
