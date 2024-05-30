@@ -20,7 +20,6 @@ document.body.addEventListener("click", (click) => {
     if (target.classList.contains("BtnA")) {
         const container = target.closest(".Main-Container");
         const AddLineIteam = container.querySelector(".AddLine-Iteam");
-        
         AddLine(container,AddLineIteam);
     }
     if (target.classList.contains("svgA")) {
@@ -30,8 +29,11 @@ document.body.addEventListener("click", (click) => {
         AddLine(container,AddLineIteam);
     }
     if (target.classList.contains("DELETE")) {
-        target.closest(".Main-Container").remove();
-        
+        if (window.confirm("Do you really want to delete this bill?")) {
+            target.closest(".Main-Container").remove();
+            GrandTotalUpdate ();
+            
+        } 
     }
     if (target.classList.contains("svg")) {
         AddDCs();
@@ -41,9 +43,11 @@ document.body.addEventListener("click", (click) => {
         AddDCs();
     }
     if(target.classList.contains("DeleteBtn")){
-        const Dcline = target.closest(".AddLine-Fabric")
-        const container = target.closest(".Main-Container");
-        RemoveDc(Dcline , container);
+        if (window.confirm("Click OK to remove this DC!")) {
+            const Dcline = target.closest(".AddLine-Fabric")
+            const container = target.closest(".Main-Container");
+            RemoveDc(Dcline , container);
+        } 
     }
     if(target.classList.contains("BtnM")){
         AddMaterial();
@@ -52,14 +56,18 @@ document.body.addEventListener("click", (click) => {
         AddMaterial();
     }
     if (target.classList.contains("svgMX")) {
-        MaterialLine = target.parentElement.parentElement.parentElement
+        if (window.confirm("Click OK to remove this Material Slip!")) {
+            MaterialLine = target.parentElement.parentElement.parentElement
+            RemoveMaterial(MaterialLine);
+        } 
 
-       RemoveMaterial(MaterialLine);
     }
     if (target.classList.contains("BtnMX")) {
-        MaterialLine = target.parentElement.parentElement
+        if (window.confirm("Click OK to remove this Material Slip!")) {
+            MaterialLine = target.parentElement.parentElement
+            RemoveMaterial(MaterialLine);
+        } 
 
-        RemoveMaterial(MaterialLine);
     }
     if(target.classList.contains("BtnP")){
         AddPayment();
@@ -76,16 +84,25 @@ document.body.addEventListener("click", (click) => {
   
     }
     if (target.classList.contains("svgPX")) {
-        PaymentLine = target.parentElement.parentElement.parentElement
+        if (window.confirm("Click OK to remove this Payment Details!")) {
+            PaymentLine = target.parentElement.parentElement.parentElement
     
-       RemovePayment(PaymentLine);
+            RemovePayment(PaymentLine);;
+        } 
+
     }
     if (target.classList.contains("BtnPX")) {
-        PaymentLine = target.parentElement.parentElement
-        RemovePayment(PaymentLine);
+        if (window.confirm("Click OK to remove this Payment Details!")) {
+            PaymentLine = target.parentElement.parentElement
+            RemovePayment(PaymentLine);
+        } 
+
     }
     if (target.classList.contains("Btnprt")) {
-       window.print()
+        if (window.confirm("Click OK to Print All Details!")) {
+            window.print()
+        } 
+
     }
 });
 
